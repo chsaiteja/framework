@@ -1,0 +1,61 @@
+<!-- Desktop view for interest-profiler intro-->
+<div class="chart-result">
+    <div class="panel panel-default">
+        <div class="panel-body p-0 col-12">
+
+            <div class="row ">
+                <div class="col-md-3   text-center ip-occ-list">
+                    <div id="svgOcc" class="svg-align"></div>
+                </div>
+                <div class="col-md-9  col-12  text-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="pt-md-2 text-center font-weight-bold" (click)='$event.preventDefault();getWilTwoAreas(twoTitleVal[0],twoTitleVal[1])'>
+                                <!-- Displays top two values -->
+                                <i class="fa fa-star " aria-hidden="true"></i> {{(introVal)?.commonText?.pageText?.listPage?.topTwoHeader}}
+                                <a href="#" [ngStyle]="{'color':'#036182'}">
+                                    <u class="pointer">{{twoTitleVal[0]}} & {{twoTitleVal[1]}}</u>
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="result-list d-table w-100 h-100 height col-12">
+                            <div class="d-table-cell align-middle">
+                                <ul data-pie-id="svgOcc" id="ipsf_pie" class="m-md-0 three-coloumns-ip-result d-table-cell align-middle p-0">
+                                    <li *ngFor="let res of pieDataInOcc" class="ChartData " [attr.data-value]="res.score" [ngStyle]="{'color': pieColor[res.areaAbbr]}">
+                                        <span class="square-box colr-box-wil-list" (click)="getWilAreaOccListParent(res.areaAbbr,res.description,res.title)" [ngStyle]="{'background-color': pieColor[res.areaAbbr]}"></span>&nbsp;
+
+                                        <a href="#" class="result-text list-occ-wil list-wil text-left" (click)="$event.preventDefault();getWilAreaOccListParent(res.areaAbbr,res.description,res.title)"
+                                            [attr.id]="res.areaAbbr">
+                                            <span class="highlight-text cmpr-cap-letr" [ngClass]="(interest==res.areaAbbr)? 'high-lighting-text-num':'dehigh-lighting-text-num'">
+                                                <!-- Display titles -->
+                                                <u>{{res.title }}</u>
+                                            </span>
+                                        </a>&nbsp;
+
+                                        <span class="result-score highlight-text" (click)="getWilAreaOccListParent(res.areaAbbr,res.description,res.title)">
+                                            <!-- Displays their scores -->
+                                            <!-- <a class="highlight-text"> -->
+                                            {{res.score}}
+                                            <!-- </a> -->
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Displays description for selected values -->
+    <div *ngFor='let val of titleVal;let inx=index'>
+        <div class="common-headding cmpr-cap-letr">{{ val }}</div>
+        <p>{{description[inx]}} </p>
+    </div>
+</div>
+<!--Hear we get the list of occupations relating to the interest we select -->
+<occupation-list>
+</occupation-list>

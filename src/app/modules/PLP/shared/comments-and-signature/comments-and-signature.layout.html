@@ -1,0 +1,44 @@
+<form [formGroup]="CommentAndSigForm">
+  <div class="form-group">
+    <div class="col-spacer">
+      <div *ngIf="edited" class="alert alert-success">
+        <strong>Success!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="errorVal" class="alert alert-danger">
+        <strong>Oops!</strong> {{successLabel}}
+      </div>
+      <div class="edit-icn-text">
+        <i *ngIf="(report=='')" class="icon-pencil-striped "></i>
+        <i *ngIf="!(report=='')" class="icon-pencil-striped review-ic-btn"></i>
+        <span class="font-weight-bold">Comments</span>
+
+        <p class="font-weight-bold mb-1" *ngIf="CommentAndSigForm.get('Comment').touched && CommentAndSigForm.get('Comment').errors">
+          <span *ngIf="CommentAndSigForm.get('Comment').hasError('invalidText')" class="error-color">
+                           {{errorMessage.script_tags_error}}</span>
+          <span *ngIf="CommentAndSigForm.get('Comment').hasError('maxlengthCheckForComment')" class="error-color">
+                           {{errorMessage.comment_limit}}</span>
+        </p>
+      </div>
+      <textarea *ngIf="(report=='')" [class.comment-text-hght]="(report=='')" id="Comment" rows="3" name="commentsAndSignature"
+        class="form-control " placeholder="Enter your comments" formControlName="Comment" [(ngModel)]="commentsAndSignatureData.Comment"
+        (keypress)="changeTextarea($event)"></textarea>
+
+      <div *ngIf="!(report=='') && commentsAndSignatureData.Comment!=''" id="commentTextPara" class="report-usernotes" [innerHTML]="commentInfoPara"></div>
+      <div *ngIf="!(report=='') && commentsAndSignatureData.Comment ==''" id="commentTextPara11" class="report-usernotes empty-reflection">No information has been entered for this item.</div>
+      <br>
+      <div>
+        <label><b>Signature:</b></label>
+      </div>
+      <div class=" common-checkbox">
+        <input type="checkbox" id="Signature" formControlName="Signature" [(ngModel)]="commentsAndSignatureData.Signature" name="Signature">
+
+        <label for="Signature"> <p class="mb-0">Check to digitally sign your Personal Learning Plan.</p></label>
+      </div>
+      <div class="clearfix"> </div>
+
+      <div *ngIf="(report=='')" class="btn-m-t">
+        <button type="submit" class="common-button red" [disabled]="!CommentAndSigForm.valid" (click)="SaveComments()"><i class="fa fa-save"> </i> Save Information</button>
+      </div>
+    </div>
+  </div>
+</form>

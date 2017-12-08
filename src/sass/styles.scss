@@ -1,0 +1,128 @@
+/* bootstrap variables scss*/
+
+@import "./lib/bootstrap-variable/_variables";
+
+/* app custom variables scss*/
+
+@import './lib/custom-variables.scss';
+
+/*angular bootstrap scss*/
+
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+/* all mixins scss*/
+
+@import './lib/_common/mixins/mixins.scss';
+
+/* container scss */
+
+@import './lib/_common/container/container.scss';
+
+/* All charts css*/
+
+
+/* all images scss*/
+
+@import './lib/_common/images-container/images-container.scss';
+
+/* All common module scss */
+
+@import './lib/modules/modules-common.scss';
+
+/* plp scss*/
+
+@import './lib/modules/plp-content.scss';
+
+/* footer scss*/
+
+@import './lib/_common/footer/footer.scss';
+
+
+/* header scss*/
+
+@import './lib/_common/header/header.scss';
+
+/* logo scss*/
+
+@import './lib/_common/logo/logo.scss';
+
+/* Progress scss*/
+
+@import './lib/_common/progress/progress.scss';
+
+/* menu scss*/
+
+@import './lib/_common/menu/menu.scss';
+
+/* table scss */
+
+@import './lib/_common/table/table.scss';
+
+/* forms scss */
+
+@import './lib/_common/form/form.scss';
+
+/* button scss */
+
+@import './lib/_common/button/button.scss';
+
+/* card scss */
+
+@import './lib/_common/card/card.scss';
+
+/* modal scss */
+
+@import './lib/_common/modal/modal.scss';
+
+/* chart scss */
+
+@import './lib/_common/charts/charts.scss';
+
+/* animations scss */
+
+@import './lib/_common/animations/animations.scss';
+
+/* radio buttons scss */
+
+@import './lib/_common/radio/radio.scss';
+
+/* common assessment intro scss */
+
+@import './lib/modules/assessment-intro.scss';
+
+/* common tabs  scss */
+
+@import './lib/_common/tabs_and_accordions/tabs_and_accordions.scss';
+
+/* Filter scss */
+
+@import './lib/_common/filter/filter.scss';
+
+/* common assessment qustions scss */
+
+@import './lib/modules/assessment-questions.scss';
+
+/* common assessment result scss */
+
+@import './lib/modules/assessment-results.scss';
+
+/* common career,clusters and emerging careers scss */
+
+@import './lib/modules/career.scss';
+
+/* common Careerlist scss */
+
+@import './lib/modules/occlist.scss';
+
+/* common factor comparision scss */
+
+@import './lib/modules/factor-comparision.scss';
+
+/*Focus*/
+@import './lib/_common/focus/focus.scss';
+/* flex scss */
+
+@import './lib/_common/flex/flex.scss';
+/* Graphs related to occupations*/
+
+@import './lib/modules/occ-graphs.scss';

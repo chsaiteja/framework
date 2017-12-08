@@ -1,0 +1,77 @@
+<p *ngIf='(settingsTextTab?.sections).indexOf("RelatedCareers")!= -1'>{{(occCareerStore).RelatedCareers?.intro}}</p>
+<div class="row gutter-10" *ngIf='(settingsTextTab?.sections).indexOf("RelatedCareers")!= -1'>
+    <!-- Display  Careers card with list of careers -->
+    <div class="col-lg col-md col-12">
+        <div class="career-card orange">
+            <div class="career-card-header">
+                <h5 class="card-title">
+                    <i class="icon-careers  panal-icon-align" aria-hidden="true"></i> {{(occCareerStore)?.RelatedCareers?.lists[0]?.header}}
+                </h5>
+
+            </div>
+            <div class="card-block career-card-body scroll-class">
+                <ul class="list">
+                    <li *ngFor="let val of (occCareerStore)?.RelatedCareers?.lists[0]?.links">
+                        <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(val.linkID,val.linkTitle)">{{val.linkTitle}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Display  cluster card with cluster link -->
+    <div class="col-lg col-md col-12">
+        <div class="career-card" [ngStyle]="{'background':(occCareerStore).ParentCluster?.parentClusterColor}">
+            <div class="career-card-header">
+                <h5 class="card-title">
+                    <i class="{{(occCareerStore).ParentCluster?.parentClusterIcon}}  panal-icon-align" aria-hidden="true"></i> {{(occCareerStore)?.RelatedCareers?.lists[1]?.header}}
+                </h5>
+
+            </div>
+            <div class="card-block career-card-body scroll-class">
+                <ul class="list">
+                    <li *ngFor="let value of (occCareerStore)?.RelatedCareers?.lists[1]?.links">
+                        <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCluster(value.linkID,value.linkTitle)">{{value.linkTitle}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Display  milatary card -->
+
+    <div class="col-lg col-md col-12" *ngIf='((settingsTextTab?.sections).indexOf("RelatedMilitary")!= -1) && showMilataryCareer'>
+        <div class="career-card cardcolor-7">
+            <div class="career-card-header">
+                <h5 class="card-title">
+                    <i class="icon-military-careers  panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.RelatedMilitary}}
+                </h5>
+
+            </div>
+            <div class="card-block career-card-body scroll-class">
+                <ul class="list">
+                    <li *ngFor="let val of (occCareerStore).RelatedMilitary;">
+                        <div class="list-text-alignment-plp3"> {{val.linkTitle}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+<!-- Display related jobs -->
+
+<div *ngIf='(settingsTextTab?.sections).indexOf("FindJobs")!= -1'>
+    <h5>
+        <b>{{(settingsText).commonText?.allSections?.FindJobs}}</b>
+    </h5>
+    <div *ngFor="let jobValue of (occCareerStore).FindJobs;let jobinx=index;">
+        <div class="inner">
+            <p *ngIf="jobValue.type =='p'">{{jobValue.text}}</p>
+            <ul *ngIf="(jobValue.type =='ul')" class="list-unstyled p-0">
+                <li *ngFor="let jobval of jobValue.text;" [innerHTML]='jobval | customText'>
+                    <i class="fa fa-chevron-right arrow-align-plp3" aria-hidden="true"></i>&nbsp;&nbsp;
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

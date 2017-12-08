@@ -1,0 +1,40 @@
+<!-- WIL restore view start -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel-group">
+            <!--This is for displaying the data in the view-->
+            <div class="panel panel-default panel-box-restore " *ngFor="let item of restoreAnswerSet;let indx = index">
+                <div class="panel-content-restore">
+                    <h4>
+                        <a href="#" (click)="$event.preventDefault();restoreQuestionsWil(item.answerSet,item.userNotes)">
+                            <u class="pointer">{{(wilreturnedVal|async).commonText.restoreSet}} {{item.answerSet}} </u>
+                        </a>
+                    </h4>
+                    <p>{{item.userNotes}}</p>
+                </div>
+                <div class="panel-footer-restore">
+                    <div class="row">
+                        <div class="col-6 col-sm-6 col-md-6">
+                            <h6>
+                                <i class="icon-asmnt-date" aria-hidden="true"></i>&nbsp;&nbsp;{{item.updatedTimeStamp | customDate}}</h6>
+                        </div>
+                        <!--Display delete icon which tell user that he can delete the answer set -->
+                        <div class="col-6 col-sm-6 col-md-6 ">
+                            <h6 class="pull-right">
+                                <a href="#" class="restore-delete pointer" (click)="$event.preventDefault();DeleteWILAnswerSet(item.answerSet)">
+                                    <i class="icon-asmnt-delete" aria-hidden="true"></i>&nbsp;{{(wilreturnedVal|async).commonText.delete}} </a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--If no data was found then we display coresponing message-->
+        </div>
+    </div>
+    <div align="center" *ngIf="(resLength==-1)" class="w-100">
+        <img class="dta-not-found-img loading-responsive" src="/assets/images/loading.png" />
+    </div>
+    <img *ngIf="(resLength==0)" align="center" class="data-notfound" src="/assets/images/nodata-found.png" />
+    <div class="clearfix"> </div>
+</div>
+<!--End of the restore view-->

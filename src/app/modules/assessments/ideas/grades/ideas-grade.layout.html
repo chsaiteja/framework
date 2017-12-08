@@ -1,0 +1,39 @@
+<!-- Intrest-profiler restore view start -->
+<div class="row">
+	<div class="col-md-8">
+		<div class="panel-group t-p-p2">
+			<!--This is for displaying the data in the view-->
+
+			<div class="row">
+				<div class="col-12">
+					<p> {{(gradeVal|async).commonText?.pageText.gradePage.top.text}}</p>
+					<div class="common-radio-btn">
+						<input id="radio-plp41" class="radio-button-custom" name="radio-group1" type="radio" (click)="gradevalue('789')">
+						<label for="radio-plp41" class="radio-custom-label">{{(gradeVal|async).commonText?.pageText.gradePage.grades['789']}}
+						</label>
+					</div>
+					<div class="common-radio-btn">
+						<input id="radio-plp42" class="radio-button-custom" name="radio-group1" type="radio" (click)="gradevalue('101112')">
+						<label for="radio-plp42" class="radio-custom-label">{{(gradeVal|async).commonText?.pageText.gradePage.grades['101112']}}</label>
+					</div>
+					<div class="common-radio-btn">
+						<input id="radio-plp43" class="radio-button-custom" name="radio-group1" type="radio" (click)="gradevalue('adult')">
+						<label for="radio-plp43" class="radio-custom-label">{{(gradeVal|async).commonText?.pageText.gradePage.grades.adult}}</label>
+					</div>
+					<div>
+						<button class="common-button green" (click)="submitGrade()">{{(returnedVal|async).commonText.submit}}</button>
+
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<!--End of the restore view-->

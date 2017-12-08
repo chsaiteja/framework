@@ -1,0 +1,71 @@
+/* Login Background image scss*/
+
+.login-background-image {
+    background: nth($blue-shades, 1) no-repeat fixed center;
+    @include position (fixed);
+    @include height-width($width-value, $height-value);
+    /* @media sm **/
+    @include media-breakpoint-down(sm) {
+        overflow-y: auto;
+        background: nth($blue-shades, 1);
+    }
+}
+
+
+/* End of Login Background image scss*/
+
+
+/* Tiles Background image scss*/
+
+.landing-career {
+    background-size: cover;
+    background-position-x: 100%;
+    background-position-y: 100%;
+    @include height-width($width-value, 327px);
+    margin: 15px auto 0;
+    .text-landing-img {
+        @include position (relative);
+        padding: 50px 10px;
+    }
+    h4 {
+        font-size: nth($font-sizes, 7);
+        margin-top: 25px;
+    }
+    @include media-breakpoint-down(sm) {
+        background-image: none!important;
+        height: auto;
+        margin: 0;
+        .text-landing-img {
+            padding: 15px;
+        }
+        h1 {
+            font-size: nth($font-sizes, 8);
+        }
+        h4 {
+            font-size: nth($font-sizes, 5);
+        }
+    }
+}
+
+
+/* End of Tiles Background image scss*/
+
+
+/* At a glance card image for chaines Background image scss*/
+
+.card-bg {
+    background: url("../assets/images/girl-boy.jpg") no-repeat center;
+    background-size: cover;
+    height: 202px;
+    background-position-x: 80%;
+}
+
+.lg-card-img {
+    background: url("../assets/images/ClusterImage.jpg") no-repeat center;
+    background-size: cover;
+    height: 395px;
+    background-position-x: 55%;
+}
+
+
+/* At a glance card image for chaines Background image scss*/

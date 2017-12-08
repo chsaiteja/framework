@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-md-8">
+		<div class="panel-group">
+			<!--Display success data-->
+			<!--<div *ngIf="successDelete" class="success-color"><b>Answer set {{deleteVal}} Deleted successfully</b><br></div>-->
+			<div class="panel panel-default panel-box-restore" *ngFor="let item of restoreAnswerSet;let indx = index">
+				<div class="panel-content-restore">
+					<h4>
+						<!--Display list of restore answer sets-->
+						<a href="#" (click)="$event.preventDefault();restoreQuestionsLearnStyle(item.answerSet,item.userNotes)">
+							<u class="pointer">{{(lssreturnedVal|async).commonText.restoreSet }} {{item.answerSet}} </u>
+						</a>
+					</h4>
+					<!--Displays user notes-->
+					<p>{{item.userNotes}}</p>
+				</div>
+				<div class="panel-footer-restore">
+					<div class="row">
+						<div class="col-6 col-sm-6 col-md-6">
+							<h6><i class="icon-asmnt-date" aria-hidden="true"></i>&nbsp;&nbsp;{{item.updatedTimeStamp | customDate}}</h6>
+						</div>
+						<div class="col-6 col-sm-6 col-md-6 ">
+							<!--Display delete button-->
+							<h6 class="pull-right">
+								<a href="#" class="restore-delete pointer" (click)="$event.preventDefault();deleteLSAnswerSet(item.answerSet)"><i class="icon-asmnt-delete" aria-hidden="true"></i>&nbsp;{{(lssreturnedVal|async).commonText.delete}} </a>
+							</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- If restore answersets not available, data not found image displayed -->
+	<div align="center" *ngIf="(resLength==-1)" class="w-100"><img class="dta-not-found-img loading-responsive" src="/assets/images/loading.png" /></div>
+	<img *ngIf="(resLength==0)" align="center" class="data-notfound" src="/assets/images/nodata-found.png" />
+	<div class="clearfix"> </div>
+</div>

@@ -1,0 +1,246 @@
+/* Top navigation  */
+
+.logo-navbar {
+    background-color: nth($blue-shades, 11);
+    height: 50px;
+    @include media-breakpoint-down(sm) {
+        height: 55px;
+    }
+    .navbar-toggleable-md {
+        a {
+            color: $white;
+        }
+        /* @media md desktop **/
+        @include media-breakpoint-up(md) {
+            .navbar-menu {
+                display: flex!important;
+                float: right;
+            }
+            .navbar-nav {
+                flex-direction: row;
+                .nav-link {
+                    @include position (relative, $top: 1px);
+                    padding: 0 .5rem;
+                    cursor: pointer;
+                    height: 49px;
+                    line-height: 46px;
+                }
+            }
+            .nav-list-active {
+                @include common-border(0, 0, 3px, 0px !important, nth($green-shades, 14));
+                @include common-border-radius(0, 0);
+                height: 39px;
+            }
+            .navbar-toggler {
+                display: none;
+            }
+        }
+        /* @media sm **/
+        @include media-breakpoint-down(sm) {
+            height: auto;
+            padding: 7px 0px 23px 0;
+            .mobile-icon-align {
+                margin-top: -15px;
+                z-index: 3;
+                cursor: pointer;
+                i {
+                    color: $white;
+                }
+            }
+            .navbar-menu {
+                z-index: 2;
+                background: nth($blue-shades, 12);
+                @include position (absolute, $top: -25px);
+                @include height-width(100%, auto);
+                a {
+                    padding: 14px 20px!important;
+                    @include common-border(0, 0, 1px, 0, $white);
+                }
+            }
+        }
+        /*End  @media sm **/
+    }
+}
+
+
+/* Start  Side-menu  */
+
+.side-menu {
+    @include position (fixed, $top: 91px, $left: 0);
+    background: nth($red-shades, 1);
+    height: 50px;
+    line-height: 20px;
+    z-index: 1;
+    /*Start  @media xl **/
+    @include large-device(1768px) {
+        @include height-width(320px, 50px);
+        .sidemenu-t {
+            width: 320px;
+        }
+        ide-menu-text {
+            padding-top: 15px;
+            padding-left: 8px;
+            color: $white;
+        }
+        .icon-none-m {
+            display: none;
+        }
+        .main-menu {
+            white-space: normal!important;
+        }
+    }
+    /*End  @media xl **/
+    .fa-micon-menu {
+        @include position (relative, $top: 13px); //display: table-cell;
+        width: 55px;
+        @include common-header($white, nth($font-sizes, 7), center, none);
+    }
+    .fa-micon {
+        @include position (relative, $top: 0px);
+        @extend .fa-micon-menu;
+        line-height: 38px;
+        &.fa-check {
+            width: 20px;
+        }
+    }
+    .main-menu {
+        white-space: nowrap;
+        background: $white;
+        @include position (fixed, $top: 141px, $left:0, $bottom:0); //height: $height-value;
+        overflow: hidden;
+        -webkit-transition: width .2s linear;
+        transition: width .2s linear;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        @include common-border-shadow(5px, 0px, 15px, -6px, $black, 0);
+        opacity: 1;
+        z-index: 0;
+        height: auto;
+        @media (min-height: 930px) {
+            height: $height-value!important;
+        }
+        ul {
+            @include common-border(0, 1px, 0, 0, nth($white-shades, 7));
+            margin: 0px;
+            padding: 0px;
+        }
+        li {
+            display: block;
+            border-bottom: 1px solid nth($grey-shades, 25)!important;
+            @include position (relative);
+            height: 40px;
+            &:first-child {
+                border-top: 1px solid nth($grey-shades, 25)!important;
+            }
+        }
+        a {
+            @include position (relative);
+            display: table;
+            @include common-header($white, nth($font-sizes, 3), none, none);
+            cursor: pointer;
+            text-decoration: none;
+            -webkit-transform: translateZ(0) scale(1, 1);
+            -webkit-transition: all .14s linear;
+            transition: all .14s linear;
+        }
+        .nav-text {
+            @include position (relative);
+            display: table-cell;
+            vertical-align: middle; //width: 190px;
+            color: $black;
+            padding-left: 5px; //white-space: nowrap;
+            width: 100%;
+        }
+        .fa-check::before {
+            color: nth($green-shades, 2);
+        }
+        .menu-active {
+            @include common-border-shadow (0px, 1px, 6px, 1px, nth($blue-shades, 17), 0);
+            @include position (relative);
+            z-index: 5;
+            &:before {
+                @include position (absolute, $top: 50%, $left:0);
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid $white;
+                border-top: 10px solid transparent;
+                content: " ";
+                display: block;
+                @include height-width(0px, 0px);
+                margin-top: -11px;
+                z-index: 9;
+            }
+        }
+        .menu-span-bg-box {
+            @include height-width(55px, 40px);
+            display: block;
+            @include common-border(0, 0px, 1px, 0, nth($green-shades, 2));
+            background: nth($green-shades, 1);
+            color: $white;
+        }
+        .menu-filled {
+            background: nth($grey-shades, 27);
+            border-bottom: nth($grey-shades, 25);
+        }
+        .menu-not-filled {
+            background: nth($blue-shades, 4)!important;
+            display: block;
+            @include common-border(0, 0px, 1px, 0, nth($blue-shades, 1));
+            @include height-width(55px, 40px);
+        }
+    }
+    nav.main-menu.expanded {
+        overflow: hidden;
+        opacity: 1;
+        width: 320px;
+        white-space: normal;
+    }
+    a.widget-side-menu {
+        text-decoration: none;
+        display: block;
+        height: 49px;
+    }
+    @include media-breakpoint-down(sm) {
+        .main-menu {
+            width: 0px;
+        }
+        .side-menu-text {
+            display: none!important;
+        }
+        .widget-side-menu {
+            font-size: nth($font-sizes, 5);
+        }
+    }
+    @include custom-device(768px, 1767px) {
+        .side-menu-scroll-bar:hover {
+            height: 91%;
+            @include position (relative);
+            overflow: auto;
+        }
+        .side-menu-text {
+            display: none!important;
+        }
+        .main-menu,
+        .widget-side-menu {
+            width: 55px;
+        }
+    }
+    .side-menu-text span {
+        color: white;
+        top: 13px;
+        position: relative;
+        margin: 0 20px;
+    }
+    /* Start scrolling  */
+    .side-menu-scroll-bar,
+    .side-menu-scroll-bar:hover {
+        height: $height-value;
+        @include position (relative);
+        overflow: auto;
+    }
+    .scroll-innter {
+        height: auto;
+        @media (min-width: 768px) {
+            margin-bottom: 65px;
+        }
+    }
+    /* End of scrolling  */
+}

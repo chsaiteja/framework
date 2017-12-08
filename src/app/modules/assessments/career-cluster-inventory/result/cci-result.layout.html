@@ -1,0 +1,60 @@
+<!-- 3 cards result  start -->
+<div class="cci-result-page">
+  <div class="top-three-careers">
+    <h6 class="common-headding sub-headding">{{(introVal).commonText?.pageText?.resultsPage.top.header}}</h6>
+    <p>{{(introVal).commonText?.pageText?.resultsPage.top.text}}</p>
+    <p class="common-headding sub-headding">
+      {{(introVal).commonText?.pageText?.resultsPage.box.leftTitle}}
+    </p>
+    <div class="inner-card">
+
+      <div class="row gutter-10">
+
+        <div class="col-lg-4 col-md-4 col-12" *ngFor="let res of ccijrResult;let in=index">
+
+          <a href="#" *ngIf="in<3" class="career-card pointer" [ngStyle]="{'background-color':res.ccijrBgColor}" (click)="$event.preventDefault();callOccDetailCluster(res.ccijrClusterId, res.ccijrClusterName, res.ccijrIcon, res.ccijrBgColor)">
+            <div class="career-card-header d-table pt-0">
+              <ul class="text-icon-header">
+                <li>
+                  <i class="text-icon-header" [ngClass]="res.ccijrIcon"></i>
+                  <h6 class="text-icon-header">
+                    {{res.ccijrClusterName}}</h6>
+                </li>
+              </ul>
+            </div>
+            <div class="card-block text-center mr-0">
+              <h1>{{res.ccijrScore}}</h1>
+            </div>
+          </a>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 cards result  end -->
+  <!-- bottom list with result and icon start -->
+  <div class="row p-b wrapper columned space-between  height-cci-cards ">
+    <div class="col-12 col-lg-6 col-md-6 spacing-divs mb-1" *ngFor="let valConstant of ccijrResult">
+      <div class="card-media-left w-100">
+        <div class="small-cards">
+          <ul class="text-icon-header">
+            <li>
+              <i class="text-icon-header" [ngClass]="valConstant.ccijrIcon" aria-hidden="true" [ngStyle]="{'color':valConstant.ccijrBgColor}"></i>
+              <a href="#" class="text-icon-header pointer" (click)="$event.preventDefault();callOccDetailCluster(valConstant.ccijrClusterId, valConstant.ccijrClusterName, valConstant.ccijrIcon, valConstant.ccijrBgColor)">
+                {{valConstant.ccijrClusterName}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-media-body" [ngStyle]="{'background-color':valConstant.ccijrBgColor }">
+        <div class="score">
+          <span> {{valConstant.ccijrScore}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<!-- bottom list with result and icon end -->

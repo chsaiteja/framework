@@ -1,0 +1,113 @@
+<!--<PLP-nav-header [header]="sectionObject" (changeView)="changeView($event)" [report-status]="report"></PLP-nav-header>-->
+<form [formGroup]="ExperientialLearningForm">
+
+  <div class="form-group">
+    <div class="col-spacer">
+      <div class="clearfix"> </div>
+      <div *ngIf="(report=='') && (expLearn!='nodata')" class="edit-icn-text">
+        <i class="icon-pencil-striped"></i>
+        <span class="font-weight-bold">For each type of learning experience write your thoughts or check the boxes that apply.</span>
+      </div>
+      <div *ngIf="(report!='') && (expLearn!='nodata')" class="edit-icn-text">
+        <i class="icon-pencil-striped "></i>
+        <span class="font-weight-bold">For each type of learning experience write your thoughts or check the boxes that apply.</span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="right-bottom-border row" *ngIf="(report!='') && (expLearn=='nodata')">
+          <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+            No information has been entered for this item.
+          </div>
+        </div>
+        <div *ngIf="(expLearn!='nodata')">
+          <div formGroupName="expLearning" class="mb-2">
+            <div class="row right-bottom-border mb-2" *ngFor="let item of TotalExperientialLearning;let indx = index">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 top-left-border">
+
+                <p class="mt-1  exp-lern-tooltip">{{item.name}}
+                  <template #tipContent>{{item.hoverTextVal}}</template>
+                  <a class="pt-1" href="" (click)='$event.preventDefault()' #t="ngbTooltip" (focus)='t.open()' (blur)='t.close()' placement="bottom" [ngbTooltip]="tipContent" >
+													<i class="icon-question-circular-button"></i>
+											</a></p>
+                <textarea class="form-control pb-5" placeholder="Summary of Experience" rows="1" [(ngModel)]="item.text" [formControlName]="item.name"
+                  (keypress)="changeTextarea($event,indx)"></textarea>
+
+                <div class="form-group">
+                  <div class="row mt-2">
+                    <div class="col-10 col-sm-9 col-md-10 col-lg-10  col-xl-10">
+                      <label for="checkbox1"><i class="icon-personal-info blue-color"></i>
+                      <span>I learned more about myself</span></label>
+                    </div>
+                    <div class="col-2  col-sm-3 col-md-2  col-lg-2  col-xl-2">
+                      <div class=" common-checkbox pull-right">
+                        <input class="pull-right" type="checkbox" id="Myself+'{{indx}}'" [(ngModel)]="item.Myself" [formControlName]="item.Myself">
+                        <label for="Myself+'{{indx}}'"><p class="mb-0">&nbsp;</p></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-10 col-sm-9 col-md-10 col-lg-10  col-xl-10">
+                      <label for="checkbox2"><i class="icon-occ-and-clusters-interest blue-color"></i>
+                      <span>I learned more about different careers </span></label>
+                    </div>
+                    <div class="col-2  col-sm-3 col-md-2 col-lg-2  col-xl-2">
+                      <div class="common-checkbox pull-right">
+                        <input class="pull-right" type="checkbox" id="Careers+'{{indx}}'" [(ngModel)]="item.Careers" [formControlName]="item.Careers">
+                        <label for="Careers+'{{indx}}'"><p class="mb-0">&nbsp;</p></label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-10 col-sm-9 col-md-10 col-lg-10  col-xl-10">
+                      <label for="checkbox3"><i class="icon-chat blue-color"></i>
+                     <span>This helped me think of some things I'd like to do in my future </span></label>
+                    </div>
+                    <div class="col-2  col-sm-3 col-md-2 col-lg-2  col-xl-2">
+                      <div class="common-checkbox pull-right">
+                        <input class="pull-right" type="checkbox" id="Future+'{{indx}}'" [(ngModel)]="item.Future" [formControlName]="item.Future">
+                        <label for="Future+'{{indx}}'"><p class="mb-0">&nbsp;</p></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-10 col-sm-9 col-md-10 col-lg-10  col-xl-10">
+                      <label for="checkbox4"><i class="icon-like blue-color"></i>
+                      <span>I haven't tried this, but I'd like to </span></label>
+                    </div>
+                    <div class="col-2  col-sm-3 col-md-2 col-lg-2  col-xl-2">
+                      <div class=" common-checkbox pull-right">
+                        <input class="pull-right" type="checkbox" id="Try+'{{indx}}'" [(ngModel)]="item.Try" [formControlName]="item.Try">
+                        <label for="Try+'{{indx}}'"><p class="mb-0">&nbsp;</p></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+      <div *ngIf="(ExperientialLearningForm.touched) && (!ExperientialLearningForm.valid)">
+
+        <span style="padding-left:10px;text-align:right;" class="error-color">
+      {{errorMessage.usernotes_limit}}</span>
+        <!--<span *ngIf="ExperientialLearningForm.get('formVal').hasError('maxlengthCheck')" style="padding-left:10px;text-align:right;" class="error-color">
+      {{errorMessage.usernotes_limit}}</span>
+        </span>-->
+      </div><br>
+      <div *ngIf="edited" class="alert alert-success">
+        <strong>Success!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="errorVal" class="alert alert-danger">
+        <strong>Oops!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="(report=='')" class="btn-m-t">
+        <button type="submit" class="common-button red" [disabled]="!ExperientialLearningForm.valid" (click)="SaveExperientialLearning()">
+          <i class="fa fa-save "> </i> Save Information</button>
+      </div>
+    </div>
+  </div>
+
+</form>

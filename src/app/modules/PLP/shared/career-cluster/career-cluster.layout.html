@@ -1,0 +1,40 @@
+<form>
+  <div class="form-group">
+    <div class="col-spacer">
+      <div *ngIf="edited" class="alert alert-success">
+        <strong>Success!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="errorVal" class="alert alert-danger">
+        <strong>Oops!</strong> {{successLabel}}
+      </div>
+      <div class="edit-icn-text">
+        <i *ngIf="(report=='')" class="icon-pencil-striped"></i>
+        <i *ngIf="!(report=='')" class="icon-pencil-striped"></i>
+        <span class="font-weight-bold">{{ questionObject.questions[0] }}</span>
+        <p class="font-weight-bold mb-1">Last Saved On {{ careerClusterCheck | customDate}}</p>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 right-bottom-border">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-6 top-left-border" *ngFor="let item of careerClusterData; let indx = index">
+            <div class=" common-checkbox mt-2">
+              <input type="checkbox" id="{{careerClusterData[indx].ClusterID}}" [(ngModel)]="careerClusterData[indx].selected" name="{{careerClusterData[indx].ClusterName}}">
+              <label for="{{careerClusterData[indx].ClusterID}}"><p class=" mb-0">{{careerClusterData[indx].ClusterName}}</p></label>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+      <div *ngIf="(report=='')">
+        <button type="button" class="common-button red mt-2" (click)="SaveCareerCluster()">
+            <i class="fa fa-save white-color"> </i> Save Information</button>
+      </div>
+    </div>
+  </div>
+
+</form>

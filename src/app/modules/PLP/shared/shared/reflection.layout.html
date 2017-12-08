@@ -1,0 +1,56 @@
+<form [formGroup]="reflectionForm">
+
+  <div class="">
+    <div class="form-group">
+      <div class="col-spacer">
+        <div *ngIf="edited" class="alert alert-success">
+          <strong>Success!</strong> {{successLabel}}
+        </div>
+
+        <div *ngIf="errorVal" class="alert alert-danger">
+          <strong>Oops!</strong> {{successLabel}}
+        </div>
+        <div for="ReflectionText" class="edit-icn-text">
+          <i *ngIf="(report=='')" class="icon-pencil-striped  edit-icn-btn"></i>
+          <i *ngIf="!(report=='')" class="icon-pencil-striped review-ic-btn"></i>
+          <span class="font-weight-bold">{{ question }}</span>
+          <p class="font-weight-bold mb-1">Last Saved On {{reflectionInfo.UpdatedTimeStamp | customDate}}</p>
+          <span *ngIf="reflectionForm.get('ReflectionText').touched && reflectionForm.get('ReflectionText').errors">
+           <span *ngIf="reflectionForm.get('ReflectionText').hasError('invalidText')"  class="error-color  text-right">
+            {{errorMessage.script_tags_error}}</span>
+          <span *ngIf="reflectionForm.get('ReflectionText').hasError('maxlengthCheck')" class="error-color text-right">
+             {{errorMessage.usernotes_limit}}</span>
+          </span>
+        </div>
+        <!--{{todayDate.todayDate | date:"MM/dd/yyyy" }}-->
+        <textarea *ngIf="(report=='')" [class.reflection-text-hght]="(report=='')" id="ReflectionText" rows="3" class="form-control"
+          formControlName="ReflectionText" [(ngModel)]="reflectionInfo.UserNotes" (keypress)="changeTextarea($event)"></textarea>
+
+        <div *ngIf="!(report=='') && reflectionInfo.UserNotes!=''" id="ReflectionTextPara" class="report-usernotes" [innerHTML]="reflectionInfoPara"></div>
+
+        <div *ngIf="!(report=='') && reflectionInfo.UserNotes ==''" id="ReflectionTextParaiNO" class="report-usernotes text-center">No information has been entered for this item.</div>
+
+
+
+
+        <div *ngIf="(report=='')">
+          <button type="Submit" class="common-button red mt-2" (click)="saveReflectionInfo()" [disabled]="!reflectionForm.valid">
+       <i class="fa fa-save white-color"  > </i>
+       Save Information</button>
+          <button type="button" class="common-button red mt-2" (click)="InsertReflectionInfo()">
+      <i class="fa fa-calendar white-color"> 
+        </i> Insert Today's Date</button>
+        </div>
+
+        <!--<div *ngIf="(report=='')" class="col-md-2 col-sm-3 col-xs-12 form-group">
+    <button type="button" class="btn btn-red-plp" (click)="InsertReflectionInfo()" >
+      <i class="fa fa-calendar white-color"> 
+        </i> Insert Today's Date</button>
+  </div>-->
+
+      </div>
+    </div>
+    <div class="clearfix"> </div>
+
+  </div>
+</form>

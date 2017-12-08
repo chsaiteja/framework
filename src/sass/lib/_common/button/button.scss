@@ -1,0 +1,280 @@
+/****************************
+* Add and Reset circle button test score start
+****************************/
+
+.blue-color {
+    color: nth($blue-shades, 2);
+}
+
+.test-score {
+    .circle-btn-testScore {
+        @include height-width(30px, 30px);
+        @include common-border-radius(50%!important, 0px);
+        text-align: center;
+        vertical-align: middle;
+        padding: 0px!important;
+        z-index: 3;
+        margin-left: 10px!important;
+        box-shadow: 1px 2px 2px nth($grey-shades, 7);
+        i {
+            padding-top: 8px;
+            color: $white;
+        }
+    }
+    .testScore-table {
+        word-wrap: break-word;
+        @include height-width(90%, auto);
+    }
+    .mobile-cards {
+        height: 100px;
+        .form-control { width:90%; }
+    }
+}
+
+.common-button {
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+    padding: 8px;
+    @include common-border-radius(2px, 0);
+    cursor: pointer;
+    @include common-header($white, nth($font-sizes, 3), center, 500);
+    letter-spacing: 0;
+    margin: 5px 0px 5px 5px;
+    outline: 0 none;
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    will-change: box-shadow, transform;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    min-width: 79px;
+    &.green {
+        background: nth($green-shades, 13);
+    }
+    &.blue {
+        background: nth($blue-shades, 5);
+    }
+    &.red {
+        background-color: nth($red-shades, 1);
+        border-color: nth($grey-shades, 25);
+        font-size: nth($font-sizes, 4);
+        margin: 0;
+        i {
+            color: $white;
+        }
+        @include media-breakpoint-down(sm) {
+            width: $width-value;
+            min-width: 75px;
+        }
+    }
+    &.orange {
+        background: $orange;
+    }
+    &.btn-primary1 {
+        color: nth($grey-shades, 27)!important;
+        background-color: nth($blue-shades, 17)!important;
+        border-color: nth($blue-shades, 17)!important;
+        box-shadow: none!important;
+        font-size: nth($font-sizes, 3);
+        height: 38px;
+    }
+    &.default {
+        border: none;
+        box-shadow: none;
+        background: none;
+        min-width: 0;
+    }
+    &.select-state-btn {
+        background: nth($blue-shades, 12);
+        height: 66px;
+        @include common-border-radius(0px, 0);
+        border: none;
+        color: $white;
+    }
+    .btn-group & {
+        @include media-breakpoint-down (sm) {
+            margin: 10px 0px;
+        }
+    }
+}
+
+.btn-common {
+    padding: 0.5rem 1rem;
+    line-height: 1.45;
+    border: none;
+}
+
+.btn-common:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+}
+
+.btn-group-styles {
+    @include common-border(1px, 1px, 1px, 1px, nth($blue-shades, 17));
+    @include common-border-radius(2px, 1px);
+}
+
+
+/***************Justified button groups*******************/
+
+@include media-breakpoint-down (sm) {
+    .btn-group-justified {
+        display: flex;
+        width: $width-value;
+        .btn,
+        .btn-group {
+            flex: 1;
+            box-shadow: none;
+            @include common-border(0px, 2px, 0px, 0px, $white);
+            .btn {
+                font-size: none;
+                width: $width-value;
+            }
+            &:hover {
+                @include common-border(0px, 1px, 0px, 0px, $white);
+            }
+        }
+    }
+    .btn {
+        white-space: normal!important;
+    }
+}
+
+
+/******************************************
+* Add and Rest circle button test score end
+******************************************/
+
+
+/***************
+* fab button
+****************/
+
+.float-btn-plp3 {
+    margin: auto;
+    z-index: 999;
+    @include position(fixed, $right: 20px, $bottom: 52px);
+    @include media-breakpoint-down(xs) {
+        right: 50px;
+    }
+}
+
+.action-button {
+    @include height-width(45px, 45px);
+    @include position(absolute, $right: -4px);
+    @include common-border-radius(50%, 1px);
+    border: 0;
+    outline: 0!important;
+    background: nth($orange-shades, 3);
+    font-size: $font-size-sm;
+    color: $white;
+    z-index: 2;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.actions {
+    @include position(absolute, $top: 8px, $right: 1px);
+    list-style: none inside none;
+    margin: 0;
+    padding: 0;
+    float: left;
+    background-color: transparent;
+    z-index: 1;
+    @include height-width(40px, 40px);
+    @include common-border-radius(50%, 1px);
+    & li {
+        position: absolute;
+        display: block;
+        @include height-width(40px, 40px);
+        @include common-border-radius(50%, 1px);
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        margin: 0;
+        background: nth($black-shades, 5);
+        color: $white;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+        &:nth-child(1) {
+            background: nth($orange-shades, 4);
+        }
+        &:nth-child(2) {
+            background: nth($blue-shades, 18);
+        }
+        &:nth-child(3) {
+            background: nth($yellow-shades, 1);
+        }
+    }
+}
+
+.actions li a {
+    background: inherit;
+    color: inherit;
+    display: block;
+    @include height-width(40px, 40px);
+    @include common-border-radius(50%, 1px);
+    line-height: 40px;
+    text-align: center;
+}
+
+.actions li:active {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+}
+
+.action-button.active {
+    box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19), 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+.action-button.active~.actions li {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.action-button.active~.actions li:nth-child(1) {
+    margin-top: -56px;
+}
+
+.action-button.active~.actions li:nth-child(2) {
+    margin-top: -104px;
+}
+
+.action-button.active~.actions li:nth-child(3) {
+    margin-top: -152px;
+}
+
+.action-button span {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    padding-top: 6px;
+}
+
+.action-button.active:not(.no-rotate) span {
+    -webkit-transform: scale(1.5) rotate(-45deg);
+    transform: scale(1.5) rotate(-45deg);
+    padding-top: 2px;
+    font-size: nth($font-sizes, 1);
+}
+
+.common-enable-ques-arrow {
+    background: none!important;
+    border: none;
+    right: 15px;
+    width: 25px;
+    position: relative;
+    height: 25px;
+    top: 2px;
+}
+
+.common-disable-ques-arrow {
+    @extend .common-enable-ques-arrow;
+    height: 0px;
+    top: -16px;
+    right: 18px;
+}
+
+
+/***** floating point plp3 end ****/

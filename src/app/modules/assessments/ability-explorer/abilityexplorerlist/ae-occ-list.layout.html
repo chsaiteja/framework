@@ -1,0 +1,51 @@
+<!-- Desktop view for interest-profiler intro-->
+<div class="chart-result">
+    <div class="panel panel-default py-0">
+        <div class="row panel-body col-12">
+            <div class="col-12  text-center ip-occ-list">
+                <div align="center" id="pieChart" (window:resize)="onResize($event)"></div>
+            </div>
+            <div class=" col-12  text-center">
+                <div class="result-list" align="center">
+                    <p class="text-center font-weight-bold" (click)='$event.preventDefault();getAeTwoAreas(this.twoAbilityVal[0],this.twoAbilityVal[1])'>
+                        <!-- Displays top two values -->
+                        <i class="fa fa-star " aria-hidden="true"></i> {{(listpageVal)?.commonText?.pageText?.listPage.topTwoHeader}}
+                        <a href="#" [ngStyle]="{'color':'#036182'}">
+                            <u class="pointer">{{twoAbilityVal[0]}} & {{twoAbilityVal[1]}}</u>
+                        </a>
+                    </p>
+                    <ul data-pie-id="pieChart" id="ipsf_pie" class="three-coloumns-ip-result">
+                        <li *ngFor="let res of resultChart">
+                            <span class="square-box" [ngStyle]="{'background-color': pieColor[res.level]}"></span>&nbsp;
+
+                            <a [attr.id]="res.areaAbbr" class="result-text pointer list-occ-wil list-wil text-left" [ngStyle]="{'text-decoration': 'underline'}"
+                                (click)="getAEAreaOccListParent(res.areaAbbr,res.title,res.description,res.type,res.knowledges)">
+                                <span class="cmpr-cap-letr">
+                                    {{res.title}}</span>
+                            </a>&nbsp;
+                            <span class="result-score highlight-text">
+                                <a>{{res.score}}</a>
+                            </span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor='let val of titleVal;let inx=index'>
+        <div class="common-headding cmpr-cap-letr">{{ val }} ({{areaTypes[inx]}})</div>
+        <p>{{description[inx]}} </p>
+        <div class="common-headding cmpr-cap-letr">{{(listpageVal).commonText?.pageText?.listPage?.knowledgeHeader}}</div>
+        <p>{{areaKnowledges[inx]}}</p>
+    </div>
+
+
+</div>
+
+
+
+
+<!--Hear we get the list of occupations relating to the interest we select -->
+<occupation-list>
+</occupation-list>

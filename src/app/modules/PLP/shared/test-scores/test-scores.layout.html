@@ -1,0 +1,205 @@
+<form [formGroup]="testScoresForm">
+  <div class="form-group test-score">
+    <div class="col-spacer">
+      <div *ngIf="edited" class="alert alert-success">
+        <strong>Success!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="errorVal" class="alert alert-danger">
+        <strong>Oops!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="(report=='')" class="edit-icn-text">
+        <i class="icon-pencil-striped "></i>
+        <span class="font-weight-bold">{{ questionObject.questions[0] }}</span>
+        <p *ngIf="testEmptyVal" class="error-color ">
+          Test Name and Score should not be empty</p>
+        <p *ngIf="testEmpVal" class="error-color ">
+          Test Name should not be empty</p>
+        <p *ngIf="scoreEmptyVal" class="error-color ">
+          Score should not be empty</p>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 ">
+        <div id="addTable">
+          <div *ngIf="(report == '')">
+            <div class="row  font-weight-bold right-bottom-border">
+              <div class="col-4 col-sm-5 col-md-6 top-left-border background-grey-light">
+                &nbsp;Test Name</div>
+              <div class="col-8 col-sm-7 col-md-6 top-left-border background-grey-light">
+                &nbsp;Score</div>
+            </div>
+
+            <div class="row right-bottom-border">
+              <div class="col-4 col-sm-5 col-md-6 top-left-border">
+                <input #Testvalue id="Test" type="text" class="form-control" value="" [(ngModel)]="testSc.TestName" formControlName="Test"
+                  (keypress)="changeText($event)" readonly="{{findTable}}" />
+
+              </div>
+              <div class="col-8 col-sm-7 col-md-6 top-left-border">
+                <div class="clearfix"> </div>
+                <div class="input-group">
+                  <input #Scorevalue id="Score" type="text" class="form-control" [(ngModel)]="testSc.Score" formControlName="score" (keypress)="changeText($event)"
+                    readonly="{{findTable}}" />
+
+                  <!--<span class="input-group-btn" title="Add" style="height: 30px;width: 30px;">-->
+                  <button class="circle-btn-testScore btn-success" type="button" (click)="addTest()" disabled="{{findTable}}">
+                    <i class="fa  icon-add"> </i>
+                  </button>
+                  <!--</span>-->
+                  <!--<span class="input-group-btn" title="Clear All" style="height: 30px;width: 30px;">-->
+                  <button class="circle-btn-testScore btn-danger" type="button" (click)="reset()" disabled="{{findTable}}">
+                    <i class="fa icon-reset"> </i>
+                  </button>
+                  <!--</span>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="clearfix"> </div>
+        <div class="blue-color font-weight-bold text-center mb-3">
+          <i class="fa icon-clipboard" aria-hidden="true"></i>&nbsp;List of Test Names and Scores
+        </div>
+        <span *ngIf="SaveChanges=='true'" id="changesTest" class="error-color">
+          Please save the changes.</span>
+
+      </div>
+
+      <div class="desktop-design-display">
+
+        <div class="col-12 col-sm-12 col-md-12  right-bottom-border">
+          <div class="background-grey-light font-weight-bold row" *ngIf="testScoreArr && (testScoreArr.length>0)">
+            <div class="col-4 col-sm-5 col-md-6 top-left-border">
+              Test Name</div>
+            <div class="col-8 col-sm-7 col-md-6 top-left-border">
+              Score</div>
+          </div>
+          <div class="row " *ngIf="testScoreArr && (testScoreArr.length == 0)">
+            <div class="col-12 col-sm-12 col-md-12 top-left-border " align="center">
+              No information has been entered for this item.
+            </div>
+          </div>
+          <div *ngIf="testScoreArr && (testScoreArr.length>0)">
+            <div formGroupName="testScores">
+              <div class="row" *ngFor="let item of testScoreArr; let inx=index;">
+                <div class="col-4 col-sm-5 col-md-6 top-left-border">
+                  <div class="testNameDesk{{inx}} testScore-table"> {{item.TestName}}</div>
+                  <textarea class="TestDesk{{inx}} testScoreSave" style="display:none;" [(ngModel)]="item.TestName" [readonly]="(isClassVisible!='true')"
+                    [formControlName]="item.TestName" (keypress)="changeText($event)" disabled="{{findTable}}"></textarea>
+                </div>
+                <div class="col-8 col-sm-7 col-md-6 top-left-border">
+                  <div class="clearfix"> </div>
+                  <div class="input-group">
+                    <div class="scoreNameDesk{{inx}} testScore-table"> {{item.Score}}</div>
+                    <textarea class="ScoreDesk{{inx}} testScoreSave form-control-2" style="display:none;" [(ngModel)]="item.Score" [readonly]="(isClassVisible!='true')"
+                      [formControlName]="item.Score" (keypress)="changeText($event)" disabled="{{findTable}}"></textarea>
+
+                    <span *ngIf="(report == '')">
+                      <button class="edtBtn{{inx}} circle-btn-testScore btn-success " type="button" title="Edit" (click)="editTest(inx)">
+                        <i class="fa icon-pencil-striped "> </i>
+                      </button>
+                      <button class="cancelBtn{{inx}} circle-btn-testScore btn-danger" style="display:none;" type="button" title="Cancel" (click)="CancelTest(inx)">
+                        <i class="fa icon-cancel "> </i>
+                      </button>
+                      <button #visibleclassname class="SaveBtn{{inx}}  circle-btn-testScore btn-success" style="display:none;" type="button" title="Save"
+                        (click)="saveTest(inx)">
+                        <i class="fa fa-save "> </i>
+                      </button>
+                    </span>&nbsp;&nbsp;
+                    <span title="Delete" *ngIf="(report == '')">
+                      <button class=" circle-btn-testScore btn-danger" type="button" (click)="remove(inx)">
+                        <i class="fa icon-delete "> </i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="testScoresForm.touched && !testScoresForm.valid">
+            <span class="error-color">
+              {{errorMessage.testname_limit}}</span>
+          </span>
+
+        </div>
+        <div *ngIf="(report=='')" class="mt-2">
+          <button class="common-button red" type="submit" [disabled]="!testScoresForm.valid" (click)="SaveTestScores()">
+            <i class="fa fa-save "> </i> Save Information</button>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+
+      <div class="clearfix"> </div>
+      <div class="mobile-design-display">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12">
+            <div class="row  right-bottom-border " *ngIf="testScoreArr && (testScoreArr.length == 0)">
+
+              <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+                No information has been entered for this item.
+              </div>
+            </div>
+            <div formGroupName="testScoreArrMob">
+              <div class="mobile-cards d-table" *ngFor='let item of testScoreArrMob, let inx =index;let odd=odd, let evn=even'>
+                <div class="row m-0">
+                  <div class="col-5 col-sm-5 col-md-5 ">
+                    <b>Test Name:</b>
+                  </div>
+                  <div class="col-7 col-sm-7 col-md-7 p-0">
+                    <div class="testNameDesk{{inx}} testScore-table">{{item.TestNameMob}}</div>
+                    <textarea class="TestDesk{{inx}} testScoreSave" style="display:none;" [(ngModel)]="item.TestNameMob" [readonly]="(isClassVisible!='true')"
+                      [formControlName]="item.TestNameMob" (keypress)="changeText($event)"></textarea>
+                  </div>
+                </div>
+                <div class="row m-0">
+                  <div class="col-5 col-sm-5 col-md-5">
+                    <b> Score: </b>
+                  </div>
+                  <div class="col-7 col-sm-7 col-md-7 p-0">
+                    <div class="scoreNameDesk{{inx}} testScore-table"> {{item.ScoreMob}}</div>
+                    <textarea #visibleclassname class="ScoreDesk{{inx}} testScoreSave form-control-2" style="display:none;" [(ngModel)]="item.ScoreMob"
+                      [formControlName]="item.ScoreMob" [readonly]="(isClassVisible!='true')" (keypress)="changeText($event)"></textarea>
+                  </div>
+                </div>
+                <hr>
+                <div class="col-12">
+                  <div class="pull-right delete-add-btn">
+
+                    <ul class="ts-e-d-btn">
+                      <li *ngIf="(report == '')">
+                        <button class="edtBtn{{inx}} btn circle-btn-testScore btn-success" type="button" title="Edit" (click)="editTest(inx)">
+                          <i class="fa icon-pencil-striped"> </i>
+                        </button>
+                        <button class="cancelBtn{{inx}} btn circle-btn-testScore btn-danger" style="display:none;" type="button" title="Cancel" (click)="CancelTest(inx)">
+                          <i class="fa icon-cancel"> </i>
+                        </button>
+                        <button #visibleclassname class="SaveBtn{{inx}} helpClassname btn circle-btn-testScore" style="display:none;" type="button"
+                          title="Save" (click)="saveTest(inx)">
+                          <i class="fa fa-save"> </i>
+                        </button>
+                      </li>
+                      <li title="Delete" *ngIf="(report == '')">
+                        <button class="btn  circle-btn-testScore btn-danger" type="button" (click)="remove(inx)">
+                          <i class="fa icon-delete"> </i>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <span *ngIf="testScoresForm.touched && !testScoresForm.valid">
+            <span class="error-color">
+              {{errorMessage.testname_limit}}</span>
+          </span>
+        </div>
+        <div *ngIf="(report=='')" class=" mobile-design-display mt-2">
+          <button class="common-button red" type="submit" [disabled]="!testScoresForm.valid" (click)="SaveTestScores()">
+            <i class="fa fa-save "> </i> Save Information</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

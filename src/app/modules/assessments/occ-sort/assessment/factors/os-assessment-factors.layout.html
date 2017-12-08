@@ -1,0 +1,231 @@
+<div class="factors-page">
+	<div class="clear-fixed"> </div>
+	<div class="container">
+		<!--desktop start-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row mobile-design-display mt-3">
+					<!--Display heading-->
+					<p *ngIf="dummyVariable" class="col-10 font-weight-bold slect-factors-text">{{(osintroVal|async).commonText?.pageText?.selectPage.boxes.leftHeader}}</p>
+					<a class="col-2 info-text p-0" *ngIf="dummyVariable" href="#" data-toggle="modal" data-target="#myModalread">
+						<!-- <u class="pull-right">{{assessmentText.pageText.selectPage.boxes.rightHeader}}</u> -->
+						<u class="pull-right">{{(osreturnedVal|async).commonText.info}}</u>
+					</a>
+				</div>
+				<div class="desktop-design-display">
+					<!--Display all 28 factors-->
+					<p *ngIf="dummyVariable" class="row">{{ (osintroVal|async).commonText?.pageText?.selectPage.top.text}}</p>
+					<p *ngIf="!dummyVariable" class="row">{{(osintroVal|async).commonText?.pageText?.rankPage.top.text}}</p>
+				</div>
+				<!-- First column Start -->
+				<div id="list-slider">
+					<div class="slider-width">
+						<div id="onep2" class="itemsp2" #itemsp2Val>
+							<div class="row mb-2 desktop-design-display">
+								<div class="col-6 slect-factors-text">
+									<b>{{(osintroVal|async).commonText?.pageText?.selectPage.boxes.leftHeader}}</b>
+								</div>
+								<div *ngIf="dummyVariable">
+									<b>{{(osintroVal|async).commonText?.pageText?.selectPage.boxes.rightHeader}}</b>
+								</div>
+							</div>
+							<!--Display first half of 28 factors-->
+							<div class="row">
+								<div class="col-md-6 col-12">
+									<ul class="row factors-list">
+										<!-- p-b gutter-10 wrapper  two-column space-between heightOSFactors-->
+										<li class=" list-styles w-100 col-md-5 list-unstyled" *ngFor="let item of occ_sort_factors;let inx =index;">
+
+											<a href="#" class="word-3-dots w-100" (click)="$event.preventDefault();selectFactor($event,item,1)">{{facNames[item].factorName}} </a>
+											<template #tipContent>{{facNames[item].help}}</template>
+											<a href="" (click)='$event.preventDefault()' class="pull-right btn-bg-none" #t="ngbTooltip" (focus)='t.open()' (blur)='t.close()'
+											 placement="left" [ngbTooltip]="tipContent">
+												<i class="icon-question-circular-button"></i>
+											</a>
+											<!--<a href="#" [ngClass]="(inx<=10)? 'exptooltip':'exptooltip2'" class="pull-right" (click)="$event.preventDefault();">
+															<span  class="badge" >?</span>
+															<span [ngClass]="(inx<=10)? 'exptooltiptext':'exptooltiptext2'">{{facNames[item].help}}</span>
+												</a>-->
+										</li>
+									</ul>
+								</div>
+								<!-- First column End-->
+								<!-- add and delete -->
+								<div class="desktop-design-display">
+									<div *ngIf="!dummyVariable" class="ml-3 pb-2 font-weight-bold">{{(osintroVal|async).commonText?.pageText?.rankPage.boxes.leftHeader}}</div>
+
+									<div [class.class-margin]="!dummyVariable" class="important-factors">
+
+										<div class="empty-box mb-1" *ngFor="let item of factorsArray1;let inx =index;" (click)="finalFactors($event,item)">
+											<div [ngStyle]="(!dummyVariable)? {'cursor':'pointer'} : {'cursor':'default'}">
+												<span class='icon-box blue' [ngStyle]="(!dummyVariable)? {'cursor':'pointer'} : {'cursor':'default'}">
+													<i class='fa fa-star-o'></i>
+												</span>
+												<span class='list-box blue' [ngStyle]="(!dummyVariable)? {'cursor':'pointer'} : {'cursor':'default'}">
+													<a href="#" id="focus{{inx}}" tabindex="" (click)="$event.preventDefault();"> {{facNames[item].factorName }} </a>
+													<a href="#" *ngIf="!commonVar" class='pull-right' (click)="$event.preventDefault();selectFactorRemove($event,item)">
+														<i class='fa fa-times'></i>
+													</a>
+												</span>
+											</div>
+										</div>
+
+										<div class="empty-box mb-1" *ngFor="let item of emptybox;let inx =index;">
+											<span class='icon-box blue'>
+												<i class='fa fa-star-o'></i>
+											</span>
+											<span class='list-box blue'>
+												<i class='fa fa-times' [ngStyle]="{'color': '#0c8cbd'}"></i>
+											</span>
+										</div>
+									</div>
+									<br>
+									<!--<a class="btn-plp-2  close-prev-e btn-raised blue-btn-plp2" hidden >Pre</a>-->
+									<button class="common-button blue" *ngIf="dummyVariable" (click)="$event.preventDefault();nextFactors()" [ngClass]="isDisable? 'disabledp2': ''">{{(osreturnedVal|async).commonText.next}}</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="desktop-design-display mt-4">
+							<div class="font-weight-bold mb-2">{{(osintroVal|async).commonText?.pageText?.rankPage.boxes.rightHeader}}</div>
+
+							<div class="top-five-factors">
+								<div class="empty-box mb-1" *ngFor="let item of factorsArray2;let inx =index;">
+									<div [ngStyle]="{'cursor':'default'}">
+										<span class='icon-box green'>{{inx+1}}</span>
+										<span class='list-box green'>{{facNames[item].factorName}}
+											<a href="#" class='pull-right' (click)="$event.preventDefault();removeFinalFactor($event,item)">
+												<i class='fa fa-times  inTab pt-1'> </i>
+											</a>
+										</span>
+
+									</div>
+
+								</div>
+
+
+								<div class=" empty-box mb-1" *ngFor="let item of finalArray;let inx =index;">
+									<div href='javascript:void(0);' [ngStyle]="{'cursor':'default'}">
+										<span class='icon-box green' [ngStyle]="{'color': '#07737f'}"> {{inx+1}} </span>
+										<span class='list-box green'>
+											<i class='fa fa-times pt-1' [ngStyle]="{'color': '#07737f'}"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+
+
+							<br>
+							<button id="next-sec-btn" class="common-button blue" [ngClass]="isDisableNext? 'disabledp2': ''" (click)="$event.preventDefault();nextQuestions()">{{(osreturnedVal|async).commonText.next}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End mobile and desktop common body content -->
+
+
+		<!-- Modal content only for mobile-->
+		<div class="modal  mobile-design-display" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content w-100">
+					<div class="modal-header">
+						<div class="font-weight-bold">{{(osintroVal|async).commonText?.pageText?.selectPage.boxes.rightHeader}}</div>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body" id="mypopup-plp2">
+						<div class="empty-box mb-1" *ngFor="let item of factorsArray1;let inx =index;" (click)="finalFactors($event,item)" [ngStyle]="{'cursor':'pointer'}">
+							<a href='javascript:void(0);'>
+								<span class='icon-box blue'>
+									<i class='fa fa-star-o'></i>
+								</span>
+								<span class='list-box blue'> {{facNames[item].factorName}}
+									<span (click)="selectFactorRemove($event,item)">
+										<i class='fa fa-times pull-right' *ngIf="!commonVar"></i>
+									</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal  mobile-design-display" id="myModalread" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h6 class="font-weight-bold m-0">{{ (osintroVal|async).commonText?.pageText?.selectPage.top.header}} </h6>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="p-3 text-justify">{{ (osintroVal|async).commonText?.pageText?.selectPage.top.text}} </div>
+
+
+				</div>
+			</div>
+		</div>
+		<!-- Modal content End- -->
+		<!-- show list content  -->
+		<div class="alert-mobile mobile-design-display" *ngIf="commonVar">
+			<div>
+				<div class="drag-heading-plp2-mobile ">
+					<b>{{(osintroVal|async).commonText?.pageText?.rankPage.boxes.rightHeader}}</b>
+				</div>
+				<div id="add-value-final-mobile" class="itemsp2-col-3-mobile ">
+					<p class="dummy-text" *ngIf="dummyText">
+						{{(osintroVal|async).commonText?.pageText?.rankPage.top.text}}</p>
+				</div>
+				<div class=" empty-box mb-1" *ngFor="let item of factorsArray2;let inx =index;">
+					<a href='javascript:void(0);'>
+						<span class='icon-box green'> {{inx+1}} </span>
+						<span class='list-box green'> {{facNames[item].factorName}}
+							<span (click)="removeFinalFactor($event,item)" [ngStyle]="{'cursor':'pointer'}">
+								<i class='fa fa-times pull-right pt-1'></i>
+							</span>
+						</span>
+					</a>
+
+				</div>
+			</div>
+			<div id="rankFact" class="drag-heading-plp2-mobile" [hidden]="showImpFac">
+				<b>{{(osintroVal|async).commonText?.pageText?.rankPage.boxes.leftHeader}} </b>
+			</div>
+			<div id="add-value-p2-mobile">
+				<div class=" empty-box mb-1" *ngFor="let item of finalFactorsMob;let inx =index;" (click)="finalFactors($event,item)">
+					<a href='javascript:void(0);' [ngStyle]="(!dummyVariable)? {'cursor':'pointer'} : {'cursor':'default'}">
+						<span class='icon-box blue' [ngStyle]="(!dummyVariable)? {'cursor':'pointer'} : {'cursor':'default'}">
+							<i class='fa fa-star-o'></i>
+						</span>
+						<span class='list-box blue' [ngStyle]="(!dummyVariable)? {'cursor':'pointer'} : {'cursor':'default'}"> {{facNames[item].factorName}}
+							<span (click)="selectFactorRemove($event,item)">
+								<i class='fa fa-times pull-right' *ngIf="!commonVar"></i>
+							</span>
+						</span>
+					</a>
+
+				</div>
+			</div>
+		</div>
+		<!-- End mobile design -->
+
+
+		<!-- footer for count content only for mobile *ngIf="close_e_mobile"-->
+		<div class="row mobile-design-display navbar-fixed-bottom">
+			<div class="view" [ngStyle]="{'left':'0'}">
+				<ul class="list-unstyled">
+					<li>
+						<button class="factors-footer pull-left mt-3 ml-2 text-center" [ngStyle]="{'cursor':'pointer'}" *ngIf="!commonVar" [ngClass]="isDisableSelect? 'disabledp2': ''"
+						 data-toggle="modal" data-target="#myModal">
+							<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;{{(osreturnedVal|async)?.commonText?.selected}} : {{count}}
+						</button>
+					</li>
+					<li>
+						<button class="next-button" *ngIf="commonVar" [ngClass]="isDisableNext? 'disabledp2': ''" (click)="nextQuestions()">{{(osreturnedVal|async).commonText.next}} </button>
+						<button class="next-button" *ngIf="close_e_mobile" (click)="nextFactors()" [ngClass]="isDisable? 'disabledp2': ''"> {{(osreturnedVal|async).commonText.next}} </button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<!-- footer for count content only for mobile-->

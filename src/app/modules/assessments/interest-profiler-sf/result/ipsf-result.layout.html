@@ -1,0 +1,149 @@
+<!-- Fixed navbar -->
+<!-- mobile and desktop common body content -->
+<div class="ip-wil-result-page">
+	<div class="row ">
+		<div class="col-md-12">
+			<div class="chart-result">
+				<h4 class="common-headding sub-headding"> {{(introVal|async)?.commonText?.pageText?.resultsPage.top.header}}</h4>
+				<p>{{(introVal|async)?.commonText?.pageText?.resultsPage.top.text}}</p>
+				<h4 class="common-headding">{{(introVal|async)?.commonText?.pageText?.resultsPage.box.header}}</h4>
+				<div class="panel panel-default ">
+					<div class="row panel-body p-0">
+						<div class="col-md-4  text-center">
+							<div id="svg" class="svg-align"></div>
+						</div>
+
+						<div class="col-md-8 col-12  text-center">
+							<div class="result-list d-table w-100 h-100">
+								<div class="d-table-cell align-middle">
+									<ul data-pie-id="svg" id="list" class="m-md-0 columns-ip-result p-0 d-table-cell align-middle ">
+										<li *ngFor="let res of result; let inx=index;" [attr.data-inx]="inx" class="ChartData " [attr.data-value]="res.score" [ngStyle]="{'color': pieColor[res.interest]}">
+											<span class="square-box pointer" (click)="getOccListBasedOnInterest(res.interest)" [ngStyle]="{'background-color': pieColor[res.interest]}"></span>&nbsp;
+											<span class="result-text pointer text-left" [attr.id]="res.interest">
+												<a href="#" [attr.data-value]="res.score" [attr.data-inx]="inx" (click)="$event.preventDefault();getOccListBasedOnInterest(res.interest)"
+												 class="highlight-text">
+													<u>{{res.interest}}</u>
+												</a>
+											</span>&nbsp;
+											<span class="result-score pointer highlight-text" (click)="getOccListBasedOnInterest(res.interest)">
+												{{res.score}}</span>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<p class="mt-4 mb-1">{{(introVal|async)?.commonText?.pageText?.resultsPage.aboveCards}} </p>
+				<!-- IP RESULT CARD START -->
+				<div class="row gutter-10">
+					<div class="col-lg-4 col-md-6 col-12 " *ngFor="let item of result,let inx=index;">
+						<button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#interest'+item.interest">
+							<div class="d-table">
+								<div class="ip-result-card-score " [ngStyle]="{'background-color': pieColor[item.interest]}">
+									<div class="ip-result-icn-text text-center">
+										<div>{{(ipreturnedVal|async)?.commonText.yourScore}}</div>
+										<div class="text-center ip-result-score">{{item.score}}</div>
+									</div>
+								</div>
+								<div class="media-left-ip-result">
+									<div>
+										<div class="ip-result-icn-text text-center">
+											<div>
+												<img src="{{pieIpColor[item.interest]}}" class="">
+											</div>
+											<div>
+												<h6 class="text-capitalize"> {{item.interest}} </h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</button>
+						<div class="modal fade" id="interest{{item.interest}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-width" role="dialog">
+								<div class="modal-content modal-color">
+									<div class="modal-header modal-heading" [ngStyle]="{'background-color': pieColor[item.interest]}">
+										<h6 class="modal-title modal-card-title">
+											<b>{{ipResult[inx]?.title}}</b>
+										</h6>
+										<button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+									</div>
+									<div class="modal-body">
+										<div class="card-data">{{ipResult[inx]?.description }} </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- IP RESULT CARD END -->
+				<div class="internal-data-plp2">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Destop End design -->
+
+	<!-- mobile design -->
+	<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#ip-result-print">Open Modal</button>
+
+	<div class="modal" id="ip-result-print" role="dialog">
+		<div class="modal-dialog print-page">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 id="ip-print-heading" class="w-100">Interest Profiler Print Preview</h5>
+					<button class="close" data-dismiss="modal">&times;</button>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="chart-result">
+					<div class="panel panel-default ">
+						<div class="row panel-body p-0">
+							<div id="print-piechart" class="col-md-4 col-sm-3 m-auto text-center">
+								<div id="svg-popup" class="main-svg"></div>
+							</div>
+							<div id="print-list" class="col-md-8 col-sm-9  list-print-ip">
+								<div class="result-list d-table w-100 h-100">
+									<div class="d-table-cell align-middle">
+										<ul data-pie-id="svg-popup" id="list" class="m-0 columns-ip-result p-0 d-table-cell align-middle ">
+											<li *ngFor="let res of result; let inx=index;" [attr.data-inx]="inx" class="ChartData " [attr.data-value]="res.score" [ngStyle]="{'color': pieColor[res.interest]}">
+												<span class="square-box pointer" (click)="getOccListBasedOnInterest(res.interest)" [ngStyle]="{'background-color': pieColor[res.interest]}"></span>&nbsp;
+												<span class="result-text pointer text-left" [attr.id]="res.interest">
+													<a href="#" [attr.data-value]="res.score" [attr.data-inx]="inx" (click)="$event.preventDefault();getOccListBasedOnInterest(res.interest)"
+													 class="highlight-text">
+														<u>{{res.interest}}</u>
+													</a>
+												</span>&nbsp;
+												<span class="result-score pointer highlight-text" (click)="getOccListBasedOnInterest(res.interest)">
+													{{res.score}}</span>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12" *ngFor="let item of result,let inx=index;">
+						<div class="d-table">
+							<img alt="work-hard" class="d-table-cell icon-text-align" src="{{pieIpColor[item.interest]}}">
+							<h5 class="d-table-cell text-capitalize">{{item.interest}} </h5>
+						</div>
+						<div> {{ipResult[inx]?.description }} </div>
+					</div>
+					<hr>
+					<div id="print-text" class="p-2">
+						<p>The links for each Interest Area will display a list of occupations with careers that match that interest. You can
+							think of the occupational with career interests as your liking or preference for certain work activities. The Interest
+							Profiler measures interests in each of six Interest Areas described below.</p>
+						<button class="common-button green menu-not-filled" (click)="printResultPage('ip-result-print')">Done</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End mobile design -->
+</div>

@@ -1,0 +1,17 @@
+.content-box-shadow {
+    background: $white;
+    box-shadow: 0 0 3px nth($grey-shades, 26);
+    color: nth($grey-shades, 12);
+    min-height: 100%;
+    @include media-breakpoint-down(sm) {
+        padding-bottom: 15px;
+        margin-bottom: -65px;
+        .assessment-m-b {
+            margin-bottom: 30px;
+        }
+    }
+    @include custom-device(320px, 767px) {
+      
+        margin-bottom: 0px;
+    }
+}

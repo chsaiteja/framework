@@ -1,0 +1,57 @@
+<div class="row  gutter-10 flex-row-cards">
+  <!-- For displaying the overviewcard. -->
+  <div class="col-lg-6 col-md-6 col-12">
+    <div class="career-card cardcolor-5 cards-equal-height">
+      <div class="career-card-header">
+        <h5 class="card-title p-0">
+          <i class="icon-overview panal-icon-align" aria-hidden="true"></i> {{(settingsText)?.commonText?.allSections?.Overview}}</h5>
+      </div>
+      <div class="card-block career-card-body scroll-class">
+        <div *ngFor="let value of (occClusterStore|async).Overview">
+          <p *ngIf="(value.type == 'p')"> {{value.text}}</p>
+          <ul *ngIf="(value.type == 'ul')" class="list">
+            <li *ngFor="let val of value.text">
+              <div>
+                <i>{{val}}</i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- For displaying the skills related card. -->
+  <div class="col-lg-6 col-md-6 col-12">
+    <div class="career-card orange cards-equal-height">
+      <div class="career-card-header">
+        <h5 class="card-title p-0">
+          <i class="icon-skills-abilities panal-icon-align" aria-hidden="true"></i> {{(settingsText)?.commonText?.allSections?.Skills}}</h5>
+      </div>
+      <div class="card-block career-card-body scroll-class ">
+        <div *ngFor="let value of (occClusterStore|async).Skills">
+          <p *ngIf="(value.type == 'p')"> {{value.text}}</p>
+          <h6 class=' px-3' *ngIf="(value.type == 'h')">
+            <b>{{value.text}}</b>
+          </h6>
+          <ul *ngIf="(value.type == 'ul')" class="list">
+            <li *ngFor="let val of value.text">
+              <div>{{val}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- For displaying the Employmentandoutlook related card. -->
+<div class="career-card cardcolor-3" *ngIf='(settingsTextTab?.sections).indexOf("EmploymentOutlook") != -1'>
+  <div class="career-card-header">
+    <h5 class="card-title">
+      <i class="icon-employment-outlook panal-icon-align" aria-hidden="true "> </i> {{(settingsText)?.commonText?.allSections?.EmploymentOutlook}}</h5>
+  </div>
+  <div class="card-block  career-card-body h-100">
+    <p *ngFor="let item of (occClusterStore|async).EmploymentOutlook">
+      {{item.text}}
+    </p>
+  </div>
+</div>

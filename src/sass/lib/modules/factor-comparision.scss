@@ -1,0 +1,98 @@
+/**********Factor comparision*******/
+.factor-comparison{
+.circle-top-nav {
+	margin-top: 0px;
+    display: inline!important;
+}
+.progressbar-para{
+	margin-bottom:45px!important;   
+}
+
+
+
+.factor-progress-two.factor-progress-container li:nth-child(odd)::before {
+        display: none;
+}
+.factor-progress-container li:nth-child(odd)::before {
+ content: '';
+ display: block;
+ @include position(relative,$bottom: 19px);
+ @include height-width(0,0);
+ border-bottom: 10px solid nth($grey-shades,6);
+ border-top: 10px solid transparent;
+ border-left: 10px solid transparent;
+ border-right: 10px solid transparent;
+ margin:0px auto -6px auto;
+}
+.factor-progress-container {
+	
+    @include position(relative);
+    @include height-width(100%,15px);
+	margin:-6px 0 8px 0!important;
+	padding: 0px; 
+    li {
+	background-color: nth($grey-shades,8);
+	list-style: none;
+	float:left;
+    @include height-width(19.98%,15px);
+	text-align:center;
+    }
+    li span {
+   @include position(relative,$top: -35px);
+}
+}
+
+@include media-breakpoint-down(sm){
+.factor-progress-container li span {
+ @include position(relative,$top: -50px);
+ white-space: nowrap;
+li {
+ text-align: left;
+}
+}
+
+.back-to-list-btn{
+    margin:0 0 10px 17px!important;
+}
+}
+@include custom-device(none,480px){
+ .factor-progress-container li {
+ text-align: left;
+}
+}
+@include media-breakpoint-up(md){
+.head-buttons{
+	padding: 0;
+}
+}
+
+.factor-progress-radius-first {
+    @include common-individual-border-radius($top-left: 2em, $bottom-left: 2em);
+}
+.factor-progress-radius-last {
+     @include common-individual-border-radius($top-right: 2em, $bottom-right: 2em);
+}
+.factor-progress-two{
+	margin-top:-1rem;
+}
+
+   $colors-list: nth($green-shades,21) nth($green-shades,20);
+        @each $current-color in $colors-list {
+        $i: index($colors-list, $current-color);
+        .border-prog-#{$i} { 
+            border-right: 2px solid $current-color;
+        }
+}
+
+.factor-progress-green {
+	background: nth($green-shades,10)!important;
+}
+.factor-progress-green-light {
+	background: nth($green-shades,25)!important;
+    &:before{
+        border-bottom: 10px solid nth($green-shades,25)!important;
+    }
+}
+}
+ 
+/**********End of Factor comparision*******/

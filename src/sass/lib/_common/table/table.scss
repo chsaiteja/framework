@@ -1,0 +1,33 @@
+/****************************
+* table border start 
+****************************/
+
+.right-bottom-border {
+    @include common-border(0px, 1px, 1px, 0px, nth($grey-shades, 26));
+    .background-grey-light,
+    .table-odd-color:nth-child(odd) {
+        background-color: $gray-lighter;
+    }
+    .top-left-border {
+        @include common-border(1px, 0px, 0px, 1px, nth($grey-shades, 26));
+        padding: 5px 10px;
+        min-height: 30px;
+        word-break: break-all;
+    }
+}
+
+.mobile-cards {
+    @include common-border(1px, 1px, 1px, 1px, nth($grey-shades, 26));
+    width: $width-value;
+    padding: 5px 0px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 10px;
+    &:nth-child(even) {
+        background-color: $gray-lighter;
+    }
+}
+
+
+/****************************
+*table border end 
+****************************/

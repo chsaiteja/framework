@@ -1,0 +1,19 @@
+
+
+/********** Start of CIS Logo  **************/
+
+.cis-logo {
+margin-top: -41px;
+position: absolute;
+z-index: 2;
+margin-left: 55px;
+width: 95px;
+    @include media-breakpoint-down(sm) { 
+        width: 70px;
+        margin-top: -26px;
+        margin-left: 28px;     
+    }
+}
+
+
+/********** End of CIS Logo  **************/

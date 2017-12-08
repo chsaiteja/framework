@@ -1,0 +1,100 @@
+<div class="wes-result-page pb-5">
+  <div>
+    <!-- Displays header text -->
+    <h2 class="common-headding sub-headding ">{{(wesresultVal)?.commonText?.pageText?.resultsPage?.top?.header}} </h2>
+    <p>
+      {{(wesresultVal)?.commonText?.pageText?.resultsPage?.top?.text}}
+    </p>
+  </div>
+
+  <h2 class=" common-headding sub-headding">{{(wesresultVal)?.commonText?.pageText?.resultsPage?.box?.header}} </h2>
+  <div class="row wes-graph-body">
+    <!--Shows different level names-->
+    <div class="col-md-10 offset-md-2 col-12">
+      <ul class="wes-colorbox-list">
+        <li *ngFor="let lvl of nameKeys;let keyIndx=index;" class="text-capitalize">
+          <span class="wes-color-box" [ngClass]="colorClass[lvl]"></span>{{levels[lvl]}}</li>
+
+      </ul>
+    </div>
+    <!--Shows score, name and its level in graph formate-->
+    <div class="col-11 col-lg-12 col-md-9 col-sm-11 horizontal-bar-graph">
+      <dl>
+        <div class="graph-block" *ngFor="let name of osResult,let i=index;">
+          <div class="graph-name">
+            <span class="text-right desktop-design-display">
+              <ul class="list-unstyled mr-1">
+                <li>{{name.givenName}}</li>
+              </ul>
+            </span>
+            <template #tipContent>{{name.givenName}}</template>
+            <img src="{{osResult[i].givenIcon}}" class="mobile-design-display icon-graph pointer " #t="ngbTooltip" (focus)='t.open()'
+              (blur)='t.close()' placement="right" [ngbTooltip]="tipContent">
+          </div>
+          <div>
+            <div class="horizontal-bar">
+              <div class="horizontal-bar-after" [ngClass]="name.givenColor" [ngStyle]="{'width': percentage[i]+'%'}"></div>
+            </div>
+          </div>
+        </div>
+        <div class="d-table">
+          <div class="graph-name"></div>
+          <div class="numbers-12">
+            <ul>
+              <li [ngStyle]="{'left':item*8+'%'}" *ngFor="let item of numbers">{{item}}</li>
+            </ul>
+            <div class="skill-score">{{(wesresultVal)?.commonText?.pageText?.resultsPage?.box?.graphLabel}}</div>
+          </div>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <p class="mt-4 mb-1">{{(wesresultVal)?.commonText?.pageText?.resultsPage?.aboveCards}}</p>
+  <!--Shows score, name and its level in card form-->
+  <div class="">
+    <div class="row p-b gutter-10 wrapper columned space-between cards-heigh">
+      <div class="col-12 col-lg-4 col-md-6 object{{j}} cards-spacing" *ngFor="let item of osResult, let j=index">
+        <button class="common-button default modal-close w-100 pointer p-0 cards-hover-effect" role="button" data-toggle="modal"
+          [attr.data-target]="'#'+item.areaAbbr">
+          <div class="d-table-cell">
+            <div class="score-card" [ngClass]="item.givenColor">
+              <span class="your-score">{{(wesreturnedVal|async).commonText.yourScore}}</span>
+              <span class="text-center score">{{item.givenScore}}</span>
+              <span class="your-score">{{item.givenLevel}}</span>
+            </div>
+          </div>
+          <div class="card-media-left w-100">
+            <ul class="text-icon text-center p-0">
+              <li>
+                <img src="{{osResult[j].givenIcon}}">
+              </li>
+              <li>
+                <h6 class="your-score"> {{item.givenName}} </h6>
+              </li>
+            </ul>
+          </div>
+        </button>
+
+        <!--When user click on card its coresponding message was showed in the model-->
+        <!-- model start -->
+        <div class="modal fade" id="{{item.areaAbbr}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-width">
+            <div class="modal-content modal-color">
+              <div class="modal-header modal-heading" [ngClass]="item.givenColor">
+                <h6 class="modal-title modal-card-title">
+                  <b>{{item.shortTitle}}</b>
+                </h6>
+                <button class="modal-close pointer" data-dismiss="modal" aria-label="Close">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="card-data">{{item.description}} </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- model end -->
+      </div>
+    </div>
+  </div>
+</div>

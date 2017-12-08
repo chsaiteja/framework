@@ -1,0 +1,322 @@
+<h4 class="common-headding sub-headding"> {{(introVal|async).commonText?.pageText.resultsPage.top.header}}</h4>
+<p> {{(introVal|async).commonText?.pageText.resultsPage.top.text}}</p>
+<h4 class="common-headding">{{(introVal|async).commonText?.pageText.resultsPage.box.header}}</h4>
+<div class="chart-ideas-result pt-0">
+  <div class="panel panel-default ">
+    <div class="row panel-body">
+      <div class="col-md-4 col-12 col-lg-6">
+        <div class="result-list-box">
+          <div class="card result-idea-card">
+            <div class="card-block">
+              <p class="card-title">{{(introVal|async).commonText?.pageText.resultsPage.box.leftTitle}} </p>
+              <ul class="list-unstyled" *ngFor="let res of common;let in=index">
+                <li class="d-inline-flex pointer" *ngIf="in<3">
+                  <i class="square-box pt-1" [ngStyle]="{'background':res.color}"></i>&nbsp;&nbsp;
+                  <a href="" [ngStyle]="{'color':res.color,'text-decoration': 'underline'}" (click)="$event.preventDefault();getIdeasOccListBasedOnTitle(res.areaAbbr,res.title)">{{res.title}} ({{res.areaAbbr}})</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-12 col-lg-4 col-12 col-sm-4">
+              <i class="square-box  graphbgcolor-1" aria-hidden="true"></i>&nbsp;&nbsp;
+              <span class=" graphcolor-1">{{(introVal|async).commonText?.pageText.resultsPage.box.key.high}}</span>
+            </div>
+            <div class="col-md-12 col-lg-4 col-12 col-sm-4 ">
+              <i class="square-box graphbgcolor-2" aria-hidden="true"></i>&nbsp;&nbsp;
+              <span class=" graphcolor-2">{{(introVal|async).commonText?.pageText.resultsPage.box.key.average}}</span>
+            </div>
+            <div class="col-md-12 col-lg-4 col-12 col-sm-4 ">
+              <i class="square-box graphbgcolor-3" aria-hidden="true"></i>&nbsp;&nbsp;
+              <span class=" graphcolor-3">{{(introVal|async).commonText?.pageText.resultsPage.box.key.low}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-6 p-md-0">
+        <div class="row">
+          <div class="col-md-4 col-sm-5 col-xs-5 p-md-0">
+            <div class="col-12 col-md-12 col-lg-5 text-center  m-auto p-md-0">
+              <div class="donut-chart1 mt-3">
+
+                <div id="part11" class="portion-block3">
+                  <div class="circle3 idea-color-level">
+                    <div class="circTxt text1"></div>
+                  </div>
+                </div>
+                <div id="part12" class="portion-block3">
+                  <div class="circle3 idea-color-level">
+                    <div class="circTxt text1"></div>
+                  </div>
+                </div>
+                <div id="part13" class="portion-block3">
+                  <div class="circle3 idea-color-level">
+                    <div class="circTxt text1"></div>
+                  </div>
+                </div>
+                <div id="part14" class="portion-block3">
+                  <div class="circle3 idea-color-level">
+                    <div class="circTxt text1"></div>
+                  </div>
+                </div>
+                <div id="part15" class="portion-block3">
+                  <div class="circle3 idea-color-level">
+                    <div class="circTxt text1"></div>
+                  </div>
+                </div>
+                <div id="part16" class="portion-block3">
+                  <div class="circle3 idea-color-level">
+                    <div class="circTxt text1"></div>
+                  </div>
+                </div>
+
+                <p class="center3"></p>
+                <div class="donut-chart2">
+                  <div id="part21" class="portion-block2">
+                    <div class="circle2 idea-color-level">
+                      <div class="circTxt"></div>
+                    </div>
+                  </div>
+                  <div id="part22" class="portion-block2">
+                    <div class="circle2 idea-color-level">
+                      <div class="circTxt"></div>
+                    </div>
+                  </div>
+                  <div id="part23" class="portion-block2">
+                    <div class="circle2 idea-color-level">
+                      <div class="circTxt"></div>
+                    </div>
+                  </div>
+                  <div id="part24" class="portion-block2">
+                    <div class="circle2 idea-color-level">
+                      <div class="circTxt"></div>
+                    </div>
+                  </div>
+                  <div id="part25" class="portion-block2">
+                    <div class="circle2 idea-color-level">
+                      <div class="circTxt"></div>
+                    </div>
+                  </div>
+                  <div id="part26" class="portion-block2">
+                    <div class="circle2 idea-color-level">
+                      <div class="circTxt"></div>
+                    </div>
+                  </div>
+                  <p class="center2"></p>
+                  <div class="donut-chart3">
+                    <div id="part31" class="portion-block1">
+                      <div class="circle1 idea-color-level">
+                        <div class="circTxt"></div>
+                      </div>
+                    </div>
+                    <div id="part32" class="portion-block1">
+                      <div class="circle1 idea-color-level">
+                        <div class="circTxt"></div>
+                      </div>
+                    </div>
+                    <div id="part33" class="portion-block1">
+                      <div class="circle1 idea-color-level">
+                        <div class="circTxt"></div>
+                      </div>
+                    </div>
+                    <div id="part34" class="portion-block1">
+                      <div class="circle1 idea-color-level">
+                        <div class="circTxt"></div>
+                      </div>
+                    </div>
+                    <div id="part35" class="portion-block1">
+                      <div class="circle1 idea-color-level">
+                        <div class="circTxt"></div>
+                      </div>
+                    </div>
+                    <div id="part36" class="portion-block1">
+                      <div class="circle1 idea-color-level">
+                        <div class="circTxt"></div>
+                      </div>
+                    </div>
+                    <p class="center1"></p>
+                    <div class="donut-chart4">
+                      <div id="part41" class="portion-block4">
+                        <div class="circle4 idea-color-level">
+                          <div class="circTxt"></div>
+                        </div>
+                      </div>
+                      <div id="part43" class="portion-block4">
+                        <div class="circle4 idea-color-level">
+                          <div class="circTxt"></div>
+                        </div>
+                      </div>
+                      <div id="part44" class="portion-block4">
+                        <div class="circle4 idea-color-level">
+                          <div class="circTxt"></div>
+                        </div>
+                      </div>
+                      <div id="part46" class="portion-block4">
+                        <div class="circle4 idea-color-level">
+                          <div class="circTxt"></div>
+                        </div>
+                      </div>
+                      <p class="center0"></p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="mt-4 mb-1">{{(introVal|async).commonText?.pageText.resultsPage.aboveCards}}</p>
+<div class="row gutter-10 ideas-result-cards">
+  <div *ngIf="(ideasResultHigh.length)!==0" class="col-12 col-md-4">
+    <div class="col-lg-12 col-md-12 col-12 p-0" *ngFor="let item of ideasResultHigh">
+
+      <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#areaAbbr'+item.areaAbbr">
+        <div class="d-table">
+
+          <div class="ip-result-card-score " [ngStyle]="{'background-color': item.color}">
+            <div class="ip-result-icn-text text-center">
+              <div>{{(returnedVal|async).commonText.yourScore}}</div>
+              <div class="text-center ip-result-score">{{item.score}}</div>
+            </div>
+          </div>
+          <div class="media-left-ip-result ">
+            <div class="ip-result-icn-text text-center">
+              <div>
+                <img src="{{ideasIconsJson[item.title]}}">
+              </div>
+              <div>
+                <h6 class="text-capitalize"> {{item.title}} ({{item.areaAbbr}}) </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </button>
+
+
+      <div class="modal fade" id="areaAbbr{{item.areaAbbr}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="dialog">
+          <div class="modal-content modal-color">
+            <div class="modal-header modal-heading" [ngStyle]="{'background-color': item.color}">
+              <h6 class="modal-title modal-card-title">
+                <b>{{item.title}} </b>
+                <b> ({{item.type}})</b>
+              </h6>
+              <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div > <p>{{item.description}}</p> </div>
+              <div> <p> <b>{{(introVal|async).commonText?.pageText.listPage.coursesHeader}}</b> <br>   {{item.relatedcourse}} <p></p> </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="(ideasResultAverage.length)!==0" class="col-12 col-md-4">
+    <div class="col-lg-12 col-md-12 col-12 p-0 " *ngFor="let item of ideasResultAverage">
+      <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#areaAbbr'+item.areaAbbr">
+        <div class="d-table">
+          <div class="ip-result-card-score " [ngStyle]="{'background-color': item.color}">
+            <div class="ip-result-icn-text text-center">
+              <div>{{(returnedVal|async).commonText.yourScore}}</div>
+              <div class="text-center ip-result-score">{{item.score}}</div>
+            </div>
+          </div>
+          <div class="media-left-ip-result">
+            <div>
+              <div class="ip-result-icn-text text-center">
+                <div>
+                  <img src="{{ideasIconsJson[item.title]}}" class="">
+                </div>
+                <div>
+                  <h6 class="text-capitalize"> {{item.title}} ({{item.areaAbbr}})</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <div class="modal fade" id="areaAbbr{{item.areaAbbr}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="dialog" style="width:92%;">
+          <div class="modal-content modal-color">
+            <div class="modal-header modal-heading" [ngStyle]="{'background-color': item.color}">
+              <h6 class="modal-title modal-card-title">
+                <b>{{item.title}}</b>
+                <b> ({{item.type}})</b>
+              </h6>
+              <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div > <p>{{item.description}}</p> </div>
+              <div> <p> <b>{{(introVal|async).commonText?.pageText.listPage.coursesHeader}}</b> <br>   {{item.relatedcourse}} <p></p> </div>
+            
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="(ideasResultLow.length)!==0" class="col-12 col-md-4">
+    <div class="col-lg-12 col-md-12 col-12 p-0" *ngFor="let item of ideasResultLow">
+      <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#areaAbbr'+item.areaAbbr">
+        <div class="d-table">
+          <div class="ip-result-card-score " [ngStyle]="{'background-color': item.color}">
+            <div class="ip-result-icn-text text-center">
+              <div>{{(returnedVal|async).commonText.yourScore}}</div>
+              <div class="text-center ip-result-score">{{item.score}}</div>
+            </div>
+          </div>
+          <div class="media-left-ip-result white">
+            <div>
+              <div class="ip-result-icn-text text-center">
+                <div>
+                  <img src="{{ideasIconsJson[item.title]}}" class="">
+                </div>
+                <div>
+                  <h6 class="text-capitalize"> {{item.title}} ({{item.areaAbbr}}) </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <div class="modal fade" id="areaAbbr{{item.areaAbbr}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="dialog">
+          <div class="modal-content modal-color">
+            <div class="modal-header modal-heading" [ngStyle]="{'background-color': item.color}">
+              <h6 class="modal-title modal-card-title">
+                <b>{{item.title}}</b>
+                <b> ({{item.type}})</b>
+              </h6>
+              <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div > <p>{{item.description}}</p> </div>
+              <div> <p> <b>{{(introVal|async).commonText?.pageText.listPage.coursesHeader}}</b> <br>   {{item.relatedcourse}} <p></p> </div>
+                        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- IP RESULT CARD END -->

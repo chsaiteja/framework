@@ -1,0 +1,110 @@
+<!-- Fixed navbar for  learning style survey assessment-->
+<div class="assessment-questions">
+  <div class="row desktop-design-display">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-background skyblue">
+          <div class="col-md-1 col-sm-2 left-arrow-class">
+            <!-- previous arrow button -->
+            <button class="white-color" [ngClass]="(isClassVisible)? 'common-disable-ques-arrow':'common-enable-ques-arrow'" (click)="$event.preventDefault();previousQuestion()"
+              [disabled]="(isClassVisible)">
+              <i [ngClass]="(isClassVisible==true)? 'class-withOpacity':''" class="fa icon-asmnt-back-arrow " aria-hidden="true"></i>
+              <!--Question number-->
+            </button>
+            <span> {{quesCnt}} </span>
+          </div>
+          <!-- progress bar -->
+          <div class="col-md-8 col-sm-7 col-lg-9">
+            <div class="progress">
+              <div class="progress-bar-bg-green" [ngStyle]="{'width': currentValue +'%'}"></div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3 col-lg-2 text-right right-arrow-class">
+            <span>{{remaining}} {{(lssreturnedVal|async).commonText.remaining}}</span>
+            <!-- Next arrow button -->
+            <a href="#" (click)="$event.preventDefault();nextLSArrow(quesCnt)" class="white-color pull-right" *ngIf="showNxt">
+              <i aria-hidden="true" class="fa icon-asmnt-forward-arrow "></i>
+            </a>
+          </div>
+        </div>
+        <div class="panel-question-box skyblue text-center">
+          <p>{{learnStyQues[learnStyleQuestionName]}}</p>
+        </div>
+        <!-- smile circles -->
+        <div class="smile-circle">
+          <div class="circle-width three text-center" *ngFor="let item of (lssresponseText|async).commonResponseText?.responses;let inx=index">
+            <button class="circle-button skyblue hover" href="" [ngClass]="(btnHighLight==item.value)? 'previous':''" (click)="callQuestion(item.value)"
+              *ngIf="inx!=3">
+              <i class={{iconArray[inx]}}></i>
+              <p class="mt-1">{{item.text}}</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- mobile design for learning style survey assessment -->
+
+  <div class="mobile-design-display">
+    <div class="panel-question-box skyblue">
+      <div class="mini-bar">
+        <div class="container">
+
+          <div class="row mt-2">
+            <div class="col-1 pt-1">
+              <!-- previous arrow -->
+              <a href="#" class="white-color" (click)="$event.preventDefault();previousQuestion()">
+                <i [ngClass]="(isClassVisible==true)? 'class-withOpacity':''" class="fa icon-asmnt-back-arrow "></i>
+              </a>
+            </div>
+            <!-- progress bar -->
+            <div class="col-9">
+              <div class="progress">
+                <div class="progress-bar-bg-green" [ngStyle]="{'width': currentValue +'%'}"></div>
+              </div>
+            </div>
+            <!-- Next arrow button -->
+            <div class="col-1 pt-1">
+              <a href="#" (click)="$event.preventDefault();nextLSArrow(quesCnt)" class="white-color" *ngIf="showNxt">
+                <i aria-hidden="true" class="fa icon-asmnt-forward-arrow "></i>
+              </a>
+            </div>
+
+          </div>
+          <div class="row mt-2">
+            <div class="col-6">
+              <span class="text-right">{{quesCnt}}</span>
+            </div>
+            <div class="col-6 text-right">
+              <span>{{remaining}} {{(lssreturnedVal|async).commonText.remaining}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="d-table w-100  mobile-height">
+        <p class="d-table-cell text-center align-middle">{{learnStyQues[learnStyleQuestionName]}} </p>
+      </div>
+
+    </div>
+    <!-- smile cards mobile -->
+    <div class="clearfix"> </div>
+    <div class="smile-cards-mobile" *ngFor="let item of (lssresponseText|async).commonResponseText?.responses;let inx=index">
+      <div class="smile-card-body hover skyblue" *ngIf="inx!=3" [ngClass]="(btnHighLight==item.value)? 'previous':''">
+        <div class="row valign" (click)="callQuestion(item.value)">
+          <div class="col-9">
+            <p>{{item.text}}</p>
+          </div>
+          <div class="col-3">
+            <span>
+              <i class={{iconArray[inx]}}></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End  of Learning style survey assessment mobile design -->

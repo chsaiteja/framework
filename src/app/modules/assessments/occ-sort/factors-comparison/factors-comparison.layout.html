@@ -1,0 +1,55 @@
+<div class="factor-comparison p-b">
+  <div class="head-buttons">
+    <div class="row ">
+      <p class="col-md-9 col-lg-10 pull-left">
+        {{osHeaderText}}
+      </p>
+      <ul class="col-md-3 col-lg-2 nav navbar-nav circle-top-nav mb-1">
+        <li>
+          <button class="common-button blue  back-to-list-btn pull-right" [ngStyle]="{'background-color':'#06737f'}" (click)="goToList()">
+            <img src="assets\images\back-to-list.png" />{{(osreturnedVal|async).commonText.backToList}}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" *ngFor="let item of SelectedFactors;let indx = index">
+      <div class="card mb-1">
+        <div class="card-header">
+          <h5 class="card-title text-left">{{quesValues[item]?.factorName}} </h5>
+        </div>
+        <div class="card-block ">
+          <p class="font-weight-bold mb-1">{{osintroVal.commonText.pageText.comparePage.boxes.choiceLabel}}</p>
+          <ul class="list-unstyled row align-items-center">
+            <li class=" text-left text-lg-center col-4 col-lg-3 ">
+              <span>{{resValues[item]?.resp[0]?.text}} </span>
+            </li>
+            <li class=" text-center col-4 col-lg-2 offset-lg-2">
+              <span>{{resValues[item]?.resp[2]?.text}}</span>
+            </li>
+            <li class=" text-right text-lg-center col-4 col-lg-3 offset-lg-2 ">
+              <span>{{resValues[item]?.resp[4]?.text}}</span>
+            </li>
+          </ul>
+          <ul class="factor-progress-container userList factor-progress-radius-first factor-progress-radius-last">
+            <li class="u_list border-prog-2 plp-2-progress-radius factor-progress-radius-first">
+            </li>
+            <li class="u_list border-prog-2 "></li>
+            <li class="u_list border-prog-2 ">
+            </li>
+            <li class="u_list border-prog-2 "></li>
+            <li class="u_list plp-2-progress-radius factor-progress-radius-last">
+            </li>
+          </ul>
+          <p class="font-weight-bold mt-3">{{occName}} </p>
+          <ul class="factor-progress-container factor-progress-two  factor-progress-radius-first factor-progress-radius-last sysList">
+            <li class="s_list border-prog-1 factor-progress-radius-first"></li>
+            <li class="s_list border-prog-1" *ngFor="let item2 of [0,1,2]"></li>
+            <li class="s_list plp-2-progress-radius factor-progress-radius-last"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

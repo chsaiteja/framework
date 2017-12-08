@@ -1,0 +1,152 @@
+/***********  Start Desktop tabs   ***********/
+
+.career-tabs {
+    .ngb-tabset .nav {
+        background: nth($blue-shades, 12);
+        @include height-width(100%, 60px);
+        margin-bottom: 23px;
+        display: table;
+        li {
+            line-height: 49px;
+            padding: 0px 5px;
+            display: table-cell;
+            a {
+                margin-top: 5px;
+                padding: 0 4px!important;
+                color: $white;
+                text-align: center;
+                &:hover {
+                    background-color: $white!important;
+                    color: nth($blue-shades, 12)!important;
+                    @include common-border-radius (0, 0);
+                    height: 49px;
+                }
+            }
+        }
+        @include media-breakpoint-only(md) {
+            li {
+                padding: 0px 3px;
+                font-size: nth($font-sizes, 1);
+                margin-left: 0px;
+                a {
+                    margin-top: 5px;
+                    color: $white;
+                    padding: 0!important;
+                }
+            }
+        }
+    }
+    .rating-in-tabs {
+        background: nth($blue-shades, 19);
+        p {
+            margin: 0px!important;
+            padding: 18px 0px;
+            //font-size: 14px;
+            @include media-breakpoint-only(md) {
+                padding: 18px 0px 21px;
+                
+            }
+            @media (max-width: 991px) and (min-width: 768px){
+                font-size: 0.75em;
+            }
+        }
+        .rating-down-2 {
+            //margin: 9px 0px 0px 5px!important;
+            margin: 7px 0 8px 5px !important;
+        }
+    }
+    .ngb-tabset .nav-pills .nav-link.active {
+        background-color: $white;
+        color: nth($blue-shades, 12);
+        border-radius: 0;
+        height: 49px;
+    }
+    .nav-link.active .tab-down-arrow {
+        @include height-width(0, 0px);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid nth($blue-shades, 12);
+        margin-top: 6px!important;
+        margin: auto;
+    }
+    /*********** End of Desktop tabs   ***********/
+    /***********  Mobile tabs   ***********/
+    .ngb-tabset-mobile {
+        .nav {
+            display: table;
+            background: nth($blue-shades, 12);
+            color: $white;
+            line-height: 25px;
+            @include height-width(75%, 40px);
+            a {
+                color: $white;
+            }
+            .dropdown-menu a.nav-link {
+                background: none;
+            }
+            .show>.dropdown-menu {
+                width: 100%;
+                background: nth($blue-shades, 12);
+                border-radius: 0;
+            }
+            .dropdown-menu a:hover {
+                color: nth($blue-shades, 12);
+                background: nth($green-shades, 19)!important;
+                color: nth($blue-shades, 12);
+                cursor: pointer;
+            }
+            .dropdown-toggle:after {
+                display: inline-block;
+                @include height-width(0px, 0px);
+                margin-left: 0.3em;
+                vertical-align: middle;
+                content: "";
+                border-top: 0.3em solid;
+                border-right: 0.3em solid transparent;
+                border-left: 0.3em solid transparent;
+                float: right;
+                margin-top: 10px;
+                font-size: nth($font-sizes, 14);
+            }
+        }
+    }
+    .nav-link {
+        &.font-size {
+            font-size: $font-size-base;
+        }
+    }
+}
+
+
+/*********** End of  Mobile tabs   ***********/
+
+
+/*********** Start Waves tabs   ***********/
+
+#wages {
+    .nav-link {
+        background: nth($grey-shades, 8);
+        padding: 6px 9px;
+        @include common-border(2px, 2px, 2px, 2px, nth($grey-shades, 8));
+        margin-left: 12px;
+        @include position (relative, $top: 0px, $left:1px);
+        -webkit-transition: background-color .17s linear;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        cursor: pointer;
+        color: $black;
+    }
+    .nav-link.active {
+        background: $white!important;
+        @include common-border(2px, 2px, 2px, 2px, nth($grey-shades, 8));
+        border-bottom: none;
+        z-index: 2;
+        margin-top: 2px;
+    }
+    .nav-tabs {
+        border: none;
+    }
+}
+
+
+/*********** End of Waves tabs   ***********/

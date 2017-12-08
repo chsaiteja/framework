@@ -1,0 +1,91 @@
+<!--<PLP-nav-header [header]="sectionObject" (changeView)="changeView($event)" [report-status]="report"></PLP-nav-header>-->
+
+<div class="form-group">
+
+  <div class="col-spacer">
+
+    <div class="col-12 col-sm-12 col-md-12 right-bottom-border desktop-design-display">
+      <div class="background-grey-light font-weight-bold row" *ngIf="employmentHistoryData && employmentHistoryData.length>0">
+        <div class="col-3 col-sm-3 col-md-3 top-left-border">
+          Employer</div>
+        <div class="col-3 col-sm-3 col-md-3 top-left-border">
+          Title</div>
+        <div class="col-3 col-sm-3 col-md-3 top-left-border">
+          Dates</div>
+        <div class="col-3 col-sm-3 col-md-3 top-left-border">
+          Duties</div>
+      </div>
+      <div class="row" *ngIf="employmentHistoryData && employmentHistoryData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+          {{tableNoData}}
+        </div>
+      </div>
+      <div class="table-odd-color row" *ngFor='let item of employmentHistoryData'>
+
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 top-left-border">
+          {{item.Employment}}
+        </div>
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 top-left-border">
+          {{item.Title}}
+        </div>
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 top-left-border">
+          {{item.Dates}}
+        </div>
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 top-left-border">
+          {{item.Duties}}
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- mobile table -->
+
+    <div class="p-0 col-12 col-sm-12 col-md-12 mobile-design-display">
+      <div class="right-bottom-border row" *ngIf="employmentHistoryData && employmentHistoryData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+          {{tableNoData}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="mobile-cards p-1" *ngFor='let item of employmentHistoryData'>
+          <div class="row">
+
+            <div class="col-5 col-sm-5 col-md-5 ">
+              <b>Employer</b></div>
+
+            <div class="col-7 col-sm-7 col-md-7 ">
+              {{item.Employment}}</div>
+          </div>
+          <div class="row">
+            <div class="col-5 col-sm-5 col-md-5 ">
+              <b> Title </b></div>
+
+            <div class="col-7 col-sm-7 col-md-7 ">
+              {{item.Title}}</div>
+
+          </div>
+          <div class="row">
+            <div class="col-5 col-sm-5 col-md-5 ">
+              <b> Dates </b></div>
+
+            <div class="col-7 col-sm-7 col-md-7 ">
+              {{item.Dates}}</div>
+
+          </div>
+          <div class="row">
+            <div class="col-5 col-sm-5 col-md-5 ">
+              <b> Duties </b></div>
+
+            <div class="col-7 col-sm-7 col-md-7 ">
+              {{item.Description}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- End mobile table ---->
+    <div class="clearfix"> </div>
+
+  </div>

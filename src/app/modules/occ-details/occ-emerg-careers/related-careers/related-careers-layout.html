@@ -1,0 +1,71 @@
+<p>{{(relatedcareers)?.RelatedCareers?.intro}}</p>
+<div class="row gutter-10" *ngIf='(settingsTextTab?.sections).indexOf("RelatedCareers") != -1'>
+  <div class="col-lg col-md col-12">
+    <div class="career-card orange">
+      <div class="career-card-header">
+        <h5 class="card-title">
+          <i class="icon-careers panal-icon-align" aria-hidden="true"></i> {{(relatedcareers)?.RelatedCareers?.lists[0]?.header}}
+        </h5>
+
+      </div>
+      <div class="card-block career-card-body scroll-class">
+        <div *ngFor="let item of (relatedcareers)?.RelatedCareers?.lists[0]?.links">
+          <ul class="list" *ngIf="item.linkTitle">
+            <!-- CallOccDetailCareer method clicking the list in this div -->
+            <li>
+              <div class="pointer">
+                <a href="#" (click)="$event.preventDefault();CallOccDetailCareer(item.linkID,item.linkTitle,relatedCareers.clusIcon,relatedCareers.clusColor)">
+                  {{item.linkTitle}}
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- clusicon and clusColor for getting the icon and color dynamically -->
+  <div class="col-lg col-md col-12">
+    <div class="career-card" [ngStyle]="{'background':relatedCareers.clusColor}">
+      <div class="career-card-header">
+        <h5 class="card-title">
+          <i class="{{relatedCareers.clusIcon}} panal-icon-align" aria-hidden="true"></i> {{(relatedcareers)?.RelatedCareers?.lists[1]?.header}}</h5>
+
+      </div>
+      <div class="card-block career-card-body scroll-class">
+        <div *ngFor="let item of (relatedcareers)?.RelatedCareers?.lists[1]?.links">
+          <ul class="list" *ngIf="item.linkTitle">
+            <!-- CallOccDetailCluster method clicking the list in the clusters div -->
+            <li>
+              <div class="pointer">
+                <a href="#" (click)="$event.preventDefault();CallOccDetailCluster(item.linkID,item.linkTitle,relatedCareers.clusIcon,relatedCareers.clusColor)">
+                  {{item.linkTitle}}
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- showMilataryCareer variable for not displaying the div when the data is not available -->
+  <div class="col-lg col-md col-12" *ngIf='(settingsTextTab?.sections).indexOf("RelatedMilitary")!= -1 && showMilataryCareer'>
+    <div class="career-card cardcolor-7">
+      <div class="career-card-header">
+        <h5 class="card-title">
+          <i class="icon-military-careers panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.RelatedMilitary}}
+        </h5>
+
+      </div>
+      <div class="card-block career-card-body scroll-class">
+        <div *ngFor="let item of (relatedcareers)?.RelatedMilitary;">
+          <ul class="list" *ngIf="item.linkTitle">
+            <li>
+              <div>{{item.linkTitle}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

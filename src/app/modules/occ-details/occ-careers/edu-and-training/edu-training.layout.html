@@ -1,0 +1,175 @@
+<div role="tablist" aria-multiselectable="true">
+  <!--Display about Preparation-->
+  <div class="career-card cardcolor-10" *ngIf='(settingsTextTab?.sections).indexOf("Preparation")!= -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingThree" (click)="(expandCard != 9) ? methodfilter(9): methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-preparation panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.Preparation}}</span>
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+        <button class="common-button default  pull-right p-0">
+          <i *ngIf="(expandCard != 9)" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="expandCard == 9" class="icon-up-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <div id="9" *ngIf="expandCard == 9" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block">
+        <div *ngFor="let value of (occCareerStore).Preparation">
+          <p *ngIf="(value.type == 'p')"> {{value.text}}</p>
+          <ul *ngIf="(value.type == 'ul')" class="list">
+            <li *ngFor="let val of value.text">
+              <div>{{val}}</div>
+            </li>
+          </ul>
+          <h6 class='px-3' *ngIf="(value.type == 'h')">
+            <b>{{value.text}}</b>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Display about helpful High School Courses-->
+
+
+  <div class="career-card cardcolor-9" *ngIf='(settingsTextTab?.sections).indexOf("HelpfulHSCourses")!= -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingOne" activeIds="6" (click)="(expandCard != 6)?methodfilter(6):methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-helpful-high-school-courses panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.HelpfulHSCourses}}</span>
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+        <button class="common-button default pull-right p-0">
+          <i *ngIf="(expandCard != 6)" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="expandCard == 6" class="icon-up-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div id="6" *ngIf="expandCard == 6" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+        <div *ngFor="let value of (occCareerStore).HelpfulHSCourses">
+          <p *ngIf="(value.type == 'p')" [innerHTML]='value.text | customText'></p>
+          <ul *ngIf="(value.type == 'ul')" class="list">
+            <li *ngFor="let val of value.text">
+              <div>{{val}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Display about Knowledge-->
+  <div class="career-card cardcolor-1" *ngIf='(settingsTextTab?.sections).indexOf("Knowledge")!= -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingTwo" (click)="(expandCard != 7) ? methodfilter(7):methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-knowledge panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.Knowledge}}</span>
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+        <button class="common-button default  pull-right p-0">
+          <i *ngIf="(expandCard != 7)" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="expandCard == 7" class="icon-up-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+        </button>
+
+      </div>
+    </div>
+    <div id="7" *ngIf="expandCard == 7" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+
+        <div *ngFor="let value of (occCareerStore).Knowledge">
+          <h6 class=' px-3' *ngIf="(value.type == 'h')">
+            <b>{{value.text}}</b>
+          </h6>
+          <ul *ngIf="(value.type == 'ul')" class="list">
+            <li *ngFor="let val of value.text">
+              <div>{{val}}</div>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Display about RelatedPrograms-->
+  <div class="career-card cardcolor-8" *ngIf='(settingsTextTab?.sections).indexOf("RelatedPrograms")!= -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingThree" (click)="(expandCard != 10)? methodfilter(10):methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-programs-of-study panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.RelatedPrograms}}</span>
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+        <button class="common-button default  pull-right p-0">
+          <i *ngIf="(expandCard != 10)" class="icon-down-rounded-arrow icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="expandCard == 10" class="icon-up-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+        </button>
+
+      </div>
+    </div>
+    <div id="10" #filter3 *ngIf="expandCard == 10" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block  ">
+        <div *ngFor="let value of abilityRes">
+          <p *ngIf="(value.intro)">{{value.intro}} </p>
+          <div *ngIf="(value.lists)">
+            <div *ngFor="let listvalue of value.lists;let in=index">
+              <h6 class=' px-3' *ngIf="(listvalue.header)"> {{listvalue.header}}</h6>
+              <ul *ngIf="(listvalue.links)" class="list">
+                <li *ngFor="let val of listvalue.links">
+                  <div>{{val.linkTitle}}</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Display about LicensingCert-->
+  <div *ngIf='(settingsTextTab?.sections).indexOf("LicensingCert")!= -1'>
+    <div class="career-card Occupation-Sort-card" *ngIf='LicenCertificate !=0'>
+
+      <div class="career-card-header  pointer " role="tab" id="headingThree" (click)="(expandCard != 8)? methodfilter(8):methodfilter(999)">
+        <h5 class="card-title">
+          <span>
+            <i class="icon-licensing-certification panal-icon-align" aria-hidden="true"></i>
+          </span>
+          <span class="w-100"> {{(settingsText).commonText?.allSections?.LicensingCert}}</span>
+        </h5>
+        <div class="d-table-cell align-middle pt-1">
+          <button class="common-button default pull-right p-0">
+            <i *ngIf="(expandCard != 8)" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+            <i *ngIf="expandCard == 8" class="icon-up-rounded-arrow icn-font-size" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <div id="8" *ngIf="expandCard == 8" role="tabpanel" aria-labelledby="headingThree">
+        <div class="card-block ">
+          <div *ngFor="let value of (occCareerStore).LicensingCert">
+            <p *ngIf="(value.type == 'p')" [innerHTML]='value.text | customText'> </p>
+            <ul *ngIf="(value.type == 'ul')" class="list">
+              <li *ngFor="let val of value.text">
+                <div>{{val}}</div>
+              </li>
+            </ul>
+            <h6 class=' px-3' *ngIf="(value.type == 'h')">
+              <b>{{value.text}}</b>
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

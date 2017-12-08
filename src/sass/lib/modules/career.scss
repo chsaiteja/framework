@@ -1,0 +1,743 @@
+/****
+* Career Header section Start
+                         ***/
+
+                         .career-heading {
+                            align-items: center;
+                            @include position (relative);
+                            display: flex;
+                            i {
+                                font-size: $font-size-h2;
+                            }
+                            .career-text {
+                                margin: 0px 0 0 11px;
+                                @include common-header(nth($green-shades, 13), $font-size-h6, none, bold);
+                            }
+                        }
+                        
+                                                
+                        .rate-career-bg-black {
+                            background-color: $black;
+                            height: 58px;
+                            margin: -58px 15px 0;
+                            opacity: 0.5;
+                            padding: 10px 0 0;
+                            @include position (absolute, $left: 0, $right:0);
+                            @include media-breakpoint-down(sm) {
+                                margin: -25px 15px 0;
+                                @include padding-height(4px, 25px);
+                            }
+                        }
+                        
+                        div.opacity-career-header {
+                            @include position (absolute, $right: 0px, $bottom: 10, $left: 0);
+                            padding: 10px 0 0;
+                            margin: -58px 15px 0;
+                            @include media-breakpoint-down(sm) {
+                                margin: -30px 15px 0;
+                                @include padding-height(4px, 37px);
+                            }
+                            .video-icon {
+                                width: 38px;
+                                display: block;
+                            }
+                        }
+                        
+                        .video-hight-plp3 {
+                            @include media-breakpoint-down(sm) {
+                                height: 15px;
+                                margin-top: 5px;
+                            }
+                        }
+                        
+                        .video-box {
+                            @include height-width ($width-value, $height-value);
+                        }
+                        
+                        .rate-this-text {
+                            padding: 10px 10px;
+                            @include common-header($white, nth($font-sizes, 6), right, none);
+                            @include media-breakpoint-down(sm) {
+                                padding: 5px 10px;
+                                font-size: nth($font-sizes, 3);
+                            }
+                        }
+                        
+                        .rating-up-down {
+                            font-size: nth($font-sizes, 14);
+                            @include media-breakpoint-down(sm) {
+                                font-size: nth($font-sizes, 8);
+                            }
+                            a {
+                                text-decoration: none;
+                                padding: 0 5px 0 10px;
+                                &:focus{
+                                    border: 1px solid $blue;
+                                    color: $blue;
+                                }
+                            }
+                            .fillstroke {
+                                -webkit-text-fill-color: $white;
+                                -webkit-text-stroke-width: 2px $white;
+                                color: $white;
+                                @media (min-width: 767px) {
+                                    font-size: nth($font-sizes, 1);
+                                } //font-size: nth($font-sizes, 1);
+                            }
+                        }
+                        
+                        .comparemodal {
+                            position: absolute;
+                            margin-top: -50px;
+                        }
+                        
+                        
+                        /****
+                        * Career Header section End 
+                                               ***/
+                        
+                        @include media-breakpoint-up(sm) {
+                            .scroll-class {
+                                overflow-y: auto;
+                                overflow-x: hidden;
+                                & ::-webkit-scrollbar {
+                                    width: 6px;
+                                }
+                                &::-webkit-scrollbar-track {
+                                    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+                                }
+                                &::-webkit-scrollbar-thumb {
+                                    background-color: nth($grey-shades, 22);
+                                    @include common-border-radius(10px, 1px);
+                                    outline: 2px solid slategrey;
+                                }
+                            }
+                        }
+                        
+                        .career-card {
+                            flex-direction: column;
+                            display: flex;
+                            margin-bottom: 10px;
+                            @include common-header($white, nth($font-sizes, 4), none, none);
+                            &.orange {
+                                background: nth($orange-shades, 2)!important;
+                            }
+                            &.blue {
+                                background: nth($blue-shades, 7)!important;
+                                @include common-border(1px, 1px, 1px, 1px, nth($blue-shades, 7));
+                            }
+                            &.purple {
+                                background: nth($purple-shades, 1)!important;
+                                @include common-border(1px, 1px, 1px, 1px, nth($purple-shades, 1));
+                            }
+                            &.sky-blue {
+                                background: nth($sky-blue, 1)!important;
+                            }
+                            .career-card-header {
+                                background: rgba(0, 0, 0, 0.1);
+                                color: $white;
+                                padding: 0px 17px 0px;
+                                height: 65px;
+                                display: table;
+                                width: 100%;
+                                .career-icns-align {
+                                    display: table-cell;
+                                    height: 63px;
+                                    line-height: 62px;
+                                    vertical-align: middle;
+                                }
+                                .card-title {
+                                    vertical-align: middle;
+                                    width: 100%;
+                                    display: table-cell;
+                                    font-size: nth($font-sizes, 5);
+                                    @include common-header($white, nth($font-sizes, 5), none, bold);
+                                }
+                                i {
+                                    font-size: $font-size-lg;
+                                }
+                                .icn-font-size {
+                                    font-size: nth($font-sizes, 10);
+                                }
+                                @include media-breakpoint-down(sm) {
+                                    font-size: $font-size-sm;
+                                    .icn-font-size {
+                                        font-size: $font-size-base;
+                                    }
+                                }
+                            }
+                            .career-card-body {
+                                @include media-breakpoint-up(md) {
+                                    padding: 10px;
+                                    height: 330px;
+                                    @at-root {
+                                        .employment-outlook-card-height {
+                                            height: 170px;
+                                        }
+                                    }
+                                }
+                                @include media-breakpoint-down(sm) {
+                                    height: auto;
+                                }
+                                @at-root {
+                                    .list {
+                                        a {
+                                            color: $white;
+                                            text-decoration: underline;
+                                        }
+                                        li {
+                                            margin-bottom: 10px;
+                                            list-style: none;
+                                            &:before {
+                                                content: '\f054';
+                                                font-family: 'FontAwesome';
+                                                float: left;
+                                                font-size: nth($font-sizes, 1);
+                                                margin: 2.5px 0 0 -1.5em;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .card-block2-p-plp3 {
+                                @include padding-height(15px, 193px);
+                                @include common-header($white, none, center, none);
+                                cursor: pointer;
+                                text-decoration: none;
+                                i {
+                                    font-size: nth($font-sizes, 17);
+                                    color: $white
+                                }
+                                a {
+                                    text-decoration: none;
+                                }
+                            }
+                            .cluster-noun-text {
+                                i {
+                                    font-size: $font-size-base!important;
+                                }
+                                @include custom-device(768px, 991px) {
+                                    h2 {
+                                        font-size: 1.42rem;
+                                    }
+                                    h2,
+                                    ol {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                            .panal-icon-align {
+                                @include position (relative, $top: 4px);
+                            }
+                            .cluster-at-glance {
+                                height: 395px;
+                                img {
+                                    width: 120px;
+                                }
+                                .cluster-icn {
+                                    font-size: nth($font-sizes, 17);
+                                    padding: 0px 10px 0px;
+                                    i {
+                                        margin-left: 85px;
+                                    }
+                                }
+                                .cluster-icn-div-two {
+                                    font-size: nth($font-sizes, 17);
+                                    height: 197px;
+                                    padding: 0 5px;
+                                }
+                                .bg-opacity {
+                                    background: $black;
+                                    opacity: 0.3;
+                                    height: 197px;
+                                }
+                                .bg-opacity-text {
+                                    bottom: 10%;
+                                    position: absolute;
+                                    padding: 0 15px;
+                                    text-align: center;
+                                    img {
+                                        width: 70px;
+                                    }
+                                }
+                                @media (max-width:767px) {
+                                    height: auto;
+                                    .cluster-icn,
+                                    &.card-block {
+                                        padding: 0;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        .flex-row-cards.row {
+                            display: flex;
+                            flex-wrap: wrap;
+                        }
+                        
+                        .flex-row-cards.row>[class*='col-'] {
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        
+                        .flex-row-cards.row:after,
+                        .flex-row.row:before {
+                            display: flex;
+                        }
+                        
+                        .flex-row-cards .cards-equal-height {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-flex: 1;
+                            -ms-flex: 1 0 auto;
+                            flex: 1 0 auto;
+                            -webkit-box-orient: vertical;
+                            -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                            flex-direction: column;
+                        }
+                        
+                        .top-five-states {
+                            background: url('../assets/images/map-plp3.jpg') repeat!important;
+                            height: auto;
+                            padding: 20px 4px;
+                            h6 {
+                                color: yellow;
+                                padding: 10px;
+                            }
+                            .loc-button-color {
+                                padding: 10px;
+                                @include common-border(2px,
+                                2px,
+                                2px,
+                                2px,
+                                $white);
+                                color: $white;
+                                border-radius: 5px;
+                                min-height: 54px;
+                                line-height: 1;
+                                @include media-breakpoint-down(sm) {
+                                    margin: 5px 0px!important;
+                                }
+                            }
+                        }
+                        
+                        
+                        /****
+                        * At a glance Start 
+                                         ***/
+                        
+                        .career-ataglance {
+                            @include custom-device(361px,
+                            767px) {
+                                .text-center-graph {
+                                    text-align: center;
+                                }
+                            }
+                            .graph-card {
+                                margin-bottom: 10px;
+                                ul:nth-child(2) {
+                                    height: 0px;
+                                }
+                                .card-block {
+                                    box-shadow: 0 0 3px 1px nth($grey-shades, 8);
+                                }
+                                @include media-breakpoint-up(md) {
+                                    .card-block {
+                                        height: 130px!important;
+                                    }
+                                }
+                                @include media-breakpoint-down(sm) {
+                                    .card-block-height-sm {
+                                        height: 180px;
+                                    }
+                                }
+                            }
+                            .salry-value {
+                                text-align: center;
+                                position: relative;
+                                top: -40px;
+                                right: 20px;
+                                font-size: nth($font-sizes, 3);
+                                @include custom-device(768px,
+                                1199px) {
+                                    position: absolute;
+                                    top: 60%;
+                                    right: 58px;
+                                }
+                            }
+                            .career-cluster-boxs .card-block {
+                                @media (min-width: 768px) {
+                                    padding:0 10px;
+                                    h5 {
+                                        font-size: 1rem;
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                            .et-graph-card {
+                                i {
+                                    position: relative;
+                                    top: -45px;
+                                    font-size: $font-size-h2!important;
+                                    padding: 0 10px;
+                                    //left: 0px;
+                                    @include custom-device(767px, 1199px){
+                                        padding: 0;
+                                    }
+                                   @media (max-width:384px){
+                                        padding: 0;
+                                    }
+                                }
+                                .headding {
+                                    position: absolute;
+                                    top: 10px;
+                                }
+                                .edu-name-style {
+                                    top: 130px;
+                                }
+                                .stacked-bar-graph span {
+                                    background: $white;
+                                }
+                            }
+                        }
+                        
+                        
+                        /****
+                        * At a glance End 
+                                         ***/
+                        
+                        
+                        /*** 
+                        * Path Way Start
+                                    ***/
+                        
+                        @include media-breakpoint-up(sm) {
+                            .pathway-card-bg-color:nth-child(4n+1) .inner-card,
+                            .pathway-card-bg-color:nth-child(4n+4) .inner-card {
+                                background-color: nth($orange-shades, 2)!important;
+                            }
+                            .pathway-card-bg-color:nth-child(4n+2) .inner-card,
+                            .pathway-card-bg-color:nth-child(4n+3) .inner-card {
+                                background-color: nth($green-shades, 12)!important;
+                            }
+                        }
+                        
+                        @include media-breakpoint-down(sm) {
+                            .pathway-card-bg-color:nth-child(2n+1) .inner-card {
+                                background-color: nth($orange-shades, 2)!important;
+                            }
+                            .pathway-card-bg-color:nth-child(2n+2) .inner-card {
+                                background-color: nth($green-shades, 12)!important;
+                            }
+                        }
+                        
+                        
+                        /*** 
+                        * Path Way End
+                        *Personal Qualities Start ***/
+                        
+                        .personal-qualities {
+                            .career-card-header {
+                                display: block;
+                                height: 75px;
+                                p {
+                                    line-height: 1.1;
+                                    margin-top: 2px;
+                                }
+                            }
+                            .pq-img-card {
+                                padding: 40px 0px;
+                                background-color: $white;
+                                .list li,
+                                a {
+                                    color: nth($green-shades, 20);
+                                }
+                            }
+                            .pichart-align-plp3 ul {
+                                width: 100%;
+                                margin: auto;
+                                text-align: center;
+                                display: table-cell;
+                                padding:0px 0px 10px;
+                            }
+                            .cards-font {
+                                @include custom-device(990px,
+                                1200px) {
+                                    font-size: nth($font-sizes, 3);
+                                }
+                            }
+                            .pq-list a {
+                                &:before {
+                                    content: '\f111';
+                                    font-family: 'FontAwesome';
+                                    float: left;
+                                    font-size: $font-size-base;
+                                    margin: 0px 0 0 -1.5em;
+                                    @media (max-width:767px){ font-size: nth($font-sizes, 1); margin: 3px 0 0 -1.5em;}
+                                }
+                            }
+                        }
+                        
+                        
+                        /***
+                        *Personal Qualities End
+                                             ***/
+                        
+                        
+                        /***
+                        *Employment Outlook Start
+                                             ***/
+                        
+                        .employment-outlook {
+                            .location-box {
+                                background-color: nth($green-shades, 16);
+                                padding-top: 38px;
+                                height: 90px;
+                                @include common-header($white,
+                                none,
+                                center,
+                                none);
+                                @include media-breakpoint-down(sm) {
+                                    padding: 11px;
+                                    height: 40px;
+                                }
+                                @include media-breakpoint-only(md) {
+                                    padding-top: 33px;
+                                    font-size: 14px;
+                                }
+                            }
+                            .location-card {
+                                border: 1px solid nth($grey-shades, 8);
+                                background-color: $white;
+                                color: $black;
+                                padding: 9px;
+                                .location-heading {
+                                    height: 50px;
+                                }
+                                .employee-states {
+                                    font-size: nth($font-sizes, 2);
+                                    .box-status-text {
+                                        text-align: left;
+                                        padding-left: 15px;
+                                    }
+                                    .box-avg-text {
+                                        text-align: right;
+                                        float: right;
+                                        padding-right: 10px;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        
+                        /***
+                        *Employment Outlook End
+                                            ***/
+                        
+                        
+                        /***
+                        * Wages Start
+                                 ***/
+                        
+                        .career-wages {
+                            .wages-row-common {
+                                display: -webkit-box;
+                                display: -webkit-flex;
+                                display: -ms-flexbox;
+                                display: flex;
+                                -webkit-flex-wrap: wrap;
+                                -ms-flex-wrap: wrap;
+                                flex-wrap: wrap;
+                                margin-right: -12px;
+                                margin-left: -12px;
+                            }
+                            .content-wages-body {
+                                @include common-border(2px,
+                                2px,
+                                2px,
+                                2px,
+                                nth($grey-shades, 8));
+                                margin-top: -1px;
+                                border-radius: 4px;
+                                height: auto;
+                                overflow: auto;
+                                padding: 10px 23px;
+                                margin-bottom: 20px;
+                            }
+                            .wages-row-bg1 {
+                                background: nth($green-shades, 22);
+                                @extend .wages-row-common;
+                            }
+                            .wages-row-bg2 {
+                                background: nth($green-shades, 23);
+                                @extend .wages-row-common;
+                            }
+                            .wages-table .wages-table-header-bg,
+                            .main-table-row-header,
+                            .wages-row-bg1,
+                            .wages-row-bg2 {
+                                color: $white;
+                                padding: 0.75rem;
+                            }
+                            .wages-table-header-bg {
+                                background: nth($green-shades, 17);
+                                min-height: 50px;
+                                font-weight: $font-bold;
+                            }
+                            .main-table-row-header .icon-down-rounded-arrow,
+                            .icon-up-rounded-arrow {
+                                font-size: nth($font-sizes, 9) !important;
+                                line-height: 24px !important;
+                            }
+                            .main-table-row-header {
+                                background: nth($green-shades, 24);
+                                @include common-border(0,
+                                0,
+                                1px,
+                                0,
+                                nth($green-shades, 22));
+                            }
+                            .word-wrap {
+                                word-wrap: break-word;
+                            }
+                            @include media-breakpoint-down(sm) {
+                                .wages-tab-mobile {
+                                    right: -15px!important;
+                                    left: -15px!important;
+                                }
+                                .wages-table-header-bg .text-center,
+                                .location-wag-mob {
+                                    padding: 0px!important;
+                                }
+                                .main-table-row-header,
+                                .wages-row-bg1,
+                                .wages-row-bg2,
+                                .wages-table .wages-table-header-bg {
+                                    padding: 10px!important;
+                                    font-size: nth($font-sizes, 2)!important;
+                                }
+                                .main-table-row-header .icon-down-rounded-arrow,
+                                .icon-up-rounded-arrow {
+                                    font-size: nth($font-sizes, 9)!important;
+                                }
+                                #wages .tab {
+                                    margin-top: 3px;
+                                }
+                            }
+                        }
+                        
+                        
+                        /***
+                        * Wages End
+                                 ***/
+                        
+                        
+                        /*********************Start Compare Two Careers****************/
+                        
+                        .cmpr-graph-card-plp3 {
+                            margin-bottom: 10px;
+                            .cmpr-h-grp-mb {
+                                padding: 0px;
+                                @include height-width(70%,
+                                110px);
+                            }
+                        }
+                        
+                        @include custom-device(none,
+                        360px) {
+                            .cmpr-graph-card-plp3 .cmpr-h-grp-mb {
+                                width: 90%;
+                            }
+                        }
+                        
+                        .wages-table {
+                            color: $white;
+                            .table {
+                                text-align: center;
+                            }
+                            th,
+                            td {
+                                border: none!important;
+                            }
+                            thead th {
+                                text-align: center;
+                            }
+                            tbody tr {
+                                background: nth($green-shades, 13)!important;
+                                text-align: center;
+                            }
+                        }
+                        
+                        .table.wages-table>thead>tr>th {
+                            border: none!important;
+                        }
+                        
+                        .cmpir-2-btn-plp3 {
+                            background-color: nth($blue-shades, 11);
+                            @include common-header($white,
+                            nth($font-sizes, 5),
+                            center,
+                            none);
+                            margin: 0 0 5px 0;
+                            padding: 10px 0;
+                        }
+                        
+                        .cmpr-wages-plp3 {
+                            @include common-border(1px,
+                            1px,
+                            1px,
+                            1px,
+                            nth($grey-shades, 8));
+                            margin-bottom: 10px;
+                        }
+                        
+                        .hideContainer1 {
+                            @include media-breakpoint-down(sm) {
+                                display: block!important;
+                            }
+                            @include media-breakpoint-up(sm) {
+                                display: none!important;
+                            }
+                        }
+                        
+                        .wages-card-header {
+                            background: rgba(0, 0, 0, 0.1);
+                            color: $white;
+                            padding: 11px 11px 14px!important;
+                            vertical-align: middle;
+                        }
+                        
+                        .bgColr-cmpr:nth-child(odd) {
+                            background-color: rgba(0, 0, 0, .1)!important;
+                        }
+                        
+                        .bgColr-cmpr p,
+                        .bgColr-cmpr {
+                            margin-bottom: 0px!important;
+                            padding: 5px 11px!important;
+                        }
+                        
+                        .wag-cmpr-mob-hide {
+                            display: none;
+                        }
+                        
+                        .cmpr-img-weather img {
+                            width: 44px;
+                            margin: 0 0 0 -40px;
+                        }
+                        
+                        .two-headdings {
+                            &.container {
+                                padding-left:0;
+                                padding-right: 0;
+                                @media (max-width: 575px) {
+                                    width:100%;
+                                    max-width: 100%;
+                                }
+                            }
+                        }
+                        
+                        
+                        /*********************End Compare Two Careers****************/

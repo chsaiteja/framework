@@ -1,0 +1,242 @@
+
+@media screen and (max-width: 3200px) {
+.noUi-target, .noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  box-sizing: border-box;
+}
+
+.noUi-target {
+  position: relative;
+  direction: ltr;
+}
+
+.noUi-base {
+  @include height-width($width-value, $height-value);
+  position: relative;
+  z-index: 1;
+}
+.noUi-tooltip{
+	display:block;
+  @include position(absolute , $top: -30px, $left : -9px);
+  @include height-width(40px,80px);
+    border-radius:3px;
+    padding:5px;
+    text-align:center;
+    color: $white;
+}
+.noUi-origin {
+   @include position (absolute, $top: 0, $right: 0, $bottom: 0, $left: 0);
+}
+
+.noUi-handle {
+  position: relative;
+  z-index: 1;
+}
+
+.noUi-stacking .noUi-handle {
+  z-index: 10;
+}
+
+.noUi-state-tap .noUi-origin {
+  -webkit-transition: left .3s,top .3s;
+  transition: left .3s,top .3s;
+}
+
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+
+.noUi-base {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+   @include common-border(1px, 1px, 1px, 1px, nth($green-shades,7));
+}
+
+.noUi-horizontal {
+  @include height-width(100%,18px);
+}
+
+.noUi-horizontal .noUi-handle {
+  @include height-width(34px,28px);
+  left: -17px;
+  top: -6px;
+}
+/*
+.noUi-vertical {
+  width: 18px;
+}*/
+
+.noUi-vertical .noUi-handle {
+   @include height-width(28px,34px);
+  left: -6px;
+  top: -17px;
+}
+
+.noUi-background {
+  background: nth($white-shades,1);
+  box-shadow: inset 0 1px 1px nth($grey-shades,19);
+}
+
+.noUi-connect {
+  background: nth($green-shades,7);
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
+}
+
+.noUi-origin {
+  border-radius: 2px;
+}
+
+.noUi-target {
+  border-radius: 4px;
+  border: 1px solid nth($grey-shades,20);
+  box-shadow: inset 0 1px 1px nth($grey-shades,19),0 3px 6px -5px nth($grey-shades,21);
+}
+
+.noUi-target.noUi-connect {
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45), 0 3px 6px -5px nth($grey-shades,21);
+}
+
+.noUi-draggable {
+  cursor: w-resize;
+}
+
+.noUi-vertical .noUi-draggable {
+  cursor: n-resize;
+}
+
+.noUi-handle {
+  border: 1px solid nth($grey-shades,5);
+  border-radius: 3px;
+  background: $white;
+  cursor: default;
+  box-shadow: inset 0 0 1px $white,inset 0 1px 7px nth($white-shades,6),0 3px 6px -3px nth($grey-shades,21);
+}
+
+.noUi-active {
+  box-shadow: inset 0 0 1px $white,inset 0 1px 7px nth($white-shades,7),0 3px 6px -3px nth($grey-shades,21);
+}
+
+.noUi-handle:after, .noUi-handle:before {
+  content: "";
+  display: block;
+  @include height-width(1px,14px);
+  @include position(absolute, $top: 6px, $left: 14px);
+  background: nth($grey-shades,2);
+}
+
+.noUi-handle:after {
+  left: 17px;
+}
+
+.noUi-vertical .noUi-handle:after, .noUi-vertical .noUi-handle:before {
+  @include height-width(14px,1px);
+  left: 6px;
+  top: 14px;
+}
+
+.noUi-vertical .noUi-handle:after {
+  top: 17px;
+}
+
+[disabled] .noUi-connect, [disabled].noUi-connect {
+  background: nth($grey-shades,30);
+}
+
+[disabled] .noUi-handle, [disabled].noUi-origin {
+  cursor: not-allowed;
+}
+
+.noUi-pips, .noUi-pips * {
+  box-sizing: border-box;
+}
+
+.noUi-pips {
+  position: absolute;
+  color: nth($grey-shades,10);
+}
+
+.noUi-value {
+  width: 40px;
+  position: absolute;
+  text-align: center;
+}
+
+.noUi-value-sub {
+  color: nth($grey-shades,8);
+  font-size:  0.625em;
+}
+
+.noUi-marker {
+  position: absolute;
+  background: nth($grey-shades,8);
+}
+
+.noUi-marker-large, .noUi-marker-sub {
+  background: nth($blue-shades,9);
+}
+
+.noUi-pips-horizontal {
+  padding: 10px 0;
+  height: 50px;
+  top: 100%;
+  left: 0;
+}
+
+.noUi-value-horizontal {
+  margin-left: -20px;
+  padding-top: 20px;
+}
+
+.noUi-value-horizontal.noUi-value-sub {
+  padding-top: 15px;
+}
+
+.noUi-marker-horizontal.noUi-marker {
+  margin-left: -1px;
+  @include height-width(2px, 5px);
+}
+
+.noUi-marker-horizontal.noUi-marker-sub {
+  height: 10px;
+}
+
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 15px;
+}
+
+.noUi-pips-vertical {
+  padding: 0 10px;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+
+.noUi-value-vertical {
+  width: 15px;
+  margin-left: 20px;
+  margin-top: -5px;
+}
+
+.noUi-marker-vertical.noUi-marker {
+  width: 5px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+.noUi-marker-vertical.noUi-marker-sub {
+  width: 10px;
+}
+
+.noUi-marker-vertical.noUi-marker-large {
+  width: 15px;
+}
+
+
+}

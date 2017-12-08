@@ -1,0 +1,141 @@
+<div class="assessment-questions">
+  <div class="row">
+    <div class="col-md-12">
+      <p>{{ (osintroVal|async)?.commonText?.pageText?.itemsPage.top.text}} </p>
+    </div>
+  </div>
+  <div class="row desktop-design-display">
+    <div class="col-md-12">
+      <!--Display previous arrow-->
+      <div class="panel">
+        <div class="panel-background dark-green">
+          <div class="col-md-1 col-sm-2 col-lg-1 left-arrow-class">
+            <button (click)="$event.preventDefault();clickArrowPre()" [ngClass]="(set == 0)? 'common-disable-ques-arrow':'common-enable-ques-arrow'"
+              [disabled]="(set == 0)">
+              <i [ngClass]="(set == 0)? 'class-withOpacity':''" class="fa  icon-asmnt-back-arrow " aria-hidden="true"></i>
+            </button>
+            <span> {{set+1}} </span>
+          </div>
+          <div class="col-md-8 col-sm-7 col-lg-9">
+            <div class="progress" [ngStyle]='{"margin-top":"6px"}'>
+              <div class="progress-bar-bg-green" [ngStyle]="{'width': currentValue +'%'}"></div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3 col-lg-2 text-right right-arrow-class">
+            <span>{{5-(set+1)}} {{(osreturnedVal|async)?.commonText?.remaining}}</span>
+            <a href="#" (click)="$event.preventDefault();clickArrow()">
+              <i aria-hidden="true" class="fa icon-asmnt-forward-arrow " [ngStyle]="{'position':'relative','top': '2px'}"></i>
+            </a>
+          </div>
+        </div>
+        <!--Display question number and question-->
+
+        <div class="panel-question-box dark-green text-center">
+          <p class="mb-0">
+            <span> {{facNames[occQuestionVal]?.question}}</span>
+          </p>
+          <span>
+            <template #tipContent>{{facNames[occQuestionVal]?.help}}</template>
+            <!--<span class="badge os_ques_mark">?</span>-->
+            <a href="" (click)='$event.preventDefault()' class="text-center btn-bg-none" #t="ngbTooltip" (focus)='t.open()' (blur)='t.close()'
+              placement="bottom" [ngbTooltip]="tipContent">
+              <i class="icon-question-circular-button"></i>
+            </a>
+          </span>
+          <!--Display help text data-->
+
+
+        </div>
+        <div class="circle-body smile-circle">
+          <div class="circle-width five text-center" *ngFor="let item of [0,1,2,3,4];let inx=index;">
+            <!--Display circles and options-->
+            <span class="btn range-barcircle">
+              <p class="occ-sort-circle"> {{requiredOpt[inx]}} </p>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Mobile design -->
+  <div class="mobile-design-display">
+    <div class="panel-question-box dark-green">
+      <div class="mini-bar">
+        <div class="container">
+
+
+          <div class="row mt-1">
+            <!--Display previous arrow-->
+            <div class="col-1 mt-1">
+              <a href="#" (click)="$event.preventDefault();clickArrowPre()">
+                <i class="fa icon-asmnt-back-arrow" [ngClass]="(set == 0)? 'class-withOpacity':''" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="col-9 osQues">
+              <div class="progress ">
+                <div class="progress-bar-bg-green" [ngStyle]="{'width': currentValue +'%'}"></div>
+              </div>
+            </div>
+            <!--Display next arrow-->
+            <div class="col-1 mt-1">
+              <a href="#" (click)="$event.preventDefault();clickArrow()">
+                <i class="fa icon-asmnt-forward-arrow pull-right  white-color" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-6">
+              <span class="text-right">{{set + 1}}</span>
+            </div>
+            <div class="col-6 text-right">
+              <span>{{5-(set+1)}} {{(osreturnedVal|async)?.commonText.remaining}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-table w-100  mobile-height-os">
+        <!--Display question number and question-->
+        <p class="d-table-cell text-center align-middle  mob-view-os-hght"> {{facNames[occQuestionVal]?.question}}
+          <br>
+          <template #tipContent>{{facNames[occQuestionVal]?.help}}</template>
+          <a href="" (click)='$event.preventDefault()' class="text-center btn-bg-none" #t="ngbTooltip" (focus)='t.open()' (blur)='t.close()'
+            placement="bottom" [ngbTooltip]="tipContent">
+            <i class="icon-question-circular-button"></i>
+          </a>
+          <!--Display help text data-->
+        </p>
+      </div>
+
+
+    </div>
+
+
+    <div class="clearfix"> </div>
+  </div>
+  <div class="row">
+    <div class="mobile-design-display col-10">
+      <div class="smile-cards-mobile">
+        <div class="smile-card-body hover dark-green" *ngFor="let item of [0,1,2,3,4];let inx=index;">
+          <div class="row valign pt-1">
+            <div class="col-9">
+              <!--Display cards and options-->
+              <span> {{requiredOpt[inx]}} </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-12 col-2 col-sm-1 mt-5">
+      <!--Display range bar-->
+      <div class="double-handle-slider noUi-target noUi-ltr noUi-horizontal noUi-background  range-bar">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End mobile design -->

@@ -1,0 +1,88 @@
+
+/** checkbox start *****/
+
+ .common-checkbox {
+    label {
+        margin-bottom: 0rem;
+        display: inline-block;
+        @include position(relative);
+        padding-left: 5px; 
+        &::before {
+            content: "";
+            @include common-border(1px, 1px, 1px, 1px, $gray);
+            display: inline-block;
+            @include position(absolute, $top: 2px);      
+            margin-left: -20px;
+            @include common-border-radius(3px, 1px);
+            background-color: $white;
+            -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            transition: border 0.15s ease-in-out, color 0.15s ease-in-out; 
+             @include height-width(15px, 15px);
+             //@include media-breakpoint-up(md){ @include position(absolute, $top: 4px );}
+
+        }
+        &::after {
+            display: inline-block;
+            @include position(absolute, $top: 0px );
+            margin-left: -18px;
+            padding-top: 2px;
+            font-size: nth($font-sizes,1);
+            color: $gray; 
+             @include height-width(15px, 15px);
+        }
+    }
+    input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        &:focus + label::before {
+            outline: thin dotted;
+           outline-offset: -2px;
+        }
+        &:checked + label::after {
+            @include height-width(17px, 17px);
+            font-family: 'FontAwesome';
+            content: "\f00c";
+        }
+    }
+    
+    @include media-breakpoint-up(md){  
+        margin-left: 15px;
+        p { margin-top: -2px; }
+    }
+    @include media-breakpoint-down(sm){ 
+        margin-left: 17px;
+        p { margin-top: 1px; margin-bottom: 0.5rem; }
+    }
+    @include custom-device (320px, 359px)
+    {
+         p { font-size: nth($font-sizes,3);  }
+    }
+ }
+/** checkbox end *****/
+
+
+.slider-drop-down { 
+ .card {
+ @include common-border(2px, 2px, 2px, 2px, nth($blue-shades,19));
+	top: 12px;
+	box-shadow: 0 0 3px nth($grey-shades,8);
+}
+.card:after {
+content: "";
+border-bottom: 10px solid nth($blue-shades,19);
+border-right: 12px solid transparent;
+border-left: 12px solid transparent;
+@include position(absolute, $top: -10px ,$right:6px);
+z-index: 6;
+}
+.card:before {
+content: "";
+border-bottom: 8px solid $white;
+border-right: 10px solid transparent;
+border-left: 11px solid transparent;
+@include position(absolute, $top: -8px ,$right:8px); 
+z-index: 7;
+}
+
+}

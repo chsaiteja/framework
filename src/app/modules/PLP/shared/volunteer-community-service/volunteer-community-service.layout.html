@@ -1,0 +1,67 @@
+<div class=" form-group">
+  <div class="col-spacer">
+    <div class="col-12 col-sm-12 col-md-12 right-bottom-border desktop-design-display">
+      <div class="background-grey-light font-weight-bold row" *ngIf="volunteerCommunityServiceData && volunteerCommunityServiceData.length>0">
+        <div class="col-12 col-sm-4 col-md-4 top-left-border">
+          Organization</div>
+        <div class="col-12 col-sm-4 col-md-4 top-left-border">
+          Date</div>
+        <div class="col-12 col-sm-4 col-md-4 top-left-border">
+          Duties</div>
+      </div>
+      <div class="row" *ngIf="volunteerCommunityServiceData && volunteerCommunityServiceData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center"> {{tableNoData}}
+        </div>
+      </div>
+      <div class="table-odd-color row" *ngFor='let item of volunteerCommunityServiceData'>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 top-left-border">
+          {{item.Organization}}
+        </div>
+        <div class="col-4 col-sm-4 col-md-4  col-lg-4 top-left-border">
+          {{item.Dates}}
+        </div>
+        <div class="col-4 col-sm-4 col-md-4  col-lg-4 top-left-border">
+          {{item.Description}}
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"> </div>
+
+    <!-- mobile table -->
+
+    <div class="p-0 col-12 col-sm-12 col-md-12  mobile-design-display">
+      <div class="row right-bottom-border" *ngIf="volunteerCommunityServiceData && volunteerCommunityServiceData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center"> {{tableNoData}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="mobile-cards p-1" *ngFor='let item of volunteerCommunityServiceData'>
+          <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b>Organization</b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.Organization}}</div>
+          </div>
+          <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> Date </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.Dates}}</div>
+
+          </div>
+          <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> Duties </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.Description}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mobile table -->
+    <div class="clearfix"> </div>
+  </div>
+</div>

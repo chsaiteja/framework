@@ -1,0 +1,103 @@
+<div class="row gutter-10">
+  <!-- For displaying the cluster discription -->
+  <div class="col-lg-12" *ngIf='(settingsTextTab?.sections).indexOf("ShortDescription") != -1'>
+    <p>
+      <b>{{(occClusterStore).ShortDescription}}</b>
+    </p>
+  </div>
+  <!-- For displaying the section name and links-->
+  <div class="col-lg col-md col-12" id="ataglance" *ngIf='(settingsTextTab?.sections).indexOf("TopSalaries") != -1'>
+    <div class="career-card orange">
+      <div class="career-card-header">
+        <h5 class="card-title ">
+          <i class="fa icon-top-5-salaries panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.TopSalaries}}
+        </h5>
+      </div>
+      <div class="card-block career-card-body scroll-class">
+        <ul class="list">
+          <li *ngFor="let item of (occClusterStore).TopSalaries">
+            <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(item.linkID,item.linkTitle)"> {{item.linkTitle}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- For displaying the score card based on the boolean value -->
+  <div class="col-lg col-md col-12" *ngIf='(settingsTextTab?.sections).indexOf("CCIScore") != -1' (click)="$event.preventDefault();goToCCI((occClusterStore).CCIScore?.taken)">
+    <a href="#" class="pointer">
+      <div *ngIf="((occClusterStore).CCIScore?.taken==false)" class="career-card" [ngStyle]="{'background': atAGlance.clusterColor}">
+        <div class="card-block cluster-at-glance p-0">
+          <div class="cluster-icn-div-two d-table m-auto" align="center">
+            <div class="d-table-cell align-middle">
+              <h5 class="font-weight-bold pt-3">{{(settingsText).commonText?.allSections?.CCIScore}}</h5>
+              <i class="{{atAGlance.iconName}}" aria-hidden="true"></i>
+              <h6 class="font-weight-bold"> {{clusterName}} </h6>
+            </div>
+          </div>
+          <div class="bg-opacity"></div>
+          <div class="bg-opacity-text">
+            <p>{{(occClusterStore).CCIScore?.text}} </p>
+            <img src="/assets/images/rocket.png">
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="((occClusterStore).CCIScore?.taken==true)" class="career-card d-table" [ngStyle]="{'background': atAGlance.clusterColor}">
+        <div class="card-block cluster-at-glance d-table-cell align-middle">
+          <div class="cluster-icn" align="center">
+            <i class="{{atAGlance.iconName}}" aria-hidden="true"></i>
+          </div>
+          <div align="center">
+            <img src="/assets/images/bar-small-graph.png">
+            <p class="pt-3">{{(occClusterStore).CCIScore?.text}}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+  <!-- For displaying the TopOpportunities card -->
+  <div class="col-lg col-md col-12" *ngIf='(settingsTextTab?.sections).indexOf("TopOpportunities") != -1'>
+    <div class="career-card cardcolor-12 ">
+      <div class="career-card-header">
+        <h5 class="card-title">
+          <i class="icon-clu_business panal-icon-align" aria-hidden="true"></i> {{(settingsText)?.commonText?.allSections?.TopOpportunities}}</h5>
+      </div>
+      <div class="card-block career-card-body scroll-class">
+        <ul class="list">
+          <li *ngFor="let item of (occClusterStore).TopOpportunities">
+            <a href="" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(item.linkID,item.linkTitle,atAGlance.iconName,atAGlance.clusterColor)">
+              {{item.linkTitle}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Basingon the language change this div occurs -->
+  <div class="col-lg col-md col-12" *ngIf='(settingsTextTab?.sections).indexOf("ClusterDefinition") != -1'>
+    <div class="lg-card-img mb-2"> </div>
+  </div>
+
+  <div class="col-lg col-md col-12" *ngIf='(settingsTextTab?.sections).indexOf("ClusterDefinition") != -1'>
+    <div>
+      <div class="card-bg"></div>
+      <div class="career-card orange d-table w-100">
+        <div class="card-block card-block2-p-plp3 align-middle d-table-cell cluster-noun-text text-left">
+          <div *ngFor="let item of (occClusterStore).ClusterDefinition">
+            <h2 class="text-left px-3" *ngIf="(item.type == 'h')">
+              <b>{{item.text}}</b>
+            </h2>
+            <p class="text-left mb-0" *ngIf="(item.type == 'p')">
+              <i>{{item.text}}</i>
+            </p>
+            <ol *ngIf="(item.type == 'ol')">
+              <li *ngFor="let val of item.text">
+                <div>{{val}}</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

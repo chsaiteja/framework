@@ -1,0 +1,37 @@
+<div id="wrapper-body">
+  <div id="main-wrapper-body">
+    <div id="main-body" tabindex="-1">
+
+      <div class="container content-box-shadow tiles-top-spacing">
+
+        <div class="d-block" (click)="menuClose()">
+
+          <PLP-nav-header class="w-100" *ngIf='!tileView' [header]="sectionObject" (changeInrView)="changeViewHeader($event)" [report-status]="reportState"></PLP-nav-header>
+          <!--{{sectionObject|json}}-->
+          <dynamic-layout-tag [componentTypes]="componentType" [ItemsList]="itemsList"></dynamic-layout-tag>
+          <!--<div [ngSwitch]="viewMode">
+      <div *ngSwitchCase="'Report'">
+        <report-view></report-view>
+      </div> 
+    </div>-->
+          <!--<router-outlet [hidden]="!(viewMode == 'Report')"></router-outlet>-->
+        </div>
+        <!--<span *ngIf="!(viewMode == 'Report')">
+  <button (click)="ItemClicked('Report')" class="btn btn-red-plp gen-pdf-btn" type="button" >
+    <i class="fa fa-file-text-o white-color"> </i>
+ </button>
+</span>
+  <span *ngIf="(viewMode == 'Report')">
+  <button (click)="loadPreviousForm()" class="btn btn-red-plp gen-pdf-btn" type="button" >
+    <i class="fa icon-back-left-arrow white-color"> </i>
+   </button>
+</span>-->
+
+      </div>
+
+
+
+      <static-footer class="footerheightlength"></static-footer>
+    </div>
+  </div>
+</div>

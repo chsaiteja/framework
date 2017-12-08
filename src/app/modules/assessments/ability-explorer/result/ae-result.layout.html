@@ -1,0 +1,231 @@
+<h4 class="common-headding sub-headding">
+    {{(resultVal).commonText?.pageText?.resultsPage?.top?.header}}</h4>
+<p> {{(resultVal).commonText?.pageText?.resultsPage?.top?.text}} </p>
+<h4 class="common-headding">{{(resultVal).commonText?.pageText?.resultsPage?.box?.header}}</h4>
+<div class="chart-ideas-result pt-0">
+    <div class="panel panel-default ">
+        <div class="result-ability">
+            <div class="row align-items-center panel-body">
+                <div class="col-md-5 col-12 col-lg-5">
+                    <div class="card result-ability-card w-100">
+                        <div class="card-block align-middle" align="center">
+                            <div class="inner-width">
+                                <div align="left">
+                                    <b>{{(resultVal).commonText?.pageText?.resultsPage?.box?.leftTitle}}</b>
+                                </div>
+                                <button class="ability-button pointer" (click)='getAETwoAreas(twoAbilities[0],twoAbilities[1])'>{{twoAbilities[0]}} & {{twoAbilities[1]}} </button>
+                            </div>
+
+                            <div align="center" class="text-bottom">
+                                <div class="input-group">
+                                    <label class="control-label pointer" data-toggle="modal" data-target="#ab">
+                                        <u>
+                                            <b>{{(resultVal).commonText?.pageText?.resultsPage?.box?.helpText}}</b>
+                                        </u>
+                                    </label>&nbsp;
+                                    <span class="icon-question-circular-button pointer"></span>
+                                </div>
+                                <div class="modal fade" id="ab" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-width" role="dialog">
+                                        <div class="modal-content modal-color">
+                                            <div class="modal-header modal-heading">
+                                                <h6 class="modal-title modal-card-title font-weight-bold">
+                                                    {{(resultVal).commonText?.pageText?.learnMorePage?.title}}
+                                                </h6>
+                                                <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div *ngFor="let value of (resultVal)?.commonText?.pageText?.learnMorePage.explainText" class="card-data">
+                                                    <h6 class="font-weight-bold"> {{value.header}}</h6>
+                                                    <p *ngFor="let val of value.para">
+                                                        {{val}}
+                                                        <p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desktop-design-display w-100">
+                        <div class="row w-100 pt-3">
+                            <div class="col-md-12 col-lg-4  ability-high">
+                                <i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;
+                                <span>{{(resultVal).commonText?.pageText.resultsPage.box.key.high}}</span>
+                            </div>
+                            <div class="col-md-12 col-lg-4 ability-medium">
+                                <i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;
+                                <span>{{(resultVal).commonText?.pageText.resultsPage.box.key.medium}}</span>
+                            </div>
+                            <div class="col-md-12 col-lg-4 ability-low">
+                                <i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;
+                                <span>{{(resultVal).commonText?.pageText.resultsPage.box.key.low}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-7 col-lg-7">
+
+                    <div algin="center" id="pieChart" (window:resize)="onResize($event)"></div>
+                </div>
+
+                <div class="mobile-design-display w-100">
+                    <div class="d-inline-flex w-100 text-center">
+                        <div class="col-4 ability-high">
+                            <i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;
+                            <span>{{(resultVal).commonText?.pageText.resultsPage.box.key.high}}</span>
+                        </div>
+                        <div class="col-sm-4 ability-medium p-0">
+                            <i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;
+                            <span>{{(resultVal).commonText?.pageText.resultsPage.box.key.medium}}</span>
+                        </div>
+                        <div class="col-4 ability-low">
+                            <i class="fa fa-square" aria-hidden="true"></i>&nbsp;&nbsp;
+                            <span>{{(resultVal).commonText?.pageText.resultsPage.box.key.low}}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <p class="mt-4 mb-1"> {{(resultVal).commonText?.pageText?.resultsPage?.aboveCards}}</p>
+            <div class="row gutter-10 ideas-result-cards">
+
+                <div *ngIf="(aeResultHigh.length)!==0" class="col-12 col-md-4">
+                    <div class="col-lg-12 col-md-12 col-12 p-0" *ngFor="let item of aeResultHigh">
+
+                        <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#areaAbbr'+item.areaAbbr">
+                            <div class="d-table">
+                                <div class="ip-result-card-score " [ngStyle]="{'background-color': item.color}">
+                                    <div class="ip-result-icn-text text-center">
+                                        <div>{{(returnedVal).commonText.yourScore}}</div>
+                                        <div class="text-center ip-result-score">{{item.score}}</div>
+                                    </div>
+                                </div>
+                                <div class="media-left-ip-result">
+                                    <div class="ip-result-icn-text text-center">
+                                        <div>
+                                            <img src="{{aeIconsJson[item.title]}}">
+                                        </div>
+                                        <div>
+                                            <h6 class="text-capitalize"> {{item.title}} </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+
+                        <div class="modal fade" id="areaAbbr{{item.areaAbbr}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="dialog">
+                                <div class="modal-content modal-color">
+                                    <div class="modal-header modal-heading" [ngStyle]="{'background-color': item.color}">
+                                        <h6 class="modal-title modal-card-title">
+                                            <b>{{item.title}} </b>
+                                        </h6>
+                                        <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-data">{{item.description}} </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="(aeResultAverage.length)!==0" class="col-12 col-md-4">
+                    <div class="col-lg-12 col-md-12 col-12 p-0 " *ngFor="let item of aeResultAverage">
+                        <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#areaAbbr'+item.areaAbbr">
+                            <div class="d-table">
+                                <div class="ip-result-card-score " [ngStyle]="{'background-color': item.color}">
+                                    <div class="ip-result-icn-text text-center">
+                                        <div>Your&nbsp;Score</div>
+                                        <div class="text-center ip-result-score">{{item.score}}</div>
+                                    </div>
+                                </div>
+                                <div class="media-left-ip-result">
+                                    <div>
+                                        <div class="ip-result-icn-text text-center">
+                                            <div>
+                                                <img src="{{aeIconsJson[item.title]}}" class="">
+                                            </div>
+                                            <div>
+                                                <h6 class="text-capitalize"> {{item.title}} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <div class="modal fade" id="areaAbbr{{item.areaAbbr}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog " role="dialog" style="width:92%;">
+                                <div class="modal-content modal-color">
+                                    <div class="modal-header modal-heading" [ngStyle]="{'background-color': item.color}">
+                                        <h6 class="modal-title modal-card-title">
+                                            <b>{{item.title}}</b>
+                                        </h6>
+                                        <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-data">{{item.description}} </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="(aeResultLow.length)!==0" class="col-12 col-md-4">
+                    <div class="col-lg-12 col-md-12 col-12 p-0" *ngFor="let item of aeResultLow">
+                        <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#areaAbbr'+item.areaAbbr">
+                            <div class="d-table">
+                                <div class="ip-result-card-score " [ngStyle]="{'background-color': item.color}">
+                                    <div class="ip-result-icn-text text-center">
+                                        <div>Your&nbsp;Score</div>
+                                        <div class="text-center ip-result-score">{{item.score}}</div>
+                                    </div>
+                                </div>
+                                <div class="media-left-ip-result white">
+                                    <div>
+                                        <div class="ip-result-icn-text text-center">
+                                            <div>
+                                                <img src="{{aeIconsJson[item.title]}}" class="">
+                                            </div>
+                                            <div>
+                                                <h6 class="text-capitalize"> {{item.title}} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <div class="modal fade" id="areaAbbr{{item.areaAbbr}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog " role="dialog">
+                                <div class="modal-content modal-color">
+                                    <div class="modal-header modal-heading" [ngStyle]="{'background-color': item.color}">
+                                        <h6 class="modal-title modal-card-title">
+                                            <b>{{item.title}}</b>
+                                        </h6>
+                                        <button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-data">{{item.description}} </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-4 mb-1"> {{(resultVal).commonText?.pageText?.resultsPage?.belowCards}}</p>
+            <!-- AE RESULT CARD END -->

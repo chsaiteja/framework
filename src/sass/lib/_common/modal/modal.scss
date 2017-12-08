@@ -1,0 +1,252 @@
+.modal-dialog {
+    width: 92%!important;
+}
+
+
+/****************************
+* Tool-2 Tip End
+****************************/
+
+.tooltip-inner {
+    background: nth($blue-shades, 15);
+    z-index: 999999;
+}
+
+.factors-page {
+    .tooltip {
+        top: 0px!important;
+    }
+    .tooltip-inner {
+        max-width: 220px!important;
+        width: 220px!important;
+        padding: 5px!important;
+        @include custom-device(767px, 992px) {
+            max-width: 140px!important;
+        }
+        &::before {
+            @include position(absolute, $top: 20px!important);
+        }
+    }
+    .factors-list li:nth-last-child(-n+6) {
+        .tooltip {
+            bottom: 0;
+        }
+        .tooltip-inner {
+            @include position(absolute, $bottom: 0px!important, $right: 55%);
+            &::before {
+                @include position(none, $bottom: 18px!important, $right: -5px, $top: auto!important);
+            }
+        }
+    }
+}
+
+
+/****************************
+* Tool-2 Tip End
+****************************/
+
+
+/****************************
+* Modal fo into pages start
+****************************/
+
+.intro-pages {
+    .model-width {
+        .modal-header {
+            padding-bottom: 7px;
+            @include common-border(0, 0px, 1px, 0, nth($grey-shades, 4));
+            margin-bottom: 10px;
+        }
+        .modal-body {
+            padding: 0px 15px;
+            position: relative;
+            width: $width-value;
+            margin: 0px!important;
+            button {
+                color: $gray-light;
+            }
+            .intro-options-mobile {
+                margin: 15px 0 0 0px;
+                list-style: none;
+                li {
+                    padding: 5px 0;
+                    vertical-align: middle;
+                    i {
+                        color: nth($orange-shades, 1);
+                        display: table-cell;
+                        font-size: nth($font-sizes, 16);
+                        vertical-align: middle;
+                    }
+                    .smileys-mobile-popup {
+                        vertical-align: middle;
+                        display: table-cell!important;
+                        width: 95%!important;
+                        @include common-border-shadow(0, 0px, 0px, 0px, white, 0px);
+                        font-size: nth($font-sizes, 3)!important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/****************************
+* Modal fo into end
+****************************/
+
+
+/****************************
+* Modal for result cards
+****************************/
+
+.modal-color {
+    background-color: $white!important;
+    text-align: justify;
+    color: $black;
+    .modal-header {
+        background-color: nth($green-shades, 12);
+        color: $white;
+        padding: 10px;
+        @include common-individual-border-radius($top-left: 4px, $top-right: 4px);
+    }
+    .modal-width {
+        width: 92%;
+    }
+    i {
+        font-size: nth($font-sizes, 10);
+        cursor: pointer;
+    }
+    .modal-heading {
+        border-bottom: 0;
+    }
+    .modal-card-title {
+        width: 92%;
+    }
+    .modal-close {
+        background: none;
+        border: none;
+        color: $white;
+        cursor: pointer;
+        font-size: nth($font-sizes, 9);
+    }
+    .card-data {
+        padding: 2px 15px;
+    }
+    h6 {
+        @include media-breakpoint-down(md) {
+            margin: 0 0 0 4px;
+        }
+    }
+}
+
+
+/****************************
+* End of Modal for result cards
+****************************/
+
+
+/*************** Print start*****************/
+
+.eq-result-page,
+.ip-wil-result-page,
+.os-print-result {
+    .print-page {
+        max-width: 92%!important;
+        .icon-text-align {
+            position: relative;
+            width: 30px;
+            top: 5px;
+            margin-right: 10px;
+        }
+        ol li {
+            padding: 5px;
+        }
+    }
+}
+
+
+/*************** Print End*****************/
+
+
+/***********snackbar***********/
+
+
+/****************snackbar************/
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px; //  margin-left: -125px;
+    background-color: #6fa301;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 99999; //left: 90%;
+    right: 25px;
+    bottom: 100px;
+    font-size: 17px;
+}
+
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+
+#snackbar.show {
+    visibility: visible;
+    /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+/* Animations to fade the snackbar in and out */
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 100px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 100px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 100px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 100px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+
+/*************/

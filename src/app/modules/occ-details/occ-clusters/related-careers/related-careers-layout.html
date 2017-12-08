@@ -1,0 +1,14 @@
+<!-- For displaying the text from the store. -->
+<p>{{(occClusterStore|async).RelatedCareers?.intro}}</p>
+<!-- For displaying the related careers links. -->
+<div class="career-card Ideas-card1" *ngIf='(settingsTextTab?.sections).indexOf("RelatedCareers") != -1'>
+  <div *ngFor="let value of (occClusterStore|async).RelatedCareers?.lists">
+    <div class="card-block career-card-body scroll-class">
+      <ul class="list row">
+        <li class="col-12 col-md-6 mt-2" *ngFor="let val of value.links">
+          <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(val.linkID,val.linkTitle)">{{val.linkTitle}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

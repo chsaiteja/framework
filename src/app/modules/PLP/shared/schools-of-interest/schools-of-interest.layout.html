@@ -1,0 +1,81 @@
+<div class="form-group">
+  <div class="col-spacer">
+    <div class="col-12 col-sm-12 col-md-12 right-bottom-border desktop-design-display">
+      <div class="background-grey-light font-weight-bold row" *ngIf="schoolsOfInterestData && schoolsOfInterestData.length>0">
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          Schools of Interest</div>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          Date Saved</div>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          What I Learned</div>
+      </div>
+
+      <div class="row right-bottom-border" *ngIf="schoolsOfInterestData && schoolsOfInterestData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+          {{tableNoData}}
+        </div>
+      </div>
+      <div class="table-odd-color row" *ngFor='let item of schoolsOfInterestData'>
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 top-left-border">
+          {{item.Title}}
+        </div>
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 top-left-border">
+          {{item.UpdatedTimeStamp | customDate}}
+        </div>
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 top-left-border">
+          {{item.UserNotes}}
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="clearfix"> </div>
+
+
+
+    <!-- mobile table -->
+
+    <div class="p-0 col-12 col-sm-12 col-md-12 mobile-design-display">
+      <div class="row right-bottom-border " *ngIf="schoolsOfInterestData && schoolsOfInterestData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+          {{tableNoData}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="mobile-cards p-1" *ngFor='let item of schoolsOfInterestData'>
+          <div class="row">
+
+            <div class="col-5 col-sm-5 col-md-5">
+              <b>Program of Study</b>
+            </div>
+
+            <div class="col-7 col-sm-7 col-md-7">
+              {{item.Title}}</div>
+          </div>
+          <div class="row">
+            <div class="col-5 col-sm-5 col-md-5">
+              <b> Date Saved </b>
+            </div>
+
+            <div class="col-7 col-sm-7 col-md-7">
+              {{item.UpdatedTimeStamp | customDate}}</div>
+
+          </div>
+          <div class="row">
+            <div class="col-5 col-sm-5 col-md-5">
+              <b> What I Learned </b>
+            </div>
+
+            <div class="col-7 col-sm-7 col-md-7">
+              {{item.UserNotes}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mobile table -->
+    <div class="clearfix"> </div>
+  </div>
+</div>

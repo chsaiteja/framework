@@ -1,0 +1,422 @@
+body {
+    font: {
+        family: $font-family-Arial!important;
+        size: $font-size-base;
+        color: $gray-light;
+    }
+    background: nth($white-shades, 2) !important;
+    @include media-breakpoint-down(sm) {
+        font-size: $font-size-sm;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.three-dots {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    text-decoration: none!important;
+}
+
+.tooltip {
+    z-index: 9!important;
+}
+
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+    .wil-assessment-page .wil-card-block ul li .wil-circle-notAllowed {
+        top: 5px!important;
+    }
+    .rating-in-tabs p {
+        padding: 18px 0px 20px!important;
+        @include media-breakpoint-only(md) {
+            padding: 19px 0px 22px!important
+        }
+    }
+    input[type=text]::-ms-clear {
+        display: none!important;
+    }
+    input[type=password]::-ms-reveal {
+        display: none;
+    }
+    .common-enable-ques-arrow {
+        top: 0px!important;
+    }
+    .common-disable-ques-arrow {
+        top: -15px!important;
+        right: 16px!important;
+    }
+    .card-group-2 .card {
+        margin: 3px!important;
+    }
+    .result-list {
+        &.height {
+            @media (min-width: 768px) {
+                min-height: 140px!important;
+            }
+        }
+    }
+}
+
+
+/***************Start body scroll****************/
+
+#wrapper-body {
+    @include height-width(100%, 100%);
+    min-height: 100%;
+    @include position (absolute, $top: 0, $left: 0);
+    display: inline-block;
+}
+
+#main-wrapper-body {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include media-breakpoint-up(md) {
+        padding: 91px 0 65px;
+    }
+    @include media-breakpoint-down(sm) {
+        padding: 97px 0 0px;
+    }
+    #main-body {
+        @include position (relative);
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    #main-wrapper-body {
+        padding: 97px 0 0px;
+    }
+}
+
+
+/***************End of body scroll****************/
+
+$colors-list: nth($green-shades, 12) nth($orange-shades, 2) nth($blue-shades, 16) nth($pink-shades, 1) nth($green-shades, 28) nth($green-shades, 24) nth($green-shades, 27) nth($pink-shades, 4) nth($green-shades, 26) nth($green-shades, 11) nth($blue-shades, 17) nth($green-shades, 18);
+@each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    .cardcolor-#{$i} {
+        background-color: $current-color;
+    }
+}
+
+
+/***************gutter****************/
+
+.gutter-10 .card .icon {
+    float: right;
+}
+
+.gutter-10.row {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.gutter-10>[class^="col-"],
+.gutter-10>[class^=" col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+/***************end of gutter****************/
+
+
+/****************common for careers,clusters,emerging careers************/
+
+.Occupation-Sort-card {
+    @extend .Ideas-card1;
+}
+
+.mobile-container {
+    @include media-breakpoint-down(sm) {
+        width: $width-value;
+        margin: 0px;
+        padding: 0px!important;
+        overflow-x: hidden;
+    }
+}
+
+.mobie-width {
+    width: $width-value!important;
+}
+
+.bodypadding {
+    min-height: $height-value;
+}
+
+.tab-content h4 {
+    padding-top: 20px!important;
+    line-height: 18px;
+    @include common-header(none, nth($font-sizes, 8), none, bold);
+    @include media-breakpoint-down(sm) {
+        padding-top: 15px;
+    }
+}
+
+.graphs-plp3 .card-block {
+    padding: 3px 0!important;
+}
+
+.Ideas-card1 {
+    background: nth($orange-shades, 2)!important;
+}
+
+.Occupation-Sort-card {
+    @extend .Ideas-card1;
+}
+
+
+/*********End of both careers and clusters***********/
+
+
+/*********both careers and emercareers***********/
+
+.heading-plp3 {
+    span {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    span:nth-child(2) {
+        line-height: 1.25;
+        @include position (relative, $top: 2px, $left:5px);
+    }
+}
+
+.card-header-slider {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid nth($grey-shades, 8);
+}
+
+.card-block-slider-filter {
+    ul {
+        margin: 0px!important;
+    }
+    li {
+        height: 35px;
+    }
+    h5 {
+        padding: 8px 0px;
+    }
+    padding: 4px 10px;
+    @include media-breakpoint-down(md) {
+        padding: 4px 10px 4px 13px;
+    }
+}
+
+.card-footer-slider {
+    padding: 0.75rem 0.25rem;
+    border-top: 1px solid nth($grey-shades, 8);
+    height: 73px;
+    @include media-breakpoint-down(xs) {
+        padding: 0.75rem 0.1rem;
+    }
+    .btn {
+        margin-left: 10px;
+    }
+    .common-button.red {
+        width: auto!important;
+    }
+}
+
+.eo-location-card {
+    height: 96px;
+    padding: 10px;
+    background: $white;
+    margin: 0 0 6px 0;
+    color: $black;
+    @include media-breakpoint-only(md) {
+        height: 105px;
+    }
+    .cmpr-crd-graph-text {
+        width: $width-value;
+        @include position (relative, $top: 0px);
+        margin: 0;
+    }
+}
+
+.slider-drop-down-2 .card {
+    @include common-border(2px, 2px, 2px, 2px, nth($blue-shades, 19));
+    top: 12px;
+    box-shadow: 0 0 3px nth($grey-shades, 8);
+    margin-bottom: 20px;
+    &:after {
+        content: "";
+        border-bottom: 10px solid nth($blue-shades, 19);
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+        @include position (absolute, $top: -10px, $left: 6px);
+        z-index: 6;
+    }
+    &:before {
+        content: "";
+        border-bottom: 11px solid $white;
+        border-right: 10px solid transparent;
+        border-left: 11px solid transparent;
+        @include position (absolute, $top: -8px, $left: 7px);
+        z-index: 7;
+    }
+}
+
+
+/****************End of common for careers,clusters,emerging careers************/
+
+
+/***************common Asessment  scss****************/
+
+.cmpr-cap-letr {
+    text-transform: capitalize;
+}
+
+@include media-breakpoint-up(md) {
+    .columned {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: column wrap;
+        -ms-flex-flow: column wrap;
+        flex-flow: column wrap;
+    }
+    .space-between {
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        @include custom-device(768px, 991px) {
+            .wes-result-page & {
+                justify-content: inherit;
+            }
+        }
+    }
+    .div {
+        -webkit-flex: 0 0 2em;
+        -ms-flex: 0 0 2em;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .columned {
+        flex-flow: column wrap;
+        display: block;
+    }
+    .space-between {
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+    }
+}
+
+.text-icon-header {
+    vertical-align: middle;
+    display: table-cell;
+    list-style: none;
+    padding: 3px 10px 0 2px;
+    .top-three-careers & {
+        font-size: $font-size-base;
+    }
+    .cci-result-page & {
+        padding: 0px 5px 0 2px;
+        a {
+            font-size: nth($font-sizes, 3);
+        }
+    }
+    h5 {
+        font-size: $font-size-sm;
+    }
+    .lss-result-page & h6 {
+        position: relative;
+        top: -3px;
+    }
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+
+/***************End of Common assessment scss****************/
+
+
+/**scss for loading**/
+
+.loader {
+    border: 8px solid nth($grey-shades, 9);
+    border-radius: 50%;
+    border-top: 8px solid nth($blue-shades, 11);
+    @include height-width(60px, 60px);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    @include position (absolute, $top: 0, $right: 0, $bottom: 0, $left: 0);
+    margin: auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .loading-responsive {
+        width: 100% !important;
+    }
+}
+
+
+/** loading end**/
+
+.ip-result-icn-text,
+.wes-result-page .card-media-left ul li,
+.eq-result-page .well-p2 {
+    h6 {
+        color: nth($grey-shades, 13);
+        font-weight: bold;
+        text-align: center;
+        font-size: nth($font-sizes, 19);
+        padding-top: 10px;
+        @media (max-width: 767px) {
+            font-size: $font-size-xs;
+        }
+    }
+}
+
+.anchorclass {
+    color: nth($blue-shades, 20)!important;
+}
+
+        .card-block p {
+     padding: 0px 16px;
+    text-align: justify;
+    }
+    .pt-35 {
+        padding-top: 35px;
+        @media (max-width: 767px) {
+            padding-top: 25px;
+        }
+    }
+    .mt-30 {
+        margin-top: -30px;
+        @media (max-width: 767px) {
+
+            margin-top: -15px;
+
+        }
+
+    }
+    @media (max-width: 767px) {
+        h6, .h6 {
+            font-size: 0.98em;
+            font-weight: bold;
+        }
+    
+    }

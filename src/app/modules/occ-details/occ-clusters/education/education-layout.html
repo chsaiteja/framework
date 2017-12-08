@@ -1,0 +1,43 @@
+<div class="row gutter-10 flex-row-cards">
+  <!-- For displaying the RelatedPrograms card. -->
+  <div class="col-lg-6 col-md-6 col-12" *ngIf='(settingsTextTab?.sections).indexOf("RelatedPrograms") != -1'>
+    <div class="career-card cardcolor-8 cards-equal-height">
+      <div class="career-card-header">
+        <h5 class="card-title p-0">
+          <i class="icon-programs-of-study panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.RelatedPrograms}}</h5>
+      </div>
+      <div class="card-block career-card-body scroll-class ">
+        <div *ngFor="let value of (occClusterStore|async).RelatedPrograms?.lists">
+          <p> {{(occClusterStore|async).RelatedPrograms?.intro}}</p>
+          <div>
+            <h6 class='px-3'>{{value.header}}</h6>
+            <ul class="list">
+              <li *ngFor="let val of value.links">
+                <div>{{val.linkTitle}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- For displaying theHelpfulHSCourses card. -->
+  <div class="col-lg-6 col-md-6 col-12" *ngIf='(settingsTextTab?.sections).indexOf("HelpfulHSCourses") != -1'>
+    <div class="career-card cardcolor-9 cards-equal-height">
+      <div class="career-card-header">
+        <h5 class="card-title p-0">
+          <i class="icon-helpful-high-school-courses panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.HelpfulHSCourses}}</h5>
+      </div>
+      <div class="card-block career-card-body scroll-class ">
+        <div *ngFor="let value of (occClusterStore|async).HelpfulHSCourses">
+          <p [innerHTML]="value.text | customText"> </p>
+          <ul *ngIf="(value.type == 'ul')" class="list">
+            <li *ngFor="let val of value.text">
+              <div>{{val}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+/**** PLP Content ****/
+
+.col-spacer {
+    padding: 0 30px 10px;
+}
+
+
+/*** profile start *****/
+
+.profile-image {
+    @include common-border-radius(50%, 3px);
+    border: solid nth($blue-shades, 2);
+    display: inline-block;
+    img {
+        @include height-width(140px, 140px);
+        @include common-border-radius(50%, 0px);
+        vertical-align: middle;
+        cursor: context-menu;
+        /*@media xs max */
+        @include media-breakpoint-down(xs) {
+            @include height-width(80px, 80px);
+        }
+    }
+    /*@media xs max */
+    @include media-breakpoint-down(xs) {
+        @include common-border-radius(50%, 2px);
+    }
+}
+
+.Profile-user-name {
+    color: nth($blue-shades, 15);
+    /*@media sm max */
+    @include media-breakpoint-down(sm) {
+        font-size: nth($font-sizes, 5);
+        padding-right: 13px;
+    }
+}
+
+.mandatory-field {
+    vertical-align: top;
+    @include common-header(nth($red-shades, 2), nth($font-sizes, 2), none, none);
+}
+
+.error-color {
+    @include common-header(nth($red-shades, 3), $font-size-base, none, none);
+}
+
+
+/*** profile end *****/
+
+
+/********************************
+* Previous and Netx Button start
+********************************/
+
+.page-navigation-plpcontent {
+    .page-heading {
+        color: nth($blue-shades, 15);
+        padding: 5px 15px;
+        @include common-border(0, 0, 1px, 0, nth($grey-shades, 4));
+    }
+    .prev-next-btn {
+        list-style: outside none none;
+        margin: 20px 0;
+        padding-left: 0;
+        text-align: center!important;
+        li {
+            display: inline;
+            span {
+                color: nth($blue-shades, 15);
+            }
+            button {
+                -moz-user-select: none;
+                background: nth($blue-shades, 15);
+                cursor: pointer;
+                margin-bottom: 4px;
+                padding: 0 10px 0 10px !important;
+                @include common-header($white, $font-size-sm, none, none);
+                span {
+                    @include common-header($white, $font-size-base, none, bold);
+                }
+            }
+            .plp-red {
+                color: nth($red-shades, 1);
+            }
+        }
+    }
+}
+
+.exp-lern-tooltip a {
+    vertical-align: sub;
+}
+
+
+/*****************************
+* Previous and Netx Button End
+*****************************/
+
+
+/*********test scores***********/
+.test-score{
+.testScoreSave {
+    width: $width-value;
+    border: none;
+    background: none;
+    overflow: hidden;
+    padding-left: 12px;
+}
+
+.form-control-2 {
+    border-bottom-right-radius: 5px!important;
+    border-top-right-radius: 5px!important;
+}
+.edit-icn-text {
+    i{
+        @include common-header($brand-success, nth($font-sizes,15), none, none);
+         /*@media sm max */
+        @include media-breakpoint-down(sm){
+            @include common-header(nth($green-shades,2), nth($font-sizes,12), none, none);
+        }
+    }
+    p{
+        font-size:  nth($font-sizes,3);
+    }
+}
+.delete-add-btn{
+.ts-e-d-btn{
+    display: table;
+    list-style: none;
+    margin-bottom: 0;
+    li { display: table-cell; vertical-align: middle; }
+}
+}
+.top-left-border{
+    word-break: normal!important;
+}
+
+}
+/********End of test scores*****/

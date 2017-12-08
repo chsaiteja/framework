@@ -1,0 +1,465 @@
+/* @font-face {
+	font-family: "plpicons";
+	src: url('./fonts/plpicons.eot');
+	src: url('./fonts/plpicons.eot?#iefix') format('eot'),
+		url('./fonts/plpicons.woff2') format('woff2'),
+		url('./fonts/plpicons.woff') format('woff'),
+		url('./fonts/plpicons.ttf') format('truetype'),
+		url('./fonts/plpicons.svg#plpicons') format('svg');
+}
+
+.icon:before {
+	font-family: "plpicons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	speak: none; only necessary if not using the private unicode range (firstGlyph option) 
+	text-decoration: none;
+	text-transform: none;
+} */
+
+@font-face {
+    font-family: "plpicons";
+    src: url('./fonts/plpicons.eot');
+    src: url('./fonts/plpicons.eot?#iefix') format('eot'), /* url('./fonts/plpicons.woff2') format('woff2'), */
+    url('./fonts/plpicons.woff') format('woff'), url('./fonts/plpicons.ttf') format('truetype'), url('./fonts/plpicons.svg#plpicons') format('svg');
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: "plpicons"!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+    text-decoration: none;
+    text-transform: none;
+}
+
+.icon-action-plan:before {
+    content: "\E001";
+}
+
+.icon-add:before {
+    content: "\E002";
+}
+
+.icon-asmnt-assessment:before {
+    content: "\E003";
+}
+
+.icon-asmnt-back-arrow:before {
+    content: "\E004";
+}
+
+.icon-asmnt-between-somewhat:before {
+    content: "\E005";
+}
+
+.icon-asmnt-between-strongly:before {
+    content: "\E006";
+}
+
+.icon-asmnt-change-language:before {
+    content: "\E007";
+}
+
+.icon-asmnt-cross:before {
+    content: "\E008";
+}
+
+.icon-asmnt-date:before {
+    content: "\E009";
+}
+
+.icon-asmnt-delete:before {
+    content: "\E00A";
+}
+
+.icon-asmnt-forward-arrow:before {
+    content: "\E00B";
+}
+
+.icon-asmnt-head-icon:before {
+    content: "\E00C";
+}
+
+.icon-asmnt-language-change:before {
+    content: "\E00D";
+}
+
+.icon-asmnt-main-assessment:before {
+    content: "\E00E";
+}
+
+.icon-asmnt-menu:before {
+    content: "\E00F";
+}
+
+.icon-asmnt-my-result:before {
+    content: "\E010";
+}
+
+.icon-asmnt-print:before {
+    content: "\E011";
+}
+
+.icon-asmnt-question-mark:before {
+    content: "\E012";
+}
+
+.icon-asmnt-restore-2:before {
+    content: "\E013";
+}
+
+.icon-asmnt-save:before {
+    content: "\E014";
+}
+
+.icon-asmnt-somewhat:before {
+    content: "\E015";
+}
+
+.icon-asmnt-star:before {
+    content: "\E016";
+}
+
+.icon-asmnt-start-over:before {
+    content: "\E017";
+}
+
+.icon-asmnt-strongly-agree:before {
+    content: "\E018";
+}
+
+.icon-asmnt-strongly-disagree:before {
+    content: "\E019";
+}
+
+.icon-asmnt-tick-mark:before {
+    content: "\E01A";
+}
+
+.icon-asmnt-un-sure:before {
+    content: "\E01B";
+}
+
+.icon-at-a-glance-education-training:before {
+    content: "\E01C";
+}
+
+.icon-back-left-arrow:before {
+    content: "\E01D";
+}
+
+.icon-cancel:before {
+    content: "\E01E";
+}
+
+.icon-career-cluster:before {
+    content: "\E01F";
+}
+
+.icon-career-clusters-interest:before {
+    content: "\E020";
+}
+
+.icon-career-goals:before {
+    content: "\E021";
+}
+
+.icon-careers:before {
+    content: "\E022";
+}
+
+.icon-chat:before {
+    content: "\E023";
+}
+
+.icon-clipboard:before {
+    content: "\E024";
+}
+
+.icon-clu_agriculture:before {
+    content: "\E025";
+}
+
+.icon-clu_architecture:before {
+    content: "\E026";
+}
+
+.icon-clu_arts:before {
+    content: "\E027";
+}
+
+.icon-clu_business:before {
+    content: "\E028";
+}
+
+.icon-clu_education_and_training:before {
+    content: "\E029";
+}
+
+.icon-clu_finance:before {
+    content: "\E02A";
+}
+
+.icon-clu_government:before {
+    content: "\E02B";
+}
+
+.icon-clu_health_science:before {
+    content: "\E02C";
+}
+
+.icon-clu_hospitality_and_tourism:before {
+    content: "\E02D";
+}
+
+.icon-clu_human_services:before {
+    content: "\E02E";
+}
+
+.icon-clu_information_technology:before {
+    content: "\E02F";
+}
+
+.icon-clu_law:before {
+    content: "\E030";
+}
+
+.icon-clu_manufacturing:before {
+    content: "\E031";
+}
+
+.icon-clu_marketing:before {
+    content: "\E032";
+}
+
+.icon-clu_science_technology:before {
+    content: "\E033";
+}
+
+.icon-clu_transportation_distribution_and_logistics:before {
+    content: "\E034";
+}
+
+.icon-comments-sign:before {
+    content: "\E035";
+}
+
+.icon-course-plan:before {
+    content: "\E036";
+}
+
+.icon-delete:before {
+    content: "\E037";
+}
+
+.icon-down-rounded-arrow:before {
+    content: "\E038";
+}
+
+.icon-education-level-1:before {
+    content: "\E039";
+}
+
+.icon-education-level-2:before {
+    content: "\E03A";
+}
+
+.icon-education-level-3:before {
+    content: "\E03B";
+}
+
+.icon-education-level-4:before {
+    content: "\E03C";
+}
+
+.icon-education-level-5:before {
+    content: "\E03D";
+}
+
+.icon-education-plans:before {
+    content: "\E03E";
+}
+
+.icon-employment-history-work:before {
+    content: "\E03F";
+}
+
+.icon-employment-outlook:before {
+    content: "\E040";
+}
+
+.icon-experiential-learning:before {
+    content: "\E041";
+}
+
+.icon-extracurricular-activities:before {
+    content: "\E042";
+}
+
+.icon-filter:before {
+    content: "\E043";
+}
+
+.icon-grad-requirement:before {
+    content: "\E044";
+}
+
+.icon-helpful-high-school-courses:before {
+    content: "\E045";
+}
+
+.icon-job-list:before {
+    content: "\E046";
+}
+
+.icon-knowledge:before {
+    content: "\E047";
+}
+
+.icon-licensing-certification:before {
+    content: "\E048";
+}
+
+.icon-like:before {
+    content: "\E049";
+}
+
+.icon-major-employers-icon:before {
+    content: "\E04A";
+}
+
+.icon-military-careers:before {
+    content: "\E04B";
+}
+
+.icon-occ-and-clusters-interest:before {
+    content: "\E04C";
+}
+
+.icon-overview:before {
+    content: "\E04D";
+}
+
+.icon-pencil-striped:before {
+    content: "\E04E";
+}
+
+.icon-personal-info:before {
+    content: "\E04F";
+}
+
+.icon-physical-demands:before {
+    content: "\E050";
+}
+
+.icon-postsecondary-schools:before {
+    content: "\E051";
+}
+
+.icon-preparation:before {
+    content: "\E052";
+}
+
+.icon-prog-of-study-of-interest:before {
+    content: "\E053";
+}
+
+.icon-programs-of-study:before {
+    content: "\E054";
+}
+
+.icon-question-circular-button:before {
+    content: "\E055";
+}
+
+.icon-red-arrow:before {
+    content: "\E056";
+}
+
+.icon-remove:before {
+    content: "\E057";
+}
+
+.icon-reset:before {
+    content: "\E058";
+}
+
+.icon-result:before {
+    content: "\E059";
+}
+
+.icon-search:before {
+    content: "\E05A";
+}
+
+.icon-self-knowledge-career-assessment:before {
+    content: "\E05B";
+}
+
+.icon-skills-abilities:before {
+    content: "\E05C";
+}
+
+.icon-star:before {
+    content: "\E05D";
+}
+
+.icon-support-network:before {
+    content: "\E05E";
+}
+
+.icon-test-scores:before {
+    content: "\E05F";
+}
+
+.icon-thumbs-down-hover:before {
+    content: "\E060";
+}
+
+.icon-thumbs-down:before {
+    content: "\E061";
+}
+
+.icon-thumbs-up-hover:before {
+    content: "\E062";
+}
+
+.icon-thumbs-up:before {
+    content: "\E063";
+}
+
+.icon-top-5-employment-opps:before {
+    content: "\E064";
+}
+
+.icon-top-5-salaries:before {
+    content: "\E065";
+}
+
+.icon-up-rounded-arrow:before {
+    content: "\E066";
+}
+
+.icon-verry-poor:before {
+    content: "\E067";
+}
+
+.icon-video:before {
+    content: "\E068";
+}
+
+.icon-volun-comm-service:before {
+    content: "\E069";
+}
+
+.icon-work-setting:before {
+    content: "\E06A";
+}

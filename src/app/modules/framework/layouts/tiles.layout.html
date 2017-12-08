@@ -1,0 +1,64 @@
+<div class="container content-box-shadow tiles-top-spacing tiles-page">
+    <div class="row assessment-m-b">
+        <div class="col-lg-12 col-md-12 pt-3 pb-5">
+            <!--<div class="" [hidden]="tileView" (click)="tileView=true" [ngStyle]="{'cursor':'pointer'}" routerLink="./tiles"><u>Click here to show tiles menu..</u></div>-->
+            <!--<div class="content-plp-3"> </div>-->
+            <div [hidden]="tileView">
+                <router-outlet></router-outlet>
+            </div>
+
+
+            <div [hidden]="!tileView" class="gutter-10">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="landing-career" [ngStyle]="{'background-image':'url('+FrameworkObj?.image+')'}">
+                            <div class="text-landing-img col-md-8 col-12 ">
+                                <h1>
+                                    <b>{{FrameworkObj?.header}}</b>
+                                </h1>
+                                <h4>{{FrameworkObj?.text}}</h4>
+                                <!-- <h4> There is a lot to consider when you think about feature</h4> -->
+                                <!-- <h4 class="desktop-design-display"> Learn what people do in careers, how much they earn, and how to prepare to enter a career.
+                                    Make your search easier by using Cluster view, this option shows careers grouped by the
+                                    knowledge and skill they require. You can narrow your search by comparing careers side
+                                    by side</h4> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- 
+                FrameworkObj: {{FrameworkObj|json}} -->
+                <div class="card-group-2">
+
+                    <a href="#" [ngStyle]='{"border-color":item.color}' class="card" *ngFor="let item of FrameworkObj?.compList" (click)="$event.preventDefault();tileClicked(item)">
+
+
+                        <div class="tiles-card pointer">
+                            <div class="card-text-tiles">
+                                <h6>{{item.compName}}</h6>
+                            </div>
+                            <div class="icon-tiles">
+                                <img src="{{item.image}}" /> </div>
+                        </div>
+
+                        <div class="card-footer card-footer-tiles d-table " [ngStyle]='{"background-color":item.color}'>
+                            <p class="d-table-cell align-middle"> {{item.description}} </p>
+                        </div>
+                    </a>
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div *ngIf="(listlength!=0)">
+	<!--Hear we get the list of occupations. -->
+	<occupation-list></occupation-list>
+</div>
+<!--This is to show the image when the list is not present. -->
+<img *ngIf="(listlength==0)" align="center" class="osdata-notfound" src="/assets/images/nodata-found.png" />
+
+<!-- mobile design -->
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#os-result-print">Open Modal</button>
+
+<div class="modal os-print-result" id="os-result-print" role="dialog">
+	<div class="modal-dialog  print-page ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 style="font-weight:bold;">Occupation Sort Print Preview</h6>
+				<i class="" data-dismiss="modal" aria-label="Close" style="color:#9d9d9d" [ngStyle]="{'cursor':'pointer'}">&times;</i>
+			</div>
+			<div class="modal-body">
+				<p style="padding: 10px 4px 4px 0;">
+					The careers matching your preferences are listed below. Click on the chart icon beside the career to see how your preferences
+					match the occupation’s requirements. Click the career title to view a complete description.</p>
+
+				<ol id="occSortList" class="row os-print-list-color">
+					<li class="col-12 col-sm-12 col-md-6" *ngFor="let element of occsort;let inx =index;">
+						<span>{{element.title}}</span>&nbsp;
+					</li>
+				</ol>
+				<br>
+				<button class="common-button blue print-btn-popup menu-not-filled" (click)="printResultPage('os-result-print')">Done</button>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End mobile design -->

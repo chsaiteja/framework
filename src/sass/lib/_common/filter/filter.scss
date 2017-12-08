@@ -1,0 +1,57 @@
+.career-index-searchbox {
+    border-color:  nth($green-shades,15)!important;
+     @include common-border-radius(3px!important,1px);
+     margin: 0 -14px 0 0;
+    padding: 0 36px 0px 10px !important;
+    height:43px;
+}
+.career-index-searchicon {
+	background-color: transparent;
+    padding: 0px !important;
+    @include position (relative, $left: -16px);
+     z-index: 7;
+ i {
+	color: nth($green-shades,15);
+    font-size: nth($font-sizes,7);
+}
+}
+.career-index-filter-icon {
+  background-color: $white;
+   padding: 0px !important;
+   @include common-border(1px,1px,1px,1px,nth($blue-shades,3));   
+      @include common-border-radius(3px!important,1px);
+    width:33px;
+   i{
+  color: nth($blue-shades,3);
+   font-size: nth($font-sizes,9);  
+   padding: 7px;
+}
+.fa-times{
+color: nth($red-shades,3)!important;
+}
+
+}
+
+.slider-drop-down .card {
+ border: 2px solid nth($blue-shades,19);
+	top: 12px;
+	box-shadow: 0 0 3px nth($grey-shades,8);
+}
+
+.slider-drop-down .card:after {
+content: "";
+border-bottom: 10px solid nth($blue-shades,19);
+border-right: 12px solid transparent;
+border-left: 12px solid transparent;
+@include position(absolute, $top: -10px, $right:6px);
+z-index: 6;
+}
+
+.slider-drop-down .card:before {
+content: "";
+border-bottom: 8px solid $white;
+border-right: 10px solid transparent;
+border-left: 11px solid transparent;
+@include position(absolute, $top: -8px, $right:8px);
+z-index: 7;
+}

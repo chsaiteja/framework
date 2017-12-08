@@ -1,0 +1,69 @@
+<div class="form-group">
+  <div class="col-spacer">
+    <div class="col-12 col-sm-12 col-md-12  right-bottom-border desktop-design-display ">
+      <div class=" row background-grey-light font-weight-bold">
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          Assessment</div>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          Date Saved</div>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          What I Learned</div>
+      </div>
+
+      <div class="row" *ngIf="careerAssessmentsData && careerAssessmentsData.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+          <b>{{tableNoData}}</b>
+        </div>
+      </div>
+      <div class="table-odd-color row" *ngFor='let item of careerAssessmentsData'>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          {{item.SortName}}
+        </div>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          {{item.UpdatedTimeStamp | customDate}}
+        </div>
+        <div class="col-4 col-sm-4 col-md-4 top-left-border">
+          <span *ngIf="item.UserNotes!='undefined'">{{item.UserNotes}}</span>
+        </div>
+
+      </div>
+    </div>
+    <!-- mobile table -->
+
+    <div class="p-0 col-12 col-sm-12 col-md-12 mobile-design-display">
+
+      <div class="row right-bottom-border" *ngIf="careerAssessmentsData && careerAssessmentsData.length == 0" align="center">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">{{tableNoData}}</div>
+      </div>
+      <div class="row">
+        <div class="mobile-cards p-1" *ngFor='let item of careerAssessmentsData, let odd=odd, let evn=even'>
+          <div class="row">
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b>Assessment</b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.SortName}}</div>
+          </div>
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> Date Saved </b></div>
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.UpdatedTimeStamp | customDate}}</div>
+          </div>
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> What I Learned </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.UserNotes}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mobile table -->
+    <div class="clearfix"> </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,109 @@
+<!-- big card-2 start -->
+<div class="lss-result-page">
+	<h4 class="common-headding sub-headding">{{(lssresultVal)?.commonText?.pageText?.resultsPage?.top?.header }}</h4>
+	<p> {{(lssresultVal)?.commonText?.pageText?.resultsPage?.top?.text}}</p>
+	<h4 class="common-headding">{{(lssresultVal)?.commonText?.pageText?.resultsPage?.boxes.header }}</h4>
+	<!-- result array in ngFor directive for displaying the image,description and heading for the learning styles -->
+	<div *ngFor="let card of result;let inx=index" class="mb-3">
+		<!-- Top two learning styles displayed among three learning styles -->
+		<div class="col-12 col-lg-12 col-md-12 card-border">
+			<div class="row">
+				<div class="col-12 col-lg-6 col-md-6 card-border" align="center" id="res-lss-plp4">
+					<img src="{{card.icon}}" align="center">
+					<!-- resultls array in ngFor directive for displaying the title,score and colorCode for the learning styles -->
+					<div class="row lss-horizontal-graph" *ngFor="let item of resultls">
+						<div class="col-5 col-lg-5 col-md-5 text-right">
+							<div class="result-text"> {{item.title}} </div>
+						</div>
+						<div class="col-1 col-lg-1 col-md-1 p-0 result-text">
+							{{item.score}}
+						</div>
+						<div class="col-6 col-lg-6 col-md-6 pull-left p-0" align="left">
+							<div class="result-bar">
+								<div [ngStyle]="{'background-color':item.colorCode,'width':item.score+'%','height':'30px'}"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 col-md-6 card-border p-0">
+					<div class="text-center">
+						<div id="carouselExampleControls{{inx}}" class="carousel slide" data-interval="false">
+							<div class="carousel-inner lss-card-height" role="listbox">
+								<div class="card-block card-top-height carousel-item active row">
+									<ul class="text-icon-header pb-2">
+										<li>
+											<!-- Dispalying the styles number in circles -->
+											<div class="text-icon-header">
+												<div class="score-circle">{{inx+1}}</div>
+											</div>
+											<h6 class="text-icon-header text-left">
+												<b>{{card.heading}}</b>
+											</h6>
+										</li>
+									</ul>
+									<p class="text-left" *ngFor="let val of card.description">{{val}}</p>
+
+								</div>
+								<div class="card-block card-top-height carousel-item  row">
+									<ul class="text-icon-header pb-2 m-0">
+										<li class="text-left">
+											<div class="text-icon-header">
+												<img class=" m-0" src="assets/images/bulb.png" align="center">
+											</div>
+											<h6 class="text-icon-header text-left">
+												<b>{{card.studyTips.title}}</b>
+											</h6>
+										</li>
+									</ul>
+
+									<ul class="pb-2  m-1">
+										<li *ngFor="let list of card.studyTips.list">
+											<h6 class="text-left">{{list}}</h6>
+										</li>
+									</ul>
+								</div>
+								<div class="card-block card-top-height carousel-item row">
+									<h6 class="text-icon-header text-left">
+										<b>{{card.studyTipsAll.title}}</b>
+									</h6>
+									<ul *ngFor="let list of card.studyTipsAll.list">
+										<li>
+											<h6 class="text-left">{{list}}</h6>
+										</li>
+									</ul>
+
+								</div>
+							</div>
+
+							<div class="study-tips-block">
+								<div class="text-icon-header text-arrow d-table w-100">
+									<div class="d-table-cell" align="left" *ngIf='showPreArrow[inx]'>
+										<a href="#carouselExampleControls{{inx}}" data-slide="prev" (click)="$event.preventDefault();carouselOptionsPrev(inx)" class="right-arrow">
+											<i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+										</a>
+										<h6>
+											<b>{{cardVal[inx]}}</b>
+										</h6>
+									</div>
+
+									<div class="d-table-cell" align="right" *ngIf='showNxtArrow[inx]'>
+										<h6>
+											<b>{{cardText[inx]}}</b>
+										</h6>
+										<a href="#carouselExampleControls{{inx}}" data-slide="next" (click)="$event.preventDefault();carouselOptions(inx)" class="right-arrow">
+											<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p class="mt-3 "> {{(lssresultVal)?.commonText?.pageText?.resultsPage?.belowBoxes}}</p>
+
+<!-- big card-1 End -->

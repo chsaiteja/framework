@@ -1,0 +1,182 @@
+
+.career-list{
+    .common-checkbox label{
+        display:block;
+        right:5px;
+    }
+    .search-results {
+        max-height:400px;
+        min-height:40px;
+        overflow-y: scroll;
+        overflow-x:hidden;
+        margin-bottom: 20px;
+        @include common-border(1px, 1px, 1px, 1px,nth($grey-shades,8));
+    }
+    .text-wages{ margin-left: -13px; }
+    .career-list-table { 
+        @include common-border(0px, 0px, 1px, 0px,$gray-light);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        &.powderblue{ background-color: nth($green-shades,20); padding: 10px 15px; color: $white;}
+        &.grey{ 
+            background-color:$gray-lighter;
+            padding: 15px 5px; 
+            cursor: pointer; 
+            color: $black; 
+            button{
+                background:none;
+                box-shadow:none;
+                border:none;
+                i{ font-size: $font-size-lg; }
+            }
+        }
+    }
+     .cluster-panal-list label {
+        & li:nth-child(even) {
+            background: nth($white-shades,8);
+        }
+     }
+     a, .cluster-panal-list a , .text-list {
+            word-break:normal;
+            @include common-header(nth($green-shades,20) !important, nth($font-sizes,5), none, none);
+            @media (max-width:992px){ font-size: nth($font-sizes, 4); }
+        a,&:hover{
+            text-decoration: none;
+        }
+    }
+  
+/****** dtata not found image start******/
+    .img-dataNotFound{
+        @include height-width(50%, 300px);
+        position:relative;
+        margin:auto;
+        .dta-not-found-img{
+            @include position (absolute, $top: 0, $right: 0, $bottom: 0, $left: 0);
+            margin:auto;
+        }
+    }
+
+/**** dtata not found image End ****/
+   .compare-btn-selected{
+       opacity:0.5;
+       pointer-events: none;
+       cursor: pointer;
+       border-radius:7px;
+       height:38px;
+       margin-top:2px;
+       @include media-breakpoint-down(sm){
+            margin-top:12px;
+       }
+   }
+}
+
+
+.foc-blue-bg-switch {
+    background:  nth($blue-shades,17)!important;
+   border-color: nth($blue-shades,17)!important;
+    color: $white!important;
+}
+.foc-white-bg-switch {
+   background-color: nth($grey-shades,27)!important;
+   border-color: nth($blue-shades,17)!important;
+   box-shadow:  none!important;
+   @include common-header(nth($blue-shades,17) !important,  nth($font-sizes,3), none, none);
+}
+.career-onmylist .btn{
+	white-space:normal!important;   
+}
+/******* chips css start *********/
+
+.chips-design{
+	list-style: none;
+	margin: 6px 0 -9px -33px;
+    @include media-breakpoint-down(sm){
+        margin: 12px 0 -9px -33px;
+    }
+	line-height:1em;
+}
+.chips-design li {
+    i{
+        margin:0 0 0 4px;
+        cursor: pointer;
+         @include position (relative, $top: 0px);
+         @include common-header(nth($red-shades,4), nth($font-sizes,8), none, none);
+    }
+    
+    h6{
+        font-size: 15px; 
+        vertical-align: top;
+        line-height: 16px!important;
+        @extend  .three-dots;
+        &.cluster-cmpar{
+            max-width: 140px;
+        }
+        &.not-onmylist-chips{
+            max-width: 140px
+        }
+    }
+}
+
+/**** popup *****/
+.content-color .modal-header {
+    background-color:nth($orange-shades,5);
+    color:$white;
+    padding:0px 10px;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    &.blue{ background-color:nth($blue-shades,17) !important; }
+    i{
+    font-size: nth($font-sizes,10);
+    cursor: pointer;
+}
+}
+
+/******* chips css end *********/
+/**********Ideas occlist chart*****************/
+.idea-occ-list-page{
+    // @include common-border(1px,1px,1px,1px,#C0C0C0);;
+    .list-box-ideas{
+        margin: 15px 0px;
+    }
+     @include custom-device(767px, 991px){
+            .color-text{  text-align: center; }
+    }
+@at-root{
+    $colors-list: nth($red-shades,5) nth($green-shades,31)  nth($green-shades,20) nth($pink-shades,3)
+    nth($grey-shades,14);
+    @each $current-color in $colors-list {
+        $i: index($colors-list, $current-color);
+        .level-#{$i} { 
+            color: $current-color!important;
+        }
+    }
+}
+
+
+
+
+    .dehigh-lighting-text-num{
+        @include common-header(nth($grey-shades,24)!important, nth($font-sizes,3),none,none);
+        text-decoration: none;
+    }
+
+    .outerChart span, .middleChart span{
+        text-decoration: underline;
+    }
+}
+/**********End Ideas occlist chart*****************/
+
+@media (max-width:767px){
+
+.d-table-mob{
+    display: table;
+    width:100%;
+}
+
+.d-tablecell-mob{
+   display: table-cell;
+   vertical-align: middle;
+   float: none;
+}
+
+}

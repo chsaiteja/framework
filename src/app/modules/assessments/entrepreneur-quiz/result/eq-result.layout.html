@@ -1,0 +1,155 @@
+<!-- Desktop design for Entrepreneur-quiz -->
+<div class="eq-result-page">
+	<h4 class="common-headding sub-headding">{{(resultVal|async).commonText?.pageText?.resultsPage?.top?.header }}</h4>
+	<p> {{(resultVal|async)?.commonText?.pageText?.resultsPage?.top?.text}}</p>
+
+	<div class="clearfix"> </div>
+	<h4 class="common-headding">{{(resultVal|async)?.commonText?.pageText?.resultsPage.box.header }}</h4>
+	<div class="green-box">
+		<div class="row">
+			<div class="col-md-5  centered m-auto">
+				<div align="center" #divTarget>
+					<h3 class="header-text">{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.leftTitle}}</h3>
+					<div #bordered class='bordered' data-percentage='0'></div>
+					<!--<div class="circleGraphic1 col-12 col-sm-12 col-md-12 col-centered canvas-align"> </div>-->
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="result-text">
+					<div class="result-para row" [ngClass]="((resultEntiQuizvar>=80)&&(resultEntiQuizvar<=100))?'result-score-color':''">
+
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[0].range}}</div>
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[0].explain}}</div>
+					</div>
+					<div class="result-para row" [ngClass]="((resultEntiQuizvar>=60)&&(resultEntiQuizvar<=79))?'result-score-color ':''">
+
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[1].range}}</div>
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[1].explain}}</div>
+
+					</div>
+					<div class="result-para row" [ngClass]="((resultEntiQuizvar>=40)&&(resultEntiQuizvar<=59))?'result-score-color ':''">
+
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[2].range}}</div>
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[2].explain}}</div>
+					</div>
+					<div class="result-para row" [ngClass]="((resultEntiQuizvar>=0)&&(resultEntiQuizvar<=39))?'result-score-color':''">
+
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[3].range}}</div>
+						<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[3].explain}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="mt-4 mb-1"> {{(resultVal|async)?.commonText?.pageText?.resultsPage?.aboveCards}}
+
+		<div class="row eq-last-child-card">
+			<div class="col-lg-4  col-md-6 col-sm-6 col-12" *ngFor="let area of (areaVal|async)?.areas;let inx=index">
+				<a href="#" class="card well-p2 text-center pointer" data-toggle="modal" [attr.data-target]="'#'+inx" (click)='eqResClick(inx)'>
+					<div class="wil-select-right pull-right"></div>
+					<div class="checked-image-wil pull-right" [hidden]="(eqResArr[inx]!=inx)">
+						<img alt="checked" src="\assets\images\checked.png">
+					</div>
+					<div class="align-middle d-table-cell">
+						<img alt="work-hard" src={{cardIcon[area.title]}}>
+						<h6> {{area.title}} </h6>
+					</div>
+
+				</a>
+				<div class="modal fade" id="{{inx}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-width" role="dialog">
+						<div class="modal-content modal-color">
+							<div class="modal-header modal-heading">
+								<h6 class="modal-title modal-card-title">
+									<b>{{area.title}}</b>
+								</h6>
+								<button class="modal-close" data-dismiss="modal" aria-label="Close">&times;</button>
+							</div>
+							<div class="modal-body">
+								<div class="card-data">{{area.description}} </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p class="mt-3"> {{(resultVal|async)?.commonText?.pageText?.resultsPage?.belowCards}}</p>
+
+		<!-- Destop End design -->
+		<!-- Print design -->
+		<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#eq-result-print">Open Modal</button>
+		<div class="modal  " id="eq-result-print" role="dialog">
+			<div class="modal-dialog  print-page">
+				<div class="modal-content ">
+					<div class="modal-header">
+						<h5> Entrepreneur Career Assessment Print Preview </h5>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+					<div class="modal-body">
+						<div class="clearfix"> </div>
+						<div class="row green-box" id="printGo">
+							<div class="col-md-4 centered">
+								<div align="center" id="theName" #printView>
+									<!--<div class="printcirclechart col-centered canvas-align d-none" id="circleGraphicpopup-print" ></div>
+								<h3 class="header-text" id="canvas-img">Your score was</h3>
+								<div #bordered1 class='bordered' data-percentage='0'></div>-->
+									<!--<div class="circleGraphic2  col-12 col-sm-12 col-md-12 col-centered canvas-align">
+
+								</div>-->
+								</div>
+
+							</div>
+							<div class="col-md-8 ">
+								<div class="result-text" id="eq-canvas-data">
+									<div class="result-para row" [ngClass]="((resultEntiQuizvar>=80)&&(resultEntiQuizvar<=100))?'result-score-color':''">
+
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[0].range}}</div>
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[0].explain}}</div>
+									</div>
+									<div class="result-para row" [ngClass]="((resultEntiQuizvar>=60)&&(resultEntiQuizvar<=79))?'result-score-color ':''">
+
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[1].range}}</div>
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[1].explain}}</div>
+
+									</div>
+									<div class="result-para row" [ngClass]="((resultEntiQuizvar>=40)&&(resultEntiQuizvar<=59))?'result-score-color ':''">
+
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[2].range}}</div>
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[2].explain}}</div>
+									</div>
+									<div class="result-para row" [ngClass]="((resultEntiQuizvar>=0)&&(resultEntiQuizvar<=39))?'result-score-color':''">
+
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[3].range}}</div>
+										<div>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.box?.rightExplain[3].explain}}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<p class="mt-3">{{(resultVal|async)?.commonText?.pageText?.resultsPage?.aboveCards}}</p>
+
+						<div class="col-md-12" id="eq-canvas-matter" *ngFor="let area of (areaVal|async)?.areas;let inx=index">
+							<div class="d-table mt-1">
+								<!--<img alt="work-hard" class="d-table-cell icon-text-align" src={{cardIcon[area.title]}}>&nbsp;&nbsp;
+                                <h5 class="d-table-cell "> {{area.title}}</h5>-->
+								<img class="d-table-cell icon-text-align" alt="work-hard" src={{cardIcon[area.title]}}>
+								<h5 class="d-table-cell "> {{area.title}} </h5>
+							</div>
+							<div>{{area.description}} </div>
+						</div>
+						<hr>
+						<div class="col-md-12">
+							<p>
+								<p>{{(resultVal|async)?.commonText?.pageText?.resultsPage?.belowCards}}</p>
+						</div>
+						<button class="common-button green menu-not-filled" (click)="printResultPage()">Done</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="relatedcareer" role="tabpanel">
+			<common-print-layout></common-print-layout>
+		</div>
+</div>
+<!--End of print design -->

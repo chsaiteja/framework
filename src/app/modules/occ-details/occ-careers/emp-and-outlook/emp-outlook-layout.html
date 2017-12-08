@@ -1,0 +1,212 @@
+<div class="employment-outlook">
+  <div class="eo-allcards-box">
+    <div *ngIf='(settingsTextTab?.sections).indexOf("OutlookRatings")!= -1'>
+      <div *ngFor="let item of (occCareerStore).OutlookRatings?.states;let inx=index" class="row gutter-10 eo-card-bottom-align mb-1">
+        <div class="col-lg-2 col-md-2">
+          <!-- Selected state name -->
+          <div class="location-box" align="center">
+            <b>{{item.state}}</b>
+          </div>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-12 ">
+          <div class="row gutter-10">
+            <!-- Current Employment card -->
+            <div class="col-lg-4 col-md-4 col-sm-12 ">
+              <div class="location-card">
+                <div class="row ">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-8 location-heading">
+                    <b>{{(occCareerStore).OutlookRatings?.headers[0].header}}</b>
+                    <br>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                    <ul id="empId" class="chart-mini eo-location-card-graph">
+                      <li *ngFor="let currentitem of [0,1,2,3,4,-1];let inx=index">
+                        <span [ngStyle]="(currentitem == item.ratings[0].ratingID)? {'background-color':'#0d47a1'}:{}"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="row employee-states">
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                    <div class="row box-status-text">
+                      {{item.ratings[0].rating}}
+                    </div>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-right">
+                    <div class="row box-avg-text">
+                      {{item.ratings[0].amount}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Job Growth card -->
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="location-card">
+                <div class="row">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-8 location-heading">
+                    <b>{{(occCareerStore).OutlookRatings?.headers[1].header}}</b>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-right">
+                    <img *ngIf="item.ratings[1].ratingID == 2" src="/assets/images/average.png" [ngStyle]="{'width':'40px'}" />
+                    <img *ngIf="item.ratings[1].ratingID == 3" src="/assets/images/bright.png" [ngStyle]="{'width':'40px'}" />
+                    <img *ngIf="item.ratings[1].ratingID == 1" src="/assets/images/poor.png" [ngStyle]="{'width':'40px'}" />
+                    <img *ngIf="item.ratings[1].ratingID == 0" src="/assets/images/declining.png" [ngStyle]="{'width':'40px'}" />
+                  </div>
+                </div>
+                <div class="row employee-states">
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-5"> {{item.ratings[1].rating}} </div>
+                  <div class="col-lg-7 col-md-7 col-sm-7 col-7 text-right">{{item.ratings[1].amount}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- Employment Opportunities card -->
+            <div class="col-lg-4 col-md-4 col-sm-12 ">
+              <div class="location-card">
+                <div class="row location-heading">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                    <b>{{(occCareerStore).OutlookRatings?.headers[2].header}}</b>
+
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                    <ul class="chart-mini-1 eo-location-card-graph">
+                      <li *ngFor="let item1 of [0,1,2];let inx=index">
+                        <span [ngStyle]="(item1 == item.ratings[2].ratingID)? {'background-color':'#0d47a1'}:{}"></span>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+
+                <div class="row employee-states">
+                  <div class="col-lg-7 col-md-7 col-sm-5 col-5">
+                    <div class="row box-status-text"> {{item.ratings[2].rating}} </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-7 col-7 text-right">
+                    <div class="row box-avg-text">{{item.ratings[2].amount}}</div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row gutter-10 mb-2">
+      <div class="col-lg-2 col-md-2">
+        <!-- select state button -->
+        <div ngbDropdown class="d-inline-block w-100">
+          <button class="common-button select-state-btn w-100 m-0" (click)="checkopen()" data-toggle="collapse" href="#collapseExample3"
+            aria-expanded="false" aria-controls="collapseExample3">
+            <b>{{(occCareerText).commonText?.common?.selectStates}}</b>
+          </button>
+        </div>
+      </div>
+
+
+      <!-- drop down toggel start -->
+      <div class="col-12 col-md-12 col-lg-12 p-b">
+        <div class="collapse slider-drop-down-2" id="collapseExample3">
+          <div class="card ">
+            <div class="card-header-slider">
+              {{(occCareerText).commonText?.select?.intro}}
+            </div>
+            <div class="card-block-slider-filter">
+              <div class="row">
+                <div class="col-6 col-md-4 col-lg-4" *ngFor="let stateName of (occCareerText).commonText?.select?.states;let checkId=index;">
+                  <ul class="list-unstyled">
+                    <li>
+                      <div class="common-checkbox">
+
+                        <input type="checkbox" (keydown)="count(stateName.abbr,$event)" (click)="count(stateName.abbr,'click')" id="emptest{{checkId}}"
+                          [checked]="duplicateState.indexOf(stateName.abbr) != -1" [disabled]="duplicateState.indexOf(stateName.abbr) == -1 && displayValue>=5"
+                        />
+                        <label for="emptest{{checkId}}" class="popup-states" [class.disabledp2]="duplicateState.indexOf(stateName.abbr) == -1 && displayValue>=5">
+                          <p> {{stateName.name}} </p>
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- buttons to display cancel and reset selected states -->
+            <div class="card-footer-slider  text-right">
+              <button class="common-button green" data-toggle="collapse" (click)="showStates()" href="#collapseExample3" aria-expanded="false"
+                aria-controls="collapseExample" type="button">{{(occCareerText).commonText?.common?.apply}}</button>
+              <button type="button" class="common-button orange" (click)="resetStates()">{{(occCareerText).commonText?.common?.reset}}</button>
+              <button class="common-button red" data-toggle="collapse" (click)="checkopen()" href="#collapseExample3" aria-expanded="false"
+                aria-controls="collapseExample" type="button">{{(occCareerText).commonText?.common?.cancel}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="row gutter-10">
+    <!-- Major Employers card -->
+    <div class="col-lg-4 col-md-4 col-12" *ngIf='(settingsTextTab?.sections).indexOf("MajorEmployers")!= -1'>
+      <div class="career-card orange">
+        <div class="career-card-header">
+          <h5 class="card-title p-0">
+            <i aria-hidden="true " class="icon-major-employers-icon panal-icon-align"> </i> {{(settingsText).commonText?.allSections?.MajorEmployers}}
+          </h5>
+        </div>
+        <div class="card-block  employment-outlook-card-height scroll-class">
+          <ul class="list">
+            <li *ngFor="let item of (occCareerStore).MajorEmployers">
+              <div>{{item}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Outlook card -->
+    <div class="col-lg-8 col-md-8 col-12" *ngIf='(settingsTextTab?.sections).indexOf("OutlookInfo")!= -1'>
+      <div class="career-card cardcolor-3">
+        <div class="career-card-header">
+          <h5 class="card-title p-0">
+            <i aria-hidden="true " class="icon-employment-outlook panal-icon-align"> </i> {{(settingsText).commonText?.allSections?.OutlookInfo}}
+          </h5>
+        </div>
+        <div class="card-block employment-outlook-card-height scroll-class ">
+
+          <div *ngFor="let value of (occCareerStore).OutlookInfo">
+            <p *ngIf="(value.type == 'p')"> {{value.text}}</p>
+            <ul *ngIf="(value.type == 'ul')" class="list">
+              <li *ngFor="let val of value.text">
+                <div> {{val}} </div>
+              </li>
+            </ul>
+            <h6 class=' px-3' *ngIf="(value.type == 'h')">
+              <b>{{value.text}}</b>
+            </h6>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Top Locations card -->
+  <div class="top-five-states desktop-design-display" *ngIf='(settingsTextTab?.sections).indexOf("TopOpeningLocations")!= -1'>
+    <div>
+      <h6>{{(settingsText).commonText?.allSections?.TopOpeningLocations}} </h6>
+      <div class="row text-center">
+        <div class="col-lg-1 col-md-1"> </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-6 " *ngFor="let item of (occCareerStore).TopOpeningLocations;let inx=index">
+          <button type="button" tabindex="-1" class=" loc-button-color" [ngStyle]="{'background':loc_btn_color[inx]}">
+            <i>{{item}}</i>
+          </button>
+        </div>
+        <div class="col-lg-1 col-md-1">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

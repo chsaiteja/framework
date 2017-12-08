@@ -1,0 +1,145 @@
+<!-- Nav tabs -->
+<div id="wages" class="career-wages" *ngIf='(settingsTextTab?.sections).indexOf("WageLevels")!= -1'>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" *ngFor="let tab of occCareerStore.WageLevels?.periods;let i=index;">
+            <a class="nav-link " [class.active]="i == 0" data-toggle="tab" [attr.href]="value(tab.period)" role="tab">{{occCareerStore.WageLevels?.headers[tab.period]}}</a>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div *ngIf='displayValue !=0' class="tab-content content-wages-body">
+        <div class="tab-pane" *ngFor="let wagesTabs of occCareerStore.WageLevels?.periods;let inx=index;" id="{{wagesTabs.period}}"
+            role="tabpanel" [class.active]="inx == 0">
+            <div class="content wages-tab-mobile">
+                <b>{{wagestabs[wagesTabs.period]}}</b>
+                <div class="wages-table ">
+                    <div *ngFor="let wagesVal of wagesTabs.wages;let inx1=index;" id="hideWage">
+                        <b [ngStyle]="{'color':'black'}"> {{wagesVal.label}} </b>
+                        <div class="row  wages-table-header-bg">
+                            <!-- Display header text -->
+                            <div class="col-lg-3 col-md-3  desktop-design-display">{{occCareerStore.WageLevels?.headers.location}}</div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-4 text-center">{{occCareerStore.WageLevels?.headers.entry}}</div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-4 text-center">{{occCareerStore.WageLevels?.headers.median}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center">{{occCareerStore.WageLevels?.headers.expert}}</div>
+                        </div>
+                        <div id="" role="tablist" aria-multiselectable="true" *ngFor="let locations of wagesVal.locations;let in=index;">
+                            <div>
+                                <div>
+                                    <div role="tab" id="headingOne" *ngIf='locations.isRegion==false'>
+                                        <div class="row main-table-row-header ">
+                                            <div class="col-lg-3 col-md-3 location-wag-mob">{{locations.location}}
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-4  text-center word-wrap">{{locations.entry}}</div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-4  text-center word-wrap">{{locations.median}}</div>
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-4  text-center word-wrap">{{locations.expert}}</div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-1  text-center word-wrap">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf='locations.isRegion==true'>
+                                        <div class="row " [ngClass]="(ci%2==0)?'wages-row-bg1':'wages-row-bg2'">
+                                            <div class="col-lg-3 col-md-3"> {{locations.location}} </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-4 wages-mobile-screen  text-center word-wrap">{{locations.entry}}</div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-4 wages-mobile-screen  text-center word-wrap">{{locations.median}}</div>
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-4 wages-mobile-screen  text-center word-wrap">{{locations.expert}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [ngStyle]="{'margin-bottom':'4px','margin-top':'4px'}" *ngFor="let item of occCareerStore.WageLevels?.notes">
+                        <span [ngStyle]="{'color':'#ef5350 ','font-weight':'bold'}">Note:</span>
+                        <span [ngStyle]="{'color':'#424242'}">{{item}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row  gutter-10  eo-card-bottom-align">
+
+        <div class="col-lg-2 col-md-2">
+            <!-- select state button -->
+            <div ngbDropdown class="d-inline-block w-100">
+                <button class="common-button select-state-btn w-100 m-0" (click)="checkopen()" data-toggle="collapse" href="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    <b>{{(occCareerText).commonText?.common?.selectStates}}</b>
+                </button>
+            </div>
+        </div>
+
+        <!-- drop down toggel start -->
+        <div class="col-12 col-md-12 col-lg-12">
+            <div class="collapse slider-drop-down-2" id="collapseExample">
+                <div class="card ">
+                    <div class="card-header-slider">
+                        {{(occCareerText).commonText?.select?.intro}}
+                    </div>
+                    <div class="card-block-slider-filter">
+
+
+                        <div class="row">
+                            <div class="col-6 col-md-4 col-lg-4" *ngFor="let stateName of (occCareerText).commonText?.select?.states;let checkId=index;">
+                                <ul class="list-unstyled">
+
+                                    <li>
+                                        <div class="common-checkbox">
+                                            <input type="checkbox" (keydown)="count(stateName.abbr,$event)" (click)="count(stateName.abbr,'click')" id="test{{checkId}}"
+                                                [checked]="duplicateState.indexOf(stateName.abbr) != -1" [disabled]="duplicateState.indexOf(stateName.abbr) == -1 && displayValue>=5"
+                                            />
+                                            <label for="test{{checkId}}" class="popup-states" [class.disabledp2]="duplicateState.indexOf(stateName.abbr) == -1 && displayValue>=5">
+                                                <p>{{stateName.name}}</p>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- buttons to display cancel and reset selected states -->
+                    <div class="card-footer-slider text-right">
+                        <button class="common-button green" data-toggle="collapse" (click)="showStates()" href="#collapseExample" aria-expanded="false"
+                            aria-controls="collapseExample" type="button">{{(occCareerText).commonText?.common?.apply}}</button>
+                        <button type="button" class="common-button orange" (click)="resetStates()">{{(occCareerText).commonText?.common?.reset}}</button>
+                        <button class="common-button red" data-toggle="collapse" (click)="checkopen()" href="#collapseExample" aria-expanded="false"
+                            aria-controls="collapseExample" type="button">{{(occCareerText).commonText?.common?.cancel}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="clearfix"> </div>
+
+
+
+<div *ngFor="let value of occCareerStore.WageInfo" [ngStyle]="{'margin-top':'15px'}">
+    <p *ngIf="(value.type == ' p ') && (settingsTextTab?.sections).indexOf('WageInfo')!= -1"> {{value.text}}</p>
+</div>
+<!-- Top Locations card -->
+
+<div style="position: relative; " *ngIf='(settingsTextTab?.sections).indexOf("TopSalaryLocations")!= -1'>
+    <span> </span>
+    <div class="top-five-states desktop-table mb-2 desktop-design-display ">
+        <div>
+            <h6 class="eo-image-heading "> {{(settingsText).commonText?.allSections?.TopSalaryLocations}} </h6>
+            <div class="row text-center ">
+
+                <div class="col-lg-1 col-md-1 "> </div>
+                <div class="col-lg-2 col-md-2 col-sm-4 col-6 " *ngFor="let item of occCareerStore.TopSalaryLocations;let
+        inx=index ">
+                    <button type="button " tabindex="-1" class=" loc-button-color " [ngStyle]="{ 'background':loc_btn_color[inx]} ">
+                        <i> {{item}}</i>
+                    </button>
+                </div>
+                <div class="col-lg-1 col-md-1 ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

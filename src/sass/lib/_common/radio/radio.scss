@@ -1,0 +1,39 @@
+/***** ============ radio button start ============ *****/
+.common-radio-btn{
+    .radio-button-custom {
+        opacity: 0;
+        position: absolute;   
+    }
+
+    .radio-button-custom, .radio-custom-label {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .radio-custom-label {
+        position: relative;
+    }
+
+    .radio-button-custom + .radio-custom-label:before {
+        content: '';
+        background:$white;
+        @include common-border(2px,2px,2px,2px!important,nth($white-shades,7));
+        display: inline-block;
+        vertical-align: middle;
+        @include height-width(20px,20px);
+        padding: 2px;
+        margin-right: 10px;
+        margin-top: -3px; 
+        text-align: center;
+        @include common-border-radius(50%,0px)
+    }
+
+    .radio-button-custom:checked + .radio-custom-label:before {
+        background: nth($grey-shades,8);
+        box-shadow: inset 0px 0px 0px 2px $white;
+    }
+}
+/***** ============ radio button end ============ *****/
+
+/***** ============ Ideas grade page end ============ *****/

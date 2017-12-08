@@ -1,0 +1,192 @@
+<div class="career-ataglance">
+    <div class="row gutter-10 ">
+        <!-- Wages card  -->
+        <div class="col-lg-4 col-md-12 pointer" *ngIf='(settingsTextTab?.sections).indexOf("SalaryRating") != -1' (click)='callPage("wage")'>
+            <div class="card graph-card">
+                <div class="card-block card-block-height-sm">
+                    <div class="row gutter-10 ">
+                        <div class="col-lg-5 col-md-5 text-center-graph text-md-left">
+                            <div>
+                                <b>{{(settingsText).commonText?.allSections?.SalaryRating}}</b>
+                            </div>
+                            {{(occCareerStore).SalaryRating?.rating}}
+                        </div>
+                        <div class="col-lg-7 col-md-7 ">
+                            <ul class="chart-skills mx-auto">
+                                <li>
+                                    <span [ngClass]="((occCareerStore).SalaryRating?.ratingID==0)? 'activeChartClass0':''">
+                                    </span>
+                                </li>
+                                <li>
+                                    <span [ngClass]="((occCareerStore).SalaryRating?.ratingID==1)? 'activeChartClass1':''">
+                                    </span>
+                                </li>
+                                <li>
+                                    <span [ngClass]="((occCareerStore).SalaryRating?.ratingID==2)? 'chart-ative-p3':''">
+                                    </span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <div class="salry-value"> {{(occCareerStore).SalaryRating?.amount}} </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Education & Training card  -->
+        <div class="col-lg-4 col-md-6 pointer" *ngIf='(settingsTextTab?.sections).indexOf("EducationLevel") != -1' (click)='callPage("edu")'>
+            <div class="card graph-card">
+                <!-- Card that displays about EducationLevel-->
+                <div class="card-block text-center-graph text-md-left">
+                    <div class="mb-1">
+                        <b> {{(settingsText).commonText?.allSections?.EducationLevel}}</b>
+                    </div>
+                    <div class="stacked-bar-graph d-inline-flex">
+                        <span *ngFor="let item of [0,1,2,3,4]" [ngStyle]="(item == (occCareerStore).EducationLevel?.ratingID)? {'background-color':'#0d47a1'}:{}">&nbsp;
+                            <p *ngIf="(item == (occCareerStore).EducationLevel?.ratingID)" class="edu-name-style"> {{(occCareerStore).EducationLevel.rating}}</p>
+
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Employment Opportunities card  -->
+        <div class="col-lg-4 col-md-6 pointer" *ngIf='(settingsTextTab?.sections).indexOf("OpportunityRating")!= -1' (click)='callPage("outlook")'>
+            <div class="card graph-card">
+                <!-- -- Card that displays about OpportunityRating--------------- -->
+                <div class="card-block">
+                    <div class="row gutter-10 text-center-graph text-md-left">
+                        <div class="col-lg-8 col-md-8">
+                            <div>
+                                <b>{{(settingsText).commonText?.allSections?.OpportunityRating}}</b>
+                            </div>
+                            {{(occCareerStore).OpportunityRating?.rating}}
+                        </div>
+                        <div class="col-lg-4 col-md-4 text-center-graph text-md-left">
+                            <ul class="eo-bar-chart m-auto p-0 d-table w-100">
+
+                                <li *ngFor="let item of [0,1,2];let inx=index">
+                                    <span [ngStyle]="(item == (occCareerStore).OpportunityRating?.ratingID)? {'background-color':'#0d47a1'}:{}"></span>
+                                </li>
+                                <span class="ataglance-bargraph">
+                                    {{ (occCareerStore).OpportunityRating?.amount}}
+                                </span>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row gutter-10 ">
+        <!-- Card that describe about occupation-->
+        <div class="col-lg-12 col-md-12" *ngIf='(settingsTextTab?.sections).indexOf("ShortDescription")!= -1'>
+            <p>
+                <b>{{(occCareerStore).ShortDescription}}</b>
+            </p>
+        </div>
+        <div class="col-lg-4 col-md-4 pointer" *ngIf='(settingsTextTab?.sections).indexOf("TopJobTasks")!= -1' (click)='$event.preventDefault();callPage("job_Task")'>
+            <!-- Card that describe about TopJobTasks-->
+            <a href="#" class="pointer">
+                <div class="career-card  cardcolor-12">
+                    <div class="career-card-header">
+                        <h5 class="card-title">
+                            <i class="icon-job-list  panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.TopJobTasks }} </h5>
+
+                    </div>
+                    <div class="card-block career-card-body scroll-class">
+                        <ul class="list">
+                            <li *ngFor="let item of (occCareerStore).TopJobTasks;let inx=index;">
+                                <div class="mb-1">{{(occCareerStore).TopJobTasks[inx]}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="row career-cluster-boxs">
+
+                <div class="col-lg-12" *ngIf='(settingsTextTab?.sections).indexOf("ParentCluster")!= -1'>
+                    <!-- Card that describe about parant cluster-->
+                    <div class="career-card d-table w-100" [ngStyle]="{'background-color': (occCareerStore)?.ParentCluster?.parentClusterColor}">
+                        <a href="#" class="card-block card-block2-p-plp3 align-middle d-table-cell" (click)="$event.preventDefault();
+                        workplaceRedirect(occCareerStore.ParentCluster?.linkID,occCareerStore.ParentCluster?.linkTitle,occCareerStore.ParentCluster?.parentClusterIcon,(occCareerStore).ParentCluster?.parentClusterColor)">
+                            <div class="mt-1">
+                                <h5>{{(settingsText).commonText?.allSections?.ParentCluster}}</h5>
+                                <i class="{{(occCareerStore).ParentCluster?.parentClusterIcon}} " aria-hidden="true"></i>
+                            </div>
+                            <h5 [ngStyle]="{'-webkit-line-clamp': '3'}">{{ (occCareerStore).ParentCluster?.linkTitle}}</h5>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" *ngIf='(settingsTextTab?.sections).indexOf("ClusterDefinition")!= -1'>
+                    <div class="career-card orange d-table w-100">
+                        <div class="card-block card-block2-p-plp3 align-middle d-table-cell cluster-noun-text text-left" [ngStyle]="{'cursor':'default'}">
+                            <div *ngFor="let value of (occCareerStore).ClusterDefinition">
+                                <h2 class="text-left px-3" *ngIf="(value.type == 'h')">
+                                    <b>{{value.text}}</b>
+                                </h2>
+                                <p class="text-left mb-0" *ngIf="(value.type == 'p')">
+                                    <i>{{value.text}}</i>
+                                </p>
+                                <ol *ngIf="(value.type == 'ol')" class="text-left">
+                                    <li *ngFor="let val of value.text">
+                                        <div>{{val}}</div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" *ngIf='(settingsTextTab?.sections).indexOf("EdLevelOnCard")!= -1' (click)='$event.preventDefault();callPage("edu")'>
+                    <a href="#" class="pointer">
+                        <div class="career-card sky-blue d-table w-100">
+                            <div class="card-block card-block2-p-plp3 align-middle d-table-cell cluster-noun-text text-left" [ngStyle]="{'cursor':'default'}">
+                                <div class="graph-card">
+                                    <!-- Card that displays about EducationLevel-->
+                                    <div class="text-center-graph text-md-left et-graph-card mt-5">
+                                        <div class="headding">
+                                            <b> {{(settingsText).commonText?.allSections?.EdLevelOnCard}}</b>
+                                        </div>
+                                        <div class="stacked-bar-graph d-inline-flex">
+                                            <!-- {{(occCareerStore).EdLevelOnCard|json}} -->
+                                            <span *ngFor="let item of [0,1,2,3,4];let inx=index;" [ngStyle]="(item == (occCareerStore).EdLevelOnCard?.ratingID)? {'background-color':'#0d47a1 '}:{}">&nbsp;
+                                                <i *ngIf="(item == (occCareerStore).EdLevelOnCard?.ratingID)" class={{eduIcon[inx]}}></i>
+                                                <p *ngIf="(item == (occCareerStore).EdLevelOnCard?.ratingID)" class="edu-name-style"> {{(occCareerStore).EdLevelOnCard?.rating}}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 pointer" *ngIf='(settingsTextTab?.sections).indexOf("TopWorkSetting")!= -1' (click)='$event.preventDefault();callPage("job_Setting")'>
+            <a href="#" class="pointer">
+
+                <!-- Card that describe about TopWorkSetting-->
+                <div class="career-card cardcolor-11">
+                    <div class="career-card-header">
+                        <h5 class="card-title">
+                            <i class="icon-work-setting panal-icon-align" aria-hidden="true"></i> {{(settingsText).commonText?.allSections?.TopWorkSetting}}
+                        </h5>
+                    </div>
+                    <div class="card-block career-card-body scroll-class">
+                        <ul class="list">
+                            <li *ngFor="let item of (occCareerStore).TopWorkSetting;let inx=index;">
+                                <div class="mb-1"> {{(occCareerStore).TopWorkSetting[inx]}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

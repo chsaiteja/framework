@@ -1,0 +1,367 @@
+<!-- Firstresult = {{Firstresult|json}} -->
+<div class="row p-t-b " id="cmpr-header">
+  <div class="col-md-4 col-lg-4">
+    <h4 class="common-headding">Compare Careers</h4>
+  </div>
+  <div class="col-md-8 col-lg-8 text-right">
+    <div class="btn-group-plp3 btn-group-justified">
+      <button type="button" class="common-button green" (click)="CareerList('no')">
+        <b>{{(occIndexListText)?.commonText?.common?.careersList}}</b>
+      </button>
+      <button type="button" class="common-button green" *ngIf="backAssessmentValue" (click)="backAssessment()">
+        <b>Back to Assessment</b>
+      </button>
+      <button type="button" class="common-button green desktop-design-display">
+        <b>{{(occIndexListText)?.commonText?.common?.print}}</b>
+      </button>
+      <div class="mobile-design-display">
+        <div class="floatingContainer mobile-design-display">
+          <div class="float-btn-plp3">.
+            <button class='action-button'>
+              <i class="icon-asmnt-print "></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="cmpr-img" class="row cmpr-graph-career-card  ">
+  <div class="col-lg-12">
+    <a>
+      <img src="/assets/images/compare.jpg" class="w-100" alt="" /> </a>
+  </div>
+
+</div>
+<!--  displaying the occupation name that are selected by user-->
+<div class="two-headdings container">
+  <div class="row gutter-10">
+    <div class="col-12 col-lg-6 col-md-6 " *ngFor="let comName of comOccName;let inx=index">
+      <div class="waves-table cmpir-2-btn-plp3 w-100">
+        <b>
+          {{comName}}</b>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  displaying the details of each occupation-->
+<div role="tablist" aria-multiselectable="true">
+  <div class="career-card" role="tab" id="headingOne" *ngFor="let label1 of Firstresult;let inx=index;">
+    <div [ngClass]="colorClass[inx]">
+      <div class="career-card-header  pointer w-100" role="tab" id="heading1" (click)="(filter[inx] != inx) ? methodfilter(inx,inx):methodfilter(999,inx)">
+        <!--  display the common header for both occupation and its icon-->
+        <h5 class="card-title">
+          <span>
+            <i [ngClass]="iconClass[inx]" aria-hidden="true" class="panal-icon-align"></i>
+          </span>
+          <span class="w-100">
+            {{compareNames[inx]}}
+          </span>
+
+          <button class="common-button default pull-right panal-icon-align p-0">
+            <i *ngIf="(filter[inx] != inx)" data-toggle="collapse" [attr.data-parent]="" [attr.href]="valueOccIndexCheck(inx,'ref')"
+              aria-expanded="true" [attr.aria-controls]="valueOccIndexCheck(inx,'controls')" class="icon-down-rounded-arrow  icn-font-size"
+              aria-hidden="true"></i>
+            <i *ngIf="filter[inx] == inx" data-toggle="collapse" [attr.data-parent]="" [attr.href]="valueOccIndexCheck(inx,'ref')" aria-expanded="true"
+              [attr.aria-controls]="valueOccIndexCheck(inx,'controls')" class="icon-up-rounded-arrow icn-font-size" aria-hidden="true"></i>
+          </button>
+        </h5>
+
+      </div>
+    </div>
+    <div id="collapsed{{inx}}" *ngIf="filter[inx] == inx" class="" role="tabpanel" aria-labelledby="headingOne">
+      <div>
+        <!-- this is for first occupation -->
+        <div class="row gutter-10 flex-row-cards mt-1">
+          <div class="col-lg-6 col-md-6 col-12 ">
+            <div class="career-card  card-block cards-equal-height" [ngClass]="colorClass[inx]" *ngIf="(IndexkeyValue[inx] != 'OutlookRatings' && IndexkeyValue[inx] != 'WageLevels')">
+              <p class="mobile-design-display font-weight-bold">
+                <u>{{comOccName[0]}}:</u>
+              </p>
+
+              <div *ngFor="let value of label1;let indexOfValue=index;">
+                <p *ngIf="(value.type == 'p')"> {{value.text}}</p>
+                <ul *ngIf="(value.type == 'ul')" class="list">
+                  <li *ngFor="let val of value.text;let in=index;">
+                    <div>{{val}}</div>
+                  </li>
+                </ul>
+                <ul *ngIf="(value.items)" class="list">
+                  <li *ngFor="let val of value.items">
+                    <div>{{val}}</div>
+                  </li>
+                </ul>
+                <h6 *ngIf="(value.type == 'h')">
+                  <b>{{value.text}}</b>
+                </h6>
+                <p *ngIf="(value.intro)"> {{value.intro}}</p>
+                <div *ngIf="(value.lists)">
+                  <div *ngFor="let listvalue of value.lists;let in=index">
+                    <h6 *ngIf="(listvalue.header)">{{listvalue.header}} </h6>
+                    <ul *ngIf="(listvalue.items)" class="list">
+                      <li *ngFor="let val of listvalue.items">
+                        <div>{{val}}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--wage start-->
+            <div *ngIf="IndexkeyValue[inx] == 'WageLevels'" class="cmpr-wages-plp3 cards-equal-height">
+              <!-- <p class="mobile-design-display font-weight-bold"><u>{{comOccName[0]}}:</u></p> -->
+              <div *ngFor="let wageLabel of CompWageLabel;let allinx=index;" [ngStyle]="{'padding':'10px'}">
+                <p [ngStyle]="{'color':'black'}">{{wageLabel}}</p>
+                <!-- {{label1[0].headers[0]|json}} -->
+                <div class="career-card  cardcolor-1 cards-equal-height">
+
+                  <div class="wages-card-header">
+                    <div>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 wag-cmpr-mob-show">{{wageTextVal.location}}</div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                          <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">Pay Period</div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{wageTextVal.median}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--display the lacations according to its label values-->
+                  <div *ngFor="let locationsVal of finalCompArray[allinx];let locValInx=index;" class="card-block bgColr-cmpr">
+                    <div class="row ">
+                      <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="row">
+                          <div class="wag-cmpr-mob-hide col-lg-1 col-md-1 col-sm-1 col-12 ">
+                            <p>
+                              <b>{{wageTextVal.location}}:</b>&nbsp;{{locationsVal.plocV}}</p>
+                          </div>
+                          <div class="col-6 col-lg-11 col-md-11 col-sm-8 wag-cmpr-mob-show">{{locationsVal.plocV}} </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-8">
+                        <!-- display the median value accoring to period-->
+                        <div class="row" *ngFor="let pvalu of locationsVal.pVal;let pinx=index;">
+                          <div class="col-lg-6 col-md-6 col-6  cmpr-cap-letr">
+                            <p>{{pvalu[0]}}</p>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-6">
+                            <p>{{pvalu[1]}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- wage ends-->
+            <!-- out look starts -->
+            <div class="career-card  cardcolor-3 cards-equal-height" *ngIf="IndexkeyValue[inx] == 'OutlookRatings'">
+
+
+              <div *ngFor="let value of SecondResult[inx];let indexOfValue=index;">
+                <div *ngFor="let item of value.states;let inx=index" class="card-block ">
+                  <p class="mobile-design-display font-weight-bold">
+                    <u>{{comOccName[0]}}:</u>
+                  </p>
+                  <!-- dispaly section name-->
+                  <h4 align="center">{{item.state}}</h4>
+                  <div *ngFor="let items of item.ratings;let ratinginx=index">
+                    <div class="cmpr-graph-career-card " align="center">
+                      <div class="eo-location-card cmpr-h-grp-mb">
+                        <div class="eo-location-card-data row ">
+                          <!-- display header according to its section-->
+                          <div class="col-md-9 col-lg-9 col-9 text-left">
+                            <b>{{value.headers[ratinginx].header}}</b>
+                          </div>
+                          <div align="right" class="col-md-3 col-lg-3 col-3">
+                            <!--  display graph according to scetion value-->
+                            <ul id="empId" class="chart-mini eo-location-card-graph " *ngIf="(ratinginx == 0)">
+                              <li *ngFor="let currentitem of [0,1,2,3,4];let inx=index">
+                                <span [ngStyle]="(currentitem == items.ratingID)? {'background-color':'#0d47a1 '}:{}"></span>
+                              </li>
+                            </ul>
+                            <ul *ngIf="(ratinginx == 1)" class="eo-location-card-graph cmpr-img-weather">
+                              <img *ngIf="items.ratingID == 2" src="/assets/images/average.png" />
+                              <img *ngIf="items.ratingID == 3" src="/assets/images/bright.png" />
+                              <img *ngIf="items.ratingID == 1" src="/assets/images/poor.png" />
+                              <img *ngIf="items.ratingID == 0" src="/assets/images/declining.png" />
+                            </ul>
+                            <ul class="chart-mini-1 eo-location-card-graph" *ngIf="(ratinginx == 2)">
+                              <li *ngFor="let item of [0,1,2];let inx=index">
+                                <span [ngStyle]="(item == items.ratingID)? {'background-color':'#0d47a1 '}:{}"></span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row cmpr-crd-graph-text employee-states">
+                          <!-- display rating and amount-->
+                          <div class="col-6 col-md-6 col-lg-6 text-left">{{items.rating}}</div>
+                          <div class="col-6 col-md-6 col-lg-6 text-right">{{items.amount}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!-- outlook ends -->
+          </div>
+          <!-- this is for second occupation -->
+          <div class="col-lg-6 col-md-6 col-12 ">
+            <div class="career-card  card-block cards-equal-height" [ngClass]="colorClass[inx]" *ngIf="(IndexkeyValue[inx] != 'OutlookRatings' && IndexkeyValue[inx] != 'WageLevels')">
+              <p class="mobile-design-display font-weight-bold">
+                <u>{{comOccName[1]}}:</u>
+              </p>
+
+              <!-- same as first all the screen contain same text like paragraph,heading... write
+                common funtionality for all except for wages and employment outlook
+                screen, because those two screen have to display data in table -->
+              <div *ngFor="let value of SecondResult[inx];let indexOfValue=index;">
+                <p *ngIf="(value.type == 'p')"> {{value.text}}</p>
+                <ul *ngIf="(value.type == 'ul')" class="list">
+                  <li *ngFor="let val of value.text;let in=index;">
+                    <div>{{val}}</div>
+                  </li>
+                </ul>
+                <!--<h5 *ngIf="(value.header)" > {{value.header}}</h5>-->
+                <ul *ngIf="(value.items)" class="list">
+                  <li *ngFor="let val of value.items">
+                    <div>{{val}}</div>
+                  </li>
+                </ul>
+                <h6 *ngIf="(value.type == 'h')">
+                  <b>{{value.text}}</b>
+                </h6>
+                <p *ngIf="(value.intro)"> {{value.intro}}</p>
+                <div *ngIf="(value.lists)">
+                  <div *ngFor="let listvalue of value.lists;let in=index">
+                    <h6 *ngIf="(listvalue.header)"> {{listvalue.header}} </h6>
+                    <ul *ngIf="(listvalue.items)" class="list">
+                      <li *ngFor="let val of listvalue.items">
+                        <div>{{val}}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!--wage start-->
+            <div *ngIf="IndexkeyValue[inx] == 'WageLevels'" class="cmpr-wages-plp3 cards-equal-height">
+              <!-- <p class="mobile-design-display font-weight-bold"><u>{{comOccName[0]}}:</u></p> -->
+
+              <div *ngFor="let wageLabel of CompWageLabel1;let allinx=index;" [ngStyle]="{'padding':'10px'}">
+                <p [ngStyle]="{'color':'black'}">{{wageLabel}}</p>
+                <div class="career-card  cardcolor-1 ">
+                  <div class="wages-card-header">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-4 col-sm-4 wag-cmpr-mob-show">{{wageTextVal.location}}</div>
+                      <div class="col-lg-8 col-md-8 col-sm-8">
+                        <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-6">Pay Period</div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{wageTextVal.median}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--   dispaly the lacations according to its label values-->
+                  <div *ngFor="let locationsVal of finalCompArray2[allinx];let locValInx=index;" class="card-block  scroll-class  bgColr-cmpr">
+                    <div class="row ">
+                      <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="row">
+                          <div class="wag-cmpr-mob-hide col-lg-1 col-md-1 col-sm-1 col-12">
+                            <p>
+                              <b>{{wageTextVal.location}}:</b>&nbsp;{{locationsVal.plocV}}</p>
+                          </div>
+                          <div class="col-6 col-lg-11 col-md-11 col-sm-8 wag-cmpr-mob-show">{{locationsVal.plocV}} </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-8">
+                        <!-- display the median value accoring to period-->
+                        <div class="row" *ngFor="let pvalu of locationsVal.pVal;let pinx=index;">
+                          <div class="col-lg-6 col-md-6 col-6  cmpr-cap-letr">
+                            <p>{{pvalu[0]}}</p>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-6">
+                            <p>{{pvalu[1]}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- wage ends-->
+            <!-- out look starts -->
+            <div class="career-card  cardcolor-3 cards-equal-height" *ngIf="IndexkeyValue[inx] == 'OutlookRatings'">
+
+
+              <div *ngFor="let value of label1;let indexOfValue=index;">
+                <div *ngFor="let item of value.states;let inx=index" class="card-block">
+                  <p class="mobile-design-display font-weight-bold">
+                    <u>{{comOccName[1]}}:</u>
+                  </p>
+                  <!-- dispaly section name-->
+                  <h4 align="center">{{item.state}}</h4>
+                  <div *ngFor="let items of item.ratings;let ratinginx=index">
+
+                    <div class="cmpr-graph-career-card" align="center">
+                      <div class="eo-location-card cmpr-h-grp-mb">
+                        <div class="eo-location-card-data row ">
+                          <!-- display header according to its section-->
+                          <div class="col-md-9 col-lg-9 col-9 text-left">
+                            <b>{{value.headers[ratinginx].header}}</b>
+                          </div>
+                          <div align="right" class="col-md-3 col-lg-3 col-3">
+                            <!--  display graph according to scetion value-->
+                            <ul id="empId" class="chart-mini eo-location-card-graph " *ngIf="(ratinginx == 0)">
+                              <li *ngFor="let currentitem of [0,1,2,3,4];let inx=index">
+                                <span [ngStyle]="(currentitem == items.ratingID)? {'background-color':'#0d47a1 '}:{}"></span>
+                              </li>
+                            </ul>
+
+
+                            <ul *ngIf="(ratinginx == 1)" class="eo-location-card-graph cmpr-img-weather">
+                              <img *ngIf="items.ratingID == 2" src="/assets/images/average.png" />
+                              <img *ngIf="items.ratingID == 3" src="/assets/images/bright.png" />
+                              <img *ngIf="items.ratingID == 1" src="/assets/images/poor.png" />
+                              <img *ngIf="items.ratingID == 0" src="/assets/images/declining.png" />
+                            </ul>
+
+
+                            <ul class="chart-mini-1 eo-location-card-graph" *ngIf="(ratinginx == 2)">
+                              <li *ngFor="let item of [0,1,2];let inx=index">
+                                <span [ngStyle]="(item == items.ratingID)? {'background-color':'#0d47a1 '}:{}"></span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row cmpr-crd-graph-text employee-states">
+                          <!-- display rating and amount-->
+                          <div class="col-6 col-md-6 col-lg-6 text-left">{{items.rating}}</div>
+                          <div class="col-6 col-md-6 col-lg-6 text-right">{{items.amount}}</div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- outlook ends -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

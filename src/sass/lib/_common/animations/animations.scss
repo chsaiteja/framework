@@ -1,0 +1,40 @@
+
+
+.cards-hover-effect:hover,.cards-hover-effect:focus,.well-p2:hover,.well-p2:focus{
+    background:$white!important;
+    box-shadow:0 0 5px nth($grey-shades,8);
+    z-index:9;  
+    -webkit-transition:all .2s ease-in;    
+    -webkit-transform:scale(1.03);
+    -ms-transition:all .2s ease-in;
+    -ms-transform:scale(1.03);
+    -moz-transition:all .2s ease-in;
+    -moz-transform:scale(1.03);
+    transition:all .2s ease-in;
+    transform:scale(1.03);    
+    margin-bottom:5px;
+    cursor: pointer;
+    .checked-image, .eq-select-right{
+       @include position(absolute, $top:0px, $right : 0px);
+    }
+}
+
+/* Ideas chart Animation */
+@keyframes first {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(60deg);}
+}
+    
+@keyframes second {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(150deg);}
+}
+    
+@keyframes third {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(111deg);}
+}
+@keyframes five {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(160deg);}
+}

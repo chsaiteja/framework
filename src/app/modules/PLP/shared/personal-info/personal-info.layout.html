@@ -1,0 +1,119 @@
+<div class=" ">
+  <div class="col-md-12">
+    <div class="col-spacer">
+      <div align="center">
+        <div class="profile-image">
+          <img alt="Profile picture" name="aboutme" [src]="userInfo.Avatar">
+        </div>
+        <h3 class="Profile-user-name mt-2 text-capitalize">{{userInfo.UserFullName}}</h3>
+      </div>
+      <!--</center>-->
+    </div>
+  </div>
+
+  <form [formGroup]="personalForm">
+    <div class="col-spacer">
+      <div class="row">
+        <div class="col-md-12">
+          <div *ngIf="edited" class="alert alert-success">
+            <strong>Success!</strong> {{successLabel}}
+          </div>
+          <div *ngIf="errorVal" class="alert alert-danger">
+            <strong>Oops!</strong> {{successLabel}}
+          </div>
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label for="lastName">
+            <i class="fa fa-user"></i> Last Name
+            <span *ngIf="(report=='')" class="mandatory-field">**</span>
+            <span *ngIf="personalForm.get('lastName').touched && personalForm.get('lastName').errors">
+              <span *ngIf="personalForm.get('lastName').hasError('required')" class="error-color  ">
+                {{errorMessage.lname_req}}</span>
+              <span *ngIf="personalForm.get('lastName').hasError('maxlength')" class="error-color">
+                {{errorMessage.lname_len_exceeded}}</span>
+            </span>
+          </label>
+          <input id="lastName" class="form-control" type="text" formControlName="lastName" [(ngModel)]="userInfo.LastName" [readonly]="!(report=='')"
+            (keypress)="changeText($event)" />
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label for="firstName">
+            <i class="fa fa-user"></i> First Name
+            <span *ngIf="(report=='')" class="mandatory-field">**</span>
+            <span *ngIf="personalForm.get('firstName').touched && personalForm.get('firstName').errors">
+              <span *ngIf="personalForm.get('firstName').hasError('required')" class="error-color">
+                {{errorMessage.fname_req}}</span>
+              <span *ngIf="personalForm.get('firstName').hasError('maxlength')" class="error-color  ">
+                {{errorMessage.fname_len_exceeded}}</span>
+            </span>
+          </label>
+          <input id="firstName" class="form-control" type="text" formControlName="firstName" [(ngModel)]="userInfo.FirstName" [readonly]="!(report=='')"
+            (keypress)="changeText($event)" />
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="middleName">
+            <i class="fa fa-user"></i> Middle Name
+            <span *ngIf="personalForm.get('middleName').touched && personalForm.get('middleName').errors">
+              <span *ngIf="personalForm.get('middleName').hasError('maxlength')" class="error-color">
+                {{errorMessage.mname_len_exceeded}}</span>
+            </span>
+          </label>
+          <input id="middleName" class="form-control" type="text" formControlName="middleName" [(ngModel)]="userInfo.MiddleName" [readonly]="!(report=='')"
+            (keypress)="changeText($event)" />
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="email">
+            <i class="fa fa-envelope"></i> Email
+            <span *ngIf="(report=='')" class="mandatory-field">**</span>
+            <span *ngIf="personalForm.get('email').touched && !personalForm.get('email').valid">
+              <span *ngIf="personalForm.get('email').hasError('required')" class="error-color">Email Address is required.</span>
+              <span *ngIf="personalForm.get('email').hasError('incorrectMailFormat')" class="error-color">{{errorMessage.email_invalid}}</span>
+              <span *ngIf="personalForm.get('email').hasError('maxlength')" class="error-color"> {{errorMessage.email_len_exceeded}}
+              </span>
+            </span>
+          </label>
+          <input id="email" class="form-control" type="text" formControlName="email" [(ngModel)]="userInfo.Email" [readonly]="!(report=='')"
+            (keypress)="changeText($event)" />
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="gradYear">
+            <i class="fa fa-calendar "></i> Grad Year
+            <span *ngIf="(report=='')" class="mandatory-field">**</span>
+            <span *ngIf="personalForm.get('gradYear').touched && personalForm.get('gradYear').errors">
+              <span *ngIf="personalForm.get('gradYear').hasError('required')" class="error-color"> {{errorMessage.gradyr_req}}
+              </span>
+              <span *ngIf="personalForm.get('gradYear').hasError('onlyNumerals')" class="error-color"> {{errorMessage.numeral_req}}
+              </span>
+            </span>
+          </label>
+          <input id="gradYear" class="form-control" type="text" formControlName="gradYear" [(ngModel)]="userInfo.GradYear" [readonly]="!(report=='')"
+          />
+        </div>
+        <!--<div class="container-fluid">
+            <hr>
+            <hr>
+          </div>-->
+        <div class="clearfix"> </div>
+      </div>
+      <span *ngIf="personalForm.get('lastName').touched && personalForm.get('lastName').errors">
+        <span *ngIf="personalForm.get('lastName').hasError('invalidText')" class="error-color  ">
+          {{errorMessage.script_tags_error}}</span>
+      </span>
+      <span *ngIf="personalForm.get('firstName').touched && personalForm.get('firstName').errors">
+        <span *ngIf="personalForm.get('firstName').hasError('invalidText')" class="error-color">
+          {{errorMessage.script_tags_error}}</span>
+      </span>
+      <span *ngIf="personalForm.get('middleName').touched && personalForm.get('middleName').errors">
+        <span *ngIf="personalForm.get('middleName').hasError('invalidText')" class="error-color  ">
+          {{errorMessage.script_tags_error}}</span>
+      </span>
+
+      <div class="clearfix"> </div>
+      <div *ngIf="(report=='')" class="form-group">
+        <button type="Submit" class="common-button red" [disabled]="!personalForm.valid" (click)="SavePersonalInfo()">
+          <i class="fa  fa-save "> </i> Save Information</button>
+      </div>
+    </div>
+  </form>

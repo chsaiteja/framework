@@ -1,0 +1,98 @@
+<div class="personal-qualities">
+  <div class="row p-b gutter-10 flex-row-cards">
+    <!-- IP Card -->
+    <div class="col-lg-6 col-md-6 col-12 " *ngIf='(settingsTextTab?.sections).indexOf("Interests")!= -1'>
+      <div class="career-card  cards-equal-height blue">
+        <div class="career-card-header pt-3">
+          <h5 class="card-title"> {{(settingsText).commonText?.allSections?.Interests}}</h5>
+          <p class="cards-font">{{occCareerStore.TopInterests?.text}}</p>
+        </div>
+        <div *ngIf="asessmentInterestAttended">
+
+          <div *ngIf="occCareerStore.TopInterests?.taken" align="center" class="pq-img-card">
+            <!-- Display chart along with top two interest -->
+            <div class="pichart-align-plp3">
+              <ul>
+                <li *ngFor="let val of [0,1]" class=" pointer text-left pq-list list-unstyled">
+                  <!-- <span class="square-box pointer">
+                  </span> -->
+                  <a href="#" (click)="$event.preventDefault();callIpResult('IP',occCareerStore.TopInterests?.interests[val].interest)" [ngStyle]="{'color': pieColor[occCareerStore.TopInterests?.interests[val].interest]}">
+                    <u [ngStyle]="{'color': '#0e90a0'}">{{occCareerStore.TopInterests?.interests[val].interest}}</u>
+                  </a>
+                </li>
+              </ul>
+              <img src="/assets/images/purplepieChartimg.jpg" class="pt-3" />
+            </div>
+          </div>
+          <div *ngIf="!occCareerStore.TopInterests?.taken" (click)="backAssessment('ip')" align="center" class="pq-img-card pointer">
+            <div>
+              <img src="/assets/images/personal_Qua_1.png" /> </div>
+          </div>
+        </div>
+        <!-- Display list of interest -->
+        <div class="card-block career-card-body scroll-class ">
+          <div *ngFor="let value of occCareerStore.Interests">
+            <h6 class=' px-3 pt-3' *ngIf="(value.type == 'h')">
+              <b>{{value.text}}</b>
+            </h6>
+            <ul *ngIf="(value.type == 'ul')" class="list">
+              <li *ngFor="let val of value.text">
+                <div>{{val}}</div>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- WIL Card -->
+    <div class="col-lg-6 col-md-6 col-12 " *ngIf='(settingsTextTab?.sections).indexOf("Values")!= -1'>
+      <div class="career-card purple cards-equal-height">
+        <div class="career-card-header pt-3">
+          <h5 class="card-title"> {{(settingsText).commonText?.allSections?.Values}}</h5>
+          <p class="cards-font">{{occCareerStore.TopValues?.text}}</p>
+        </div>
+        <div *ngIf="asessmentValueAttended">
+
+          <div *ngIf="occCareerStore.TopValues?.taken" align="center" class="pq-img-card">
+            <!-- Display chart along with top two Values -->
+            <div class="pichart-align-plp3">
+              <ul>
+                <li *ngFor="let val of [0,1];" class="pointer text-left pq-list list-unstyled">
+                  <!-- <span class="square-box pointer ">
+                  </span> -->
+                  <a href="#" (click)="$event.preventDefault();callIpResult('WIL',occCareerStore.TopValues?.values[val].value)" [ngStyle]="{'color': wilColors[occCareerStore.TopValues?.values[val].value]}">
+                    <u [ngStyle]="{'color': '#0e90a0'}">{{occCareerStore.TopValues?.values[val].value}}</u>
+                  </a>
+                </li>
+              </ul>
+              <img src="/assets/images/pieChartimg.png" class="pt-3" />
+            </div>
+
+          </div>
+          <div *ngIf="!occCareerStore.TopValues?.taken" (click)="backAssessment('WIL')" align="center" class="pq-img-card pointer">
+            <div>
+              <img src="/assets/images/personal_Qua_2.png" /> </div>
+          </div>
+        </div>
+        <!-- Display list of Values -->
+        <div class="card-block career-card-body scroll-class ">
+          <div *ngFor="let value of occCareerStore.Values">
+            <h6 class=' px-3 pt-3' *ngIf="(value.type == 'h')">
+              <b>{{value.text}}</b>
+            </h6>
+            <ul *ngIf="(value.type == 'ul')" class="list">
+              <li *ngFor="let val of value.text">
+                <div>{{val}}</div>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

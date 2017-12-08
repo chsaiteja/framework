@@ -1,0 +1,42 @@
+<!--<PLP-nav-header [header]="sectionObject" (changeView)="changeView($event)" [report-status]="report"></PLP-nav-header>-->
+<form>
+
+
+  <div class="form-group">
+    <div class="col-spacer">
+      <div *ngIf="edited" class="alert alert-success">
+        <strong>Success!</strong> {{successLabel}}
+      </div>
+      <div *ngIf="errorVal" class="alert alert-danger">
+        <strong>Oops!</strong> {{successLabel}}
+      </div>
+      <div class="edit-icn-text">
+        <i *ngIf="(report=='')" class="icon-pencil-striped"></i>
+        <i *ngIf="!(report=='')" class="icon-pencil-striped"></i>
+        <span class="font-weight-bold">{{ questionObject.questions[0] }}</span>
+        <p class="font-weight-bold mb-1">Last Saved On {{educationSavedDt | customDate}}</p>
+        <!-- | date:"MM/dd/yyyy"-->
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 right-bottom-border">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 top-left-border" *ngFor="let item of educationFieldList; let indx = index">
+            <div class="common-checkbox mt-2">
+              <input type="checkbox" id="{{educationFieldList[indx].value}}" [(ngModel)]="educationFieldList[indx].selected" name="{{educationFieldList[indx].value}}">
+              <label for="{{educationFieldList[indx].value}}"><p class=" mb-0">{{educationFieldList[indx].label}}</p></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="(report=='')">
+        <button type="Submit" class="common-button red mt-2" (click)="saveEducationPlanCheck()">
+      <i class="fa fa-save"> </i>
+       Save Information</button>
+
+      </div>
+    </div>
+  </div>
+
+
+</form>
+<reflection [fieldName]="field" [sectionName]="section" [question]="questionObject.questions[1]"
+  [report-status]="report"></reflection>

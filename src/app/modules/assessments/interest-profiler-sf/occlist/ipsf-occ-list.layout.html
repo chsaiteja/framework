@@ -1,0 +1,42 @@
+<!-- Desktop view for interest-profiler intro-->
+<div class="chart-result">
+	<div class="panel panel-default ">
+		<div class="row panel-body p-0">
+
+			<div class="col-md-3 ip-occ-list text-center">
+				<div id="svgOcc" class="svg-align"></div>
+			</div>
+			<div class="col-md-9  col-12  text-center">
+				<div class="result-list d-table w-100 h-100 height">
+					<div class="d-table-cell align-middle">
+						<ul data-pie-id="svgOcc" id="ipsf_pie" class="m-md-0 three-coloumns-ip-result d-table-cell align-middle p-0">
+							<li *ngFor="let res of pieDataInOcc" class="ChartData " [attr.data-value]="res.score" [ngStyle]="{'color': pieColor[res.interest]}">
+								<span class="square-box " (click)="getIPAreaOccListParent(res.interest)" [ngStyle]="{'background-color': pieColor[res.interest]}"></span>&nbsp;
+
+								<a href="#" class="result-text text-left" (click)="$event.preventDefault();getIPAreaOccListParent(res.interest)" [attr.id]="res.interest">
+									<span class="highlight-text cmpr-cap-letr" [ngClass]="(interest==res.interest)? 'high-lighting-text-num':'dehigh-lighting-text-num'">
+										<u>{{res.interest }}</u>
+									</span>
+								</a>
+
+								<span class="result-score highlight-text" (click)="getIPAreaOccListParent(res.interest)"> {{res.score}} </span>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div *ngFor='let val of areaResult'>
+		<div class="common-headding cmpr-cap-letr" *ngIf='interest==val.areaAbbr'>
+			{{interest}}
+		</div>
+		<p *ngIf='interest==val.areaAbbr'>
+			{{val.description}}
+		</p>
+	</div>
+</div>
+<!--Hear we get the list of occupations relating to the interest we select -->
+<occupation-list>
+</occupation-list>

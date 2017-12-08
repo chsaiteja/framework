@@ -1,0 +1,42 @@
+.intro-pages{
+
+        .right-border{
+             @include media-breakpoint-up(md){
+             @include common-border(0px, 1px, 0px, 0px, nth($grey-shades,17));
+           }
+       }     
+       .intro-options {
+        p{
+        @include custom-device(768px, 992px) { 
+            font-size: nth($font-sizes,2);
+            }
+        }
+          i {
+              @include common-header(nth($orange-shades,1), nth($font-sizes,17), none, none);
+                margin: 0 0 10px;  
+              @include custom-device(768px, 992px) { 
+                font-size: $font-size-h2;
+              }
+         }
+            }
+       
+        .help-link{
+             @include common-border-radius(50%, 1px);
+             display: inline-block;
+             @include common-header(nth($orange-shades,1),$font-size-lg, center, none);
+             @include height-width(25px, 25px);
+             line-height: 1.42857;
+             margin-right: 5px;
+             padding: 5px 0;
+             cursor: pointer!important;
+         }
+}
+
+
+
+
+
+
+
+
+

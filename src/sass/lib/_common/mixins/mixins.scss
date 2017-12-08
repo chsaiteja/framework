@@ -1,0 +1,82 @@
+/********************* start of all mixins ****************************/
+
+@mixin common-border-radius($radius,$border-width){
+    -webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+	-khtml-border-radius: $radius;
+    border-width:$border-width; 
+} 
+@mixin height-width($width, $height){
+    width: $width;
+    height: $height;
+}
+@mixin common-border($top,$right,$bottom,$left,$color){
+       border: solid $color;
+       border-width: $top $right $bottom $left;
+}
+@mixin common-header($color,$font-size,$text-align,$font-wght){
+    color: $color;
+	font-size: $font-size;
+	text-align: $text-align;
+    font-weight: $font-wght;
+}
+
+@mixin padding-height($padding-top,$height){
+ padding-top:$padding-top;
+	height:$height;	
+}
+ 
+
+@mixin common-border-shadow($hshadow,$vshadow,$blur,$spread,$color,$border-width){
+    border:$border-width $color!important;
+	box-shadow:$hshadow $vshadow $blur $spread $color!important;
+    -webkit-box-shadow: $hshadow $vshadow $blur $spread $color!important;
+	-moz-box-shadow: $hshadow $vshadow $blur $spread $color!important;	
+}
+
+@mixin custom-device($min, $max){
+    @media screen and (min-width: $min) and (max-width: $max) {
+            @content; 
+    }
+}
+
+@mixin large-device($min){
+ @media screen and (min-width: $min)  {
+            @content;
+    }
+}
+.desktop-design-display {
+     @include media-breakpoint-down(sm){ display: none;}
+ }
+.mobile-design-display {
+      @include media-breakpoint-up(md){display: none;}
+}
+
+ .wag-cmpr-mob-hide{
+        @include custom-device (none,$max: 575px) {display:block;}
+    }
+    .wag-cmpr-mob-show{
+        @include custom-device (none,$max: 575px) {display:none!important;}         
+    }    
+
+
+ @mixin position ($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+@mixin common-individual-border-radius($top-left: null, $top-right: null, $bottom-left: null, $bottom-right: null){
+    border-top-left-radius: $top-left;
+    border-top-right-radius: $top-right;
+    border-bottom-left-radius: $bottom-left;
+    border-bottom-right-radius: $bottom-right;
+} 
+/********************* End of all mixins ****************************/
+
+
+
+
+

@@ -1,0 +1,191 @@
+/****************************
+* Header Section
+****************************/
+
+.master-head {
+    background: $white;
+    height: 41px;
+    .master-head-text {
+        @include common-header(nth($blue-shades, 11), $font-size-lg, center, none);
+        padding-top: 11px;
+        @include custom-device(768px, 992px) {
+            padding-right: 30px;
+        }
+        @include large-device(992px) {
+            font-size: $font-size-h5;
+        }
+        @include custom-device(none, 321px) {
+            font-size: 1.12em;
+        }
+        @include media-breakpoint-down(sm) {
+            @include common-header(none, nth($font-sizes, 7), left, none);
+            padding-top: 15px;
+        }
+    }
+    .master-header-top {
+        @include position (absolute, $top: 0, $right: 17px);
+        z-index: 9;
+        display: block;
+        .master-header-menu {
+            color: nth($blue-shades, 2);
+            @include large-device(768px) {
+                .tooltip {
+                    display: none!important;
+                }
+            }
+            ul li {
+                list-style: none;
+                button:only-of-type {
+                    background: none;
+                    border: none;
+                    color: nth($blue-shades, 11)!important;
+                    @include position(relative, $top: 1px);
+                    @include media-breakpoint-up(sm) {
+                        background: transparent;
+                        .text-display-head {
+                            display: inline-block;
+                            img {
+                                top: -2px;
+                                position: relative;
+                            }
+                        }
+                        .icn-display-head {
+                            display: none;
+                        }
+                    }
+                    @include media-breakpoint-down(sm) {
+                        background: nth($green-shades, 13);
+                        color: $white;
+                        width: 31px;
+                        margin: 4px 7px 0 -7px;
+                        padding: 4px;
+                        .text-display-head {
+                            display: none;
+                        }
+                        .icn-display-head {
+                            display: inline-block;
+                            margin: 3px -7px;
+                            @include common-header($white, $font-size-sm, none, none);
+                        }
+                    }
+                }
+                @include media-breakpoint-up(md) {
+                    background: $gray-lighter;
+                    height: 41px;
+                }
+                @include media-breakpoint-down(sm) {
+                    background: none;
+                    .dropdown-toggle::after {
+                        display: none;
+                    }
+                }
+            }
+            @include media-breakpoint-down(sm) {
+                [data-tooltip] {
+                    &::before,
+                    &::after {
+                        display: block;
+                    }
+                }
+            }
+            @include media-breakpoint-up(sm) {
+                [data-tooltip] {
+                    &::before,
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+            .username-3-dots {
+                max-width: 151px;
+                @extend .three-dots;
+                vertical-align: middle;
+            }
+            .icn-signout {
+                background: nth($green-shades, 13)!important;
+                color: $white!important;
+            }
+        }
+    }
+}
+
+
+/****************************
+* Header Section
+****************************/
+
+
+/****************************
+* Assessment Header 
+****************************/
+
+.assessment-header {
+    /******desktop*****/
+    @at-root {
+        .common-headding {
+            @include common-header(nth($green-shades, 13), nth($font-sizes, 6), left, bold);
+            margin-top: 18px;
+            @include media-breakpoint-between(md, lg) {
+                @include common-header(none, $font-size-base, left, none);
+            }
+            &.sub-headding {
+                @media (min-width: 768px) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+    .headding-mobil-ass {
+        background: nth($green-shades, 13);
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .mobile-title-bg {
+        overflow-wrap: break-word;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px -6px nth($grey-shades, 14);
+        @include common-header($white, none, center, bold);
+        margin-bottom: 5px;
+        display: table;
+        width: 100%;
+        .headding {
+            @include common-header($white, none, left, none);
+            padding: 15px 15px;
+            display: table-cell;
+            width: 100%;
+        }
+        .icon-block {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .icons-mobile {
+            display: inline-flex;
+            float: right;
+            i {
+                margin-top: 5px;
+                cursor: pointer;
+                @include common-header(none, nth($font-sizes, 7), none, bold);
+                &.font-siz {
+                    font-size: nth($font-sizes, 20);
+                }
+            }
+            button {
+                box-shadow: none!important;
+                min-width: 30px;
+                margin: 0px;
+            }
+        }
+    }
+    .hr-line {
+        margin-bottom: 20px;
+        border: 0;
+        @include common-border(0, 0, 1px, 0, nth($white-shades, 3));
+        overflow: hidden;
+        width: $width-value;
+    }
+}
+
+
+/****************************
+* Assessment Header End
+****************************/

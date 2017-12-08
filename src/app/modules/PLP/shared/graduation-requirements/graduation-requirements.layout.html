@@ -1,0 +1,89 @@
+<form>
+
+  <div class="form-group">
+
+    <div class="col-spacer">
+      <div class="col-12 col-sm-12 col-md-12 right-bottom-border desktop-design-display">
+        <div class="row background-grey-light font-weight-bold">
+          <div class="col-6 col-sm-6 col-md-6 top-left-border">
+            Subject
+          </div>
+          <div class="col-12 col-sm-6 col-md-6">
+            <div class=" row">
+              <div class="col-12 col-sm-12 col-md-12 top-left-border">
+                Credit Requirements</div>
+              <div class="col-12 col-sm-12 col-md-12 top-left-border">
+                {{ title }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-odd-color row" *ngFor='let item of requirementsData'>
+          <div class="col-6 col-sm-6 col-md-6 top-left-border">
+            {{ item.Subject }}
+          </div>
+          <div class="col-6 col-sm-6 col-md-6 top-left-border">
+            {{ item.Credit1 }}
+          </div>
+        </div>
+        <div class="table-odd-color row">
+          <div class="col-6 col-sm-6 col-md-6 top-left-border">
+            <b>Total </b></div>
+
+          <div class="col-6 col-sm-6 col-md-6 top-left-border">
+            {{ credit }} </div>
+        </div>
+
+      </div>
+
+      <!-- mobile table -->
+      <div class="p-0 col-12 col-sm-12 col-md-12 mobile-design-display">
+        <div class="row ">
+          <div class="mobile-cards p-1" *ngFor='let item of requirementsData, let odd=odd, let evn=even'>
+            <div class="row">
+
+              <div class="col-6 col-sm-6 col-md-6 ">
+                <b>Subject</b></div>
+
+              <div class="col-6 col-sm-6 col-md-6 ">
+                {{ item.Subject }}</div>
+
+            </div>
+
+
+            <div class="row">
+              <div class="col-6 col-sm-6 col-md-6 ">
+                <div>
+                  <b> Credit Requirements</b>
+                </div>
+                <div>
+                  2015 and Beyond:
+                </div>
+              </div>
+              <div class="col-6 col-sm-6 col-md-6 ">
+                <div> </div>
+                <div> {{ item.Credit1 }}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 col-sm-6 col-md-6">
+                <b>Total </b></div>
+              <div class="col-6 col-sm-6 col-md-6 ">
+                {{credit}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End mobile table -->
+
+      <p class="mt-1"><em>Students must complete algebra I by 8th grade and 
+       algebra II or its equivalent before graduation.
+        Science requirement must include one credit in biology, 
+        chemistry and physics or an approved course credit in CTE.</em> </p>
+      <div class="clearfix"> </div>
+    </div>
+
+  </div>
+</form>

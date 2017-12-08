@@ -1,0 +1,118 @@
+<!--<PLP-nav-header [header]="sectionObject" (changeView)="changeView($event)" [report-status]="report"></PLP-nav-header>-->
+
+<div class="form-group">
+
+  <div class="col-spacer">
+
+    <div class="col-12 col-sm-12 col-md-12 right-bottom-border desktop-design-display">
+      <div class="background-grey-light font-weight-bold row">
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          Subject</div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          9th Grade</div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          10th Grade</div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          11th Grade</div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          12th Grade</div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          Total</div>
+      </div>
+
+      <div class="row" *ngIf="testModel && testModel.length == 0">
+        <div class="col-12 col-sm-12 col-md-12 top-left-border" align="center">
+          {{tableNoData}}
+        </div>
+      </div>
+
+      <div class="table-odd-color row" *ngFor='let item of testModel'>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border ">
+          <!-- word-wrap:breakword -->
+          {{item.Subject}}
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          {{item.NinethGradeText}}
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          {{item.TenthGradeText}}
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          {{item.EleventhGradeText}}
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          {{item.TwelfthGradeText}}
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 top-left-border">
+          {{item.Total}}
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="clearfix"> </div>
+
+
+
+    <!-- mobile table -->
+
+    <div class="p-0 col-12 col-sm-12 col-md-12 mobile-design-display">
+
+      <div class="row">
+        <div class="mobile-cards p-1" *ngFor='let item of testModel, let odd=odd, let evn=even'>
+          <div class="row ">
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> Subject</b></div>
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.Subject}}</div>
+          </div>
+
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> 9th Grade </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.NinethGradeText}}</div>
+
+          </div>
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> 10th Grade </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.TenthGradeText}}</div>
+          </div>
+
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> 11th Grade </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.EleventhGradeText}}</div>
+          </div>
+
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> 12th Grade </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.TwelfthGradeText}}</div>
+          </div>
+
+          <div class="row ">
+            <div class="col-6 col-sm-6 col-md-6 ">
+              <b> Total </b></div>
+
+            <div class="col-6 col-sm-6 col-md-6 ">
+              {{item.Total}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mobile table -->
+    <div class="clearfix"> </div>
+  </div>
+</div>

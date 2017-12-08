@@ -1,0 +1,112 @@
+<div class="wil-assessment-page">
+    <p id='wil_para_id' innerHTML="{{this.boldtext}}"></p>
+    <div class="wil-border">
+        <!-- smile circle start -->
+        <div class="assessment-questions w-100">
+            <div class="desktop-design-display ">
+                <div class="row panel-question-box pink text-center pt-2">
+                    <div class="col-md-6">
+                        <!-- Result and show all buttons-->
+                        <div class="d-inline-flex pull-left">
+                            <button class="common-button green pointer ml-2" [class.disabledp2]="(showVal == -1)" (click)="showAll()">{{(wilreturnedVal|async).commonText.showAll}}</button>
+                            
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 ">
+                        <p class="text-right mr-3">{{presentQuesNum}}/{{wil_questions_text.length}}</p>
+                    </div>
+                </div>
+                <div class="smile-circle">
+                    <div class="circle-width five text-center" *ngFor="let ans of (wil_answers_text|async).commonResponseText?.responses;let inxVal=index;">
+                        <button *ngIf='inxVal!=5' class="circle-button pink pt-0" href="" (click)="showCards(inxVal)" [ngClass]="(remaining[inxVal] == 0)? '':'hover'"
+                            [ngStyle]="(remaining[inxVal] >0)?{}:{'cursor':'default','background-color':'#f2f2f2'}">
+                            <i class="{{smileys[inxVal]}}" [class.level-4]="(showVal != -1 && showVal==(inxVal+1))" [ngStyle]="(remaining[inxVal] > 0)?{}:{'color':'#ccc'}"></i>
+                            <p class="mb-0">{{ans.text}}</p>
+                            <p class="mb-0">{{remaining[inxVal]}} {{(wilreturnedVal|async).commonText.remaining}}</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile -->
+
+            <div class="mobile-design-display">
+                <!--<div class="smile-cards-mobile">
+                    <div class="smile-card-body hover pink" *ngFor="let ans of wil_answers_text;let mobileInx=index;" (click)="showCards(mobileInx)">
+                        <div class="row">
+                            <div class="col-9">
+                                <p>{{ans.text}} &nbsp;</p>
+                                <p>{{remaining[mobileInx]}} Remaining</p>
+                            </div>
+                            <div class="col-3"> 
+                                <span> <i class="fa  {{ans.icon}}"></i></span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>-->
+                <div class="sticky-smile-box">
+                    <ul class="list-unstyled d-table w-100">
+                        <li class="padding-smiles d-table-cell col-sm-12" *ngFor="let ans of (wil_answers_text|async).commonResponseText?.responses;let mobileInx=index;"
+                            [class.smile-list]="(showVal != -1 && showVal==(mobileInx+1))" (click)="showCards(mobileInx)">
+                            <p>{{remaining[mobileInx]}}</p>
+                            <span>
+                                <i [ngClass]="(remaining[inxVal] == 4)?'fa fa-ban':''"></i>
+                                <i class="{{smileys[mobileInx]}}" [class.level-5]="(remaining[inxVal] == 4)"></i>
+                            </span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- smile circle end -->
+
+        </div>
+        <!-- smile cards start -->
+        <div class="will-scroll">
+            <div class="row gutter-10">
+
+                <div class="col-md-6 col-lg-3  col-12 h-100 mb-3" *ngFor="let item of wil_questions_text;let inx=index;" [hidden]="((answersArray[inx]!=showVal) && showVal !=-1)">
+                    <div class="d-table w-100">
+                        <div class="card wil-card-block d-table-cell align-middle ">
+                            <div class="wil-select-right pull-right" [hidden]="(answersArray[inx] == 0)"></div>
+                            <div class="checked-image-wil pull-right" [hidden]="(answersArray[inx] == 0)">
+                                <img alt="checked" src="\assets\images\checked.png">
+                            </div>
+                            <div class="text-center pr-2 ">{{item}}</div>
+                            <div class="text-center">
+
+                                <ul>
+                                    <li *ngFor="let ans of (wil_answers_text|async).commonResponseText?.responses;let inxAns=index;">
+                                        <button [disabled]='(inxAns==5 || ((answersArray[inx]-1) != inxAns && remaining[inxAns] == 0))' class="common-button default pointer"
+                                            (click)="callQuestion( inxAns,inx)">
+                                            <i [ngClass]="((answersArray[inx]-1) != inxAns && remaining[inxAns] == 0)?'fa fa-ban wil-circle-notAllowed':''"></i>
+                                            <i class="{{smileys[inxAns]}} " [class.level-4]="((answersArray[inx]-1) == inxAns)" [class.level-5]="((answersArray[inx]-1) != inxAns && remaining[inxAns] == 0)">
+                                            </i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-design-display">
+                <!-- Result and show all buttons-->
+                <div class="d-inline-flex pull-left">
+                    <button class="common-button green pointer ml-2" [class.disabledp2]="(showVal == -1)" (click)="showAll()">{{(wilreturnedVal|async).commonText.showAll}}</button>
+                    <div class="pointer" (click)="callResult()" [class.disabledp2]="(presentQuesNum < wil_questions_text.length)">
+                        <button class="common-button green">{{(wilreturnedVal|async).commonText.getResults}}</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="pointer" (click)="callResult()" [class.disabledp2]="(presentQuesNum < wil_questions_text.length)">
+                    <button class="common-button green pull-right mt-3 desktop-design-display">{{(wilreturnedVal|async).commonText.getResults}}</button>
+                  </div>
+		                  
+        <!-- smile cards end -->
+    </div>
+</div>

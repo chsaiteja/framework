@@ -1,0 +1,240 @@
+<div class="p-t-b  mobie-width mobile-container bodypadding">
+  <div class="row">
+    <div class="col-md-4 col-lg-4">
+      <!-- Display occupation name -->
+      <h4 class="common-headding">{{(occName)}}</h4>
+    </div>
+    <div class="col-md-8 col-lg-8 text-right">
+      <div class="pull-right desktop-design-display" role="group" aria-label="Justified button group">
+        <!-- Display compare button -->
+        <button type="button" class=" common-button green" (click)='showAllCareer()' data-toggle="modal" data-target="#myModal7">
+          <b>{{(occCareerText)?.commonText?.common?.compare}}</b>
+        </button>
+        <!-- Display career list button -->
+        <button type="button" class=" common-button green" (click)="careerList('no')">
+          <b>{{(occCareerText)?.commonText?.common?.careersList}}</b>
+        </button>
+        <!-- Display save button -->
+        <button type="button" class="  common-button green" (click)="savePost()">
+          <b>{{(occCareerText)?.commonText?.common?.save}}</b>
+        </button>
+        <!-- Display back to assessment button -->
+        <button type="button" class=" common-button green" *ngIf="backAssessmentValue" (click)="backAssessment()">
+          <b>{{(occCareerText)?.commonText?.common?.backAssess}}</b>
+        </button>
+        <!-- Display print button -->
+        <button type="button" class="  common-button green">
+          <b>{{(occCareerText)?.commonText?.common?.print}}</b>
+        </button>
+      </div>
+      <div class="btn-group btn-group-justified mobile-design-display">
+        <!-- Display compare button in mobile-->
+        <button type="button" class="btn common-button green" (click)='showAllCareer()' data-toggle="modal" data-target="#myModal7">
+          <b>{{(occCareerText)?.commonText?.common?.compare}}</b>
+        </button>
+        <!-- Display career list button in mobile -->
+        <button type="button" class="btn common-button green" (click)="careerList('no')">
+          <b>{{(occCareerText)?.commonText?.common?.careersList}}</b>
+        </button>
+        <!-- Display back to assessment button in mobile -->
+        <button type="button" class="btn common-button green" *ngIf="backAssessmentValue" (click)="backAssessment()">
+          <b>{{(occCareerText)?.commonText?.common?.backAssess}}</b>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <!--Display image-->
+      <div *ngIf='(settingsText)?.commonText?.topSections?.indexOf("Image")!=-1'>
+        <a>
+          <img src="{{(occCareerStore|async).Image}}" class="w-100" alt="No image found" onerror="this.onerror=null;this.src='/assets/images/career-rating.jpg';"
+          /> </a>
+        <div class="rate-career-bg-black"></div>
+        <div class="opacity-career-header row">
+          <!--video popup-->
+          <div class="col-lg-5  col-2 col-md-6 col-sm-2">
+            <a class="video-icon" href="#myModal" data-toggle="modal" data-target="#myModal" [hidden]="((occCareerStore|async).Video|json) == '[]'">
+              <img class="video-hight-plp3 pointer" src="/assets/images/video-icon-plp3.png" alt="" />
+            </a>
+          </div>
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header blue">
+                  <button type="button" class="close plp3-model-close-align" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" *ngFor="let video of (occCareerStore|async).Video">
+                  <video class="video-box" controls>
+                    <source src="{{video}}" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- User rating card for China-->
+          <div class="col-lg-7 col-md-6 col-sm-10 col-10">
+            <div class="pull-right">
+
+              <div class="d-inline-flex">
+                <p class="rate-this-text">{{(settingsText)?.commonText?.allSections?.UserRating}}</p>
+                <span class="rating-up-down mr-2">
+                  <a href="#" (click)="$event.preventDefault();getUnFill('up')">
+                    <i class="fillstroke" [ngClass]="(showCareerColorUp == 1)?'icon-thumbs-up-hover':'icon-thumbs-up'" aria-hidden="true"></i>
+                  </a>
+                  <a href="#" (click)="$event.preventDefault();getUnFill('down')">
+                    <i class="fillstroke" [ngClass]="(showCareerColorUp == 0)?'icon-thumbs-down-hover':'icon-thumbs-down'" aria-hidden="true"></i>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="career-tabs">
+        <div class="ngb-tabset desktop-design-display">
+          <ul class="nav nav-pills" role="tablist ">
+            <li *ngFor='let val of (settingsText)?.commonText?.tabs;let inx=index' class="nav-item">
+              <a class="nav-link " [class.active]="(activeVal==inx)" (click)="dropDownVal(val.title,inx)" data-toggle="tab" href="#tab{{inx}}"
+                role="tab">{{val.title}}
+                <div class="tab-down-arrow"> </div>
+              </a>
+            </li>
+            <!-- User rating card for desktop-->
+            <div align="center" class="rating-in-tabs" *ngIf='(settingsText)?.commonText?.topSections?.indexOf("Image") ==-1'>
+              <div class="d-inline-flex">
+                <p class="text-white">{{(settingsText)?.commonText?.allSections?.UserRating}}</p>
+                <span class="rating-up-down rating-down-2">
+                  <a href="#" (click)="$event.preventDefault();getUnFill('up')">
+                    <i class="fillstroke" [ngClass]="(showCareerColorUp == 1)?'icon-thumbs-up-hover':'icon-thumbs-up'" aria-hidden="true"></i>
+                  </a>
+                  <a href="#" (click)="$event.preventDefault();getUnFill('down')">
+                    <i class="fillstroke" [ngClass]="(showCareerColorUp == 0)?'icon-thumbs-down-hover':'icon-thumbs-down'" aria-hidden="true"></i>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </ul>
+        </div>
+        <!-- User rating card for desktop-->
+        <div class="ngb-tabset-mobile mobile-design-display  mb-3">
+          <div class="d-table w-100">
+            <ul class="nav nav-pills d-table-cell">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle font-size" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{value}}</a>
+                <div class="dropdown-menu">
+                  <a *ngFor='let val of (settingsText)?.commonText?.tabs;let inx=index' class="nav-link " [class.active]="(activeVal==inx)"
+                    (click)="dropDownVal(val.title,inx)" data-toggle="tab" href="#tab{{inx}}" role="tab">{{val.title}}</a>
+                </div>
+              </li>
+            </ul>
+            <div class=" d-table-cell" *ngIf='(settingsText)?.commonText?.topSections?.indexOf("Image") ==-1'>
+              <div align="center" class="rating-in-tabs">
+                <div class="d-inline-flex">
+                  <span class="rating-up-down rating-down-2">
+                    <a href="#" (click)="$event.preventDefault();getUnFill('up')">
+                      <i class="fillstroke" [ngClass]="(showCareerColorUp == 1)?'icon-thumbs-up-hover':'icon-thumbs-up'" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" (click)="$event.preventDefault();getUnFill('down')">
+                      <i class="fillstroke" [ngClass]="(showCareerColorUp == 0)?'icon-thumbs-down-hover':'icon-thumbs-down'" aria-hidden="true"></i>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- tab Values -->
+      <div class="tab-content">
+        <div *ngFor='let val of (settingsText)?.commonText?.tabs;let inx=index' class="tab-pane " [class.active]="inx==0" [class.active]="(activeVal==inx)"
+          id="tab{{inx}}" role="tabpanel">
+          <div *ngIf='val.tabId == 0'>
+            <at-a-glance></at-a-glance>
+          </div>
+          <div *ngIf='val.tabId == 1'>
+            <job-description></job-description>
+          </div>
+          <div *ngIf='val.tabId == 2'>
+            <wages></wages>
+          </div>
+          <div *ngIf='val.tabId == 3'>
+            <emp-and-outlook></emp-and-outlook>
+          </div>
+          <div *ngIf='val.tabId == 4'>
+            <edu-and-traninig></edu-and-traninig>
+          </div>
+          <div *ngIf='val.tabId == 5'>
+            <personal-qualities></personal-qualities>
+          </div>
+          <div *ngIf='val.tabId == 6'>
+            <related-careers (changeViewRelate)="relate($event)"></related-careers>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--pop up for compare and save career-->
+<div class="comparemodal">
+  <div class="mobile-design-display  float-btn-plp3">
+    <div class=''>
+      <button class='action-button' (click)="filter = !filter" [ngClass]="{'active': filter }">
+        <span class='fa fa-plus'></span>
+      </button>
+      <ul class='actions'>
+        <li class="pointer" (click)="savePost()">
+          <a>
+            <span class='fa fa-floppy-o'></span>
+          </a>
+        </li>
+        <li class="pointer">
+          <a>
+            <span class='fa fa-print'></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content content-color">
+        <!-- Header part in model -->
+        <div class="modal-header blue">
+          <h6 class="modal-title">
+            <b>Compare 2 Careers</b>
+          </h6>
+          <button class="modal-close common-button default" data-dismiss="modal" (click)="cancleOccupation()">
+            <i aria-label="Close">&times;</i>
+          </button>
+        </div>
+        <!-- Body part in model -->
+        <div class="modal-body">
+          <div *ngIf="(indexOccId.length>=1)">{{this.indexTitleName[0]}}&nbsp;
+            <a href="#" class="pointer" [ngStyle]="{'color':'red','font-size':'20px','position':'relative','top':'2px'}" (click)="$event.preventDefault();checkCareer(indexOccId[0])">
+              <i>&times;</i>
+            </a>
+          </div>
+          <div *ngIf="(indexOccId.length==2)">{{this.indexTitleName[1]}}&nbsp;
+            <a href="#" class="pointer" [ngStyle]="{'color':'red','font-size':'20px','position':'relative','top':'2px'}" (click)="$event.preventDefault();checkCareer(indexOccId[1])">
+              <i>&times;</i>
+            </a>
+          </div>
+          <br>
+          <div>
+            <p *ngIf="(indexOccId.length<2)"> Select one more career to compare</p>
+            <button *ngIf="(indexOccId.length<2)" type="button" class="common-button green  pull-right" data-dismiss="modal" (click)="saveOccupation()">Save</button>
+            <button *ngIf="(indexOccId.length==2)" type="button" class="common-button green  pull-right" data-dismiss="modal" (click)="compareOccupations()">Compare</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

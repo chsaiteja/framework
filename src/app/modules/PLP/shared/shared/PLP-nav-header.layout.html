@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="col-lg-12 col-md-12 pt-4">
+    <div class="page-navigation-plpcontent font-weight-bold">
+      <div class="text-center page-heading">
+
+        <span>{{ headerTitleObj?.compName }}</span>
+        <i class="fa {{ header?.icon }}" aria-hidden="true"></i>
+      </div>
+
+      <ul class="prev-next-btn">
+        <li *ngIf="(report!='')" [class.disabled-btn]="(header?.previousSec==undefined)" class="previous pull-left" (click)="loadPrevious(header?.previousSec)">
+          <a>
+            <button type="button" class="btn" [disabled]="(header?.previousSec==undefined)">
+              <span class="fa fa-angle-left"></span>
+            </button>
+            <span [class.disabled-btn]="(header?.previousSec==undefined)"> Prev</span>
+            <!--{{header.previousSec}}-->
+          </a>
+        </li>
+        <li>
+          <span class="plp-red text-center">{{ header?.currentCount }}/{{ header?.totalCount }}</span>
+        </li>
+        <li *ngIf="(report!='')" [class.disabled-btn]="(header?.nextSec==undefined)" class="next pull-right" (click)="loadNext(header?.nextSec)">
+          <a>
+            <span [class.disabled-btn]="(header?.nextSec==undefined)">Next </span>
+            <!--{{header.nextSec}}-->
+            <button type="button" class="btn" [disabled]="(header?.nextSec==undefined)">
+              <span class="fa fa-angle-right"></span>
+            </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

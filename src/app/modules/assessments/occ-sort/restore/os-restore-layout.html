@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-md-8">
+		<div class="panel-group">
+			<div class="panel panel-default panel-box-restore " *ngFor="let item of restoreAnswerSet;let indx = index">
+				<div class="panel-content-restore">
+					<h4 class="pointer">
+						<a href="#" (click)="$event.preventDefault();restoreQuestionsOS(item.answerSet,item.userNotes)">
+							<u>{{(osreturnedVal|async).commonText.restoreSet }} {{item.answerSet}} </u>
+						</a>
+					</h4>
+					<p>{{item.userNotes}}</p>
+				</div>
+				<div class="panel-footer-restore">
+					<div class="row">
+						<div class="col-6 col-sm-6 col-md-6">
+							<h6><i class="icon-asmnt-date" aria-hidden="true"></i>&nbsp;&nbsp;{{item.updatedTimeStamp | customDate}}</h6>
+						</div>
+						<div class="col-6 col-sm-6 col-md-6 ">
+							<h6 class="pull-right">
+								<a href="#" (click)="$event.preventDefault();deleteOsAnswerSet(item.answerSet)" class="restore-delete pointer">
+									<i class="icon-asmnt-delete" aria-hidden="true"></i> &nbsp;{{(osreturnedVal|async).commonText.delete}}
+								</a>
+							</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div align="center" *ngIf="(resLength==-1)" class="w-100"><img class="dta-not-found-img loading-responsive" src="/assets/images/loading.png" /></div>
+	<img *ngIf="(resLength==0)" align="center" class="data-notfound" src="/assets/images/nodata-found.png" />
+	<div class="clearfix"> </div>
+</div>

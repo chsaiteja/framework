@@ -1,0 +1,419 @@
+@mixin panel-background($bg, $color, $display) {
+    background: $bg;
+    color: $color;
+    display: $display;
+}
+
+@mixin panel-gradient-bg($color1, $color2) {
+    background: linear-gradient(180deg, $color1 0%, $color1 0%, $color1 33%, $color1 57%, $color2 120%);
+    /* w3c */
+    padding-top: 25px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: $white;
+}
+
+@mixin panel-hover-bg($color, $bg-color) {
+    color: $color;
+    background: $bg-color;
+} ///smiles width claculation
+@function width-calculation($some-number, $another-number) {
+    @return $some-number / $another-number;
+}
+
+.assessment-questions {
+    i {
+        color: $white;
+    }
+    .class-withOpacity {
+        opacity: 0.5;
+        cursor: not-allowed!important;
+        @include position(absolute);
+    }
+    /****************************
+    * Next and Previous  Button  Start
+    ****************************/
+    .panel-background {
+        @mixin panal-bg-colors( $value...) {
+            @each $i in $value {
+                &.#{nth($i, 1)} {
+                    @include panel-background(nth($i, 2), $white, flex);
+                }
+            }
+        }
+        @include panal-bg-colors('orange' nth($orange-shades, 6), 'light-blue' nth($blue-shades, 23), 'powderblue' nth($green-shades, 4), 'blue' nth($blue-shades, 7), 'skyblue' nth($blue-shades, 13), 'light-green' nth($green-shades, 36), 'pink' nth($pink-shades, 3), 'dark-green' nth($green-shades, 8), 'purple' nth($purple-shades, 2), 'parrot-green' nth($green-shades, 35));
+        @include common-border-shadow(-1px, 7px, 10px, -4px, nth($black-shades, 2), 0);
+        padding: 15px 5px 12px;
+        position: relative;
+        .white-color {
+            color: $white!important;
+            text-decoration: none;
+        }
+        .left-arrow-class {
+            a {
+                margin: 0 0 0 -10px!important;
+            }
+            span {
+                opacity: 1 !important;
+                color: $white;
+                @include position (absolute, $top: 2px, $left: 34px);
+            }
+        }
+        .right-arrow-class {
+            span {
+                opacity: 1 !important;
+                margin: 0 0 0 -20px;
+                @include position (relative, $right: 0px, $top: -3px);
+            }
+        }
+        @at-root {
+            .progress {
+                height: 0.8em;
+                margin-left: 24px;
+                @include common-border-radius(0.5em, 1px);
+                margin-top: 5px;
+                .progress-bar-bg-green {
+                    background: nth($green-shades, 13);
+                }
+            }
+        }
+        i {
+            cursor: pointer;
+            font-size: $font-size-lg!important;
+        }
+        .class-with-opacity {
+            opacity: 0.5;
+            cursor: not-allowed;
+            position: absolute;
+        }
+    }
+    /****************************
+    * Next and Previous Button  end
+    ****************************/
+    /****************************
+    * Smiles Button  Start
+    ****************************/
+    .panel-question-box {
+        min-height: 186px;
+        @mixin panal-bg-gradent( $value...) {
+            @each $i in $value {
+                &.#{nth($i, 1)} {
+                    @include panel-gradient-bg(nth($i, 2), nth($i, 3));
+                }
+            }
+        }
+        @include panal-bg-gradent('orange' nth($gradient-shades, 1) nth($gradient-shades, 2), 'light-blue' nth($blue-shades, 23) nth($blue-shades, 23), 'powderblue' nth($green-shades, 6) nth($black-shades, 4), 'blue' nth($blue-shades, 5) nth($blue-shades, 14), 'skyblue' nth($blue-shades, 13) nth($blue-shades, 12), 'light-green' nth($green-shades, 36) nth($black-shades, 4), 'pink' nth($gradient-shades, 4) nth($pink-shades, 3), 'dark-green' nth($green-shades, 8) nth($black-shades, 4), 'purple' nth($purple-shades, 2) nth($purple-shades, 3), 'parrot-green' nth($green-shades, 35) nth($black-shades, 4));
+        p {
+            font-weight: bold;
+        }
+        @include media-breakpoint-down(sm) {
+            .mini-bar{
+                padding: 1px 0;
+                box-shadow: 0 2px 7px 1px #404040;
+            }
+            .mobile-height{
+                height: 65px;
+            }
+            .mobile-height-os{
+                height: 85px;
+            }
+            min-height: 140px!important;
+            padding-top: 0!important;
+        }
+    }
+    .circle-width {
+        float: left;
+        &.four {
+            width: width-calculation(100%, 4);
+        }
+        &.five {
+            width: width-calculation(100%, 5);
+        }
+        &.three {
+            width: width-calculation(100%, 3);
+        }
+        &.six {
+            width: width-calculation(100%, 6);
+            .circle-button{
+                @media (max-width:991px){
+                    width: 110px;
+                    height: 110px;
+                }
+            }
+        }
+    }
+    .icon-styles {
+        font-size: $display4-size;
+        @include panel-hover-bg(nth($orange-shades, 1), none);
+        @include media-breakpoint-down(lg) {
+            font-size: $font-size-h2;
+        }
+        @include media-breakpoint-down(md) {
+            font-size: $font-size-h4;
+        }
+    }
+    .smile-circle {
+        @include media-breakpoint-between(md, lg) {
+            margin-top: -82px;
+        }
+        @include media-breakpoint-up(xl) {
+            margin-top: -105px;
+        }
+        .circle-button {
+            font-size: $font-size-base;
+            line-height: nth($font-sizes, 6);
+            color: nth($grey-shades, 13)!important;
+            background-color: $white;
+            margin: auto;
+            position: relative;
+            cursor: pointer;
+            padding-top: 20px;
+            i {
+                @extend .icon-styles;
+            }
+            @include common-border-radius(50%, 0);
+            @include height-width(180px, 180px);
+            @include common-border(2px, 2px, 2px, 2px, nth($grey-shades, 16));
+            @include media-breakpoint-down(lg) {
+                @include height-width(140px, 140px);
+            }
+            .wil-assessment-page & {
+                @include height-width(130px, 130px);
+                i {
+                    font-size: $font-size-h1!important;
+                }
+            }
+        }
+    }
+    /****************************
+    * Smiles Button  End
+    ****************************/
+    .smile-cards-mobile {
+        .smile-card-body {
+            @include common-border-shadow(0, 1px, 3px, 1px, nth($grey-shades, 18), 0);
+            position: relative;
+            padding: 12px 0px 5px 10px;
+            overflow: hidden;
+            min-height: 52px;
+            margin: 10px 0;
+            cursor: pointer;
+            i {
+                @extend .icon-styles;
+            }
+            p {
+                display: table-cell;
+                vertical-align: middle;
+                padding-top: 4px;
+            }
+        }
+    }
+    .hover:hover,
+    .previous {
+        @mixin smile-hover( $value...) {
+            @each $i in $value {
+                &.#{nth($i, 1)} {
+                    @include panel-hover-bg($white, nth($i, 2));
+                }
+            }
+        }
+        @include smile-hover('orange' nth($orange-shades, 6), 'powderblue' nth($green-shades, 4), 'blue' nth($blue-shades, 7), 'skyblue' nth($blue-shades, 13), 'light-green' nth($green-shades, 36), 'pink' nth($pink-shades, 3), 'dark-green' nth($green-shades, 8), 'purple' nth($purple-shades, 2),'parrot-green' nth($green-shades, 35));
+        text-decoration: none;
+        border-color: $white;
+        p {
+            color: $white;
+        }
+        .fa::before {
+            color: $white!important;
+        }
+    }
+    /******************
+    * Range bar start 
+    ******************/
+    .rangebar-paragraph {
+        display: table-cell;
+        @include height-width(180px, 172px);
+        margin: auto;
+        padding: 0;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .range-barcircle {
+        font-size: $font-size-h6!important;
+        line-height: nth($font-sizes, 6)!important;
+        cursor: default;
+        white-space: normal;
+        margin: auto;
+        position: relative;
+        @include common-border-radius(50%, 0);
+        @include height-width(180px, 180px);
+        @include media-breakpoint-down(md) {
+            @include height-width(130px, 130px);
+        }
+    }
+    .range-bar {
+        background: none;
+        top: -20px;
+        border: none;
+        box-shadow: none;
+    }
+    .green-circle {
+        background-color: nth($green-shades, 8);
+        @include common-border(2px, 2px, 2px, 2px, $white!important);
+        color: $white;
+        p {
+            display: table-cell;
+            margin: auto;
+            padding: 0;
+            vertical-align: middle;
+            @include height-width(180px, 155px);
+            text-align: center;
+            @include custom-device(768px, 992px) {
+                @include height-width(120px, 110px);
+            }
+        }
+    }
+    .white-circle {
+        color: nth($grey-shades, 28)!important;
+        background-color: nth($grey-shades, 29)!important;
+        @include common-border(2px, 2px, 2px, 2px, nth($grey-shades, 16)!important);
+    }
+    .noUi-vertical {
+        @include custom-device(200px, 767px) {
+            @include height-width(20px, 270px);
+            position: absolute;
+        }
+    }
+    /******************
+    * Range bar End 
+    ******************/
+    &.babby-cci {
+        
+                  .circle-button{
+                    @media (max-width: 1199px){ @include height-width(180px, 180px); }
+                    @media (max-width:992px){  @include height-width(140px!important, 140px!important); }
+                   }
+            }
+}
+
+
+/****************************
+    * Smiles Card  Start WIL
+****************************/
+
+.wil-assessment-page {
+    @include media-breakpoint-up(md) {
+        .wil-border {
+            @include common-border(1px, 1px, 1px, 1px!important, nth($grey-shades, 8)!important);
+        }
+        .will-scroll {
+            position: relative;
+            height: 303px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 100%;
+            padding: 10px;
+            padding-bottom: 10px;
+        }
+        .smile-circle {
+            margin-top: -90px!important;
+        }
+        .panel-question-box {
+            min-height: 145px!important;
+            p {
+                padding: 5px;
+            }
+        }
+    }
+    .wil-card-block {
+        padding: 10px;
+        height: 135px;
+        background: nth($white-shades, 10);
+        .text-center {
+            font-size: nth($font-sizes, 4);
+        }
+        @include media-breakpoint-down(sm) {
+            height: 100px;
+        }
+        ul {
+            list-style: none;
+            display: inline-flex;
+            font-size: nth($font-sizes, 11);
+            padding: 0px;
+            margin: auto;
+            li {
+                text-align: center;
+                height: 40px;
+                i {
+                    color: nth($green-shades, 21);
+                }
+                .common-button {
+                    height: 50px;
+                    padding: 5px 4px 8px;
+                    font-size: nth($font-sizes, 5);
+                }
+                .wil-circle-notAllowed {
+                    position: absolute;
+                    top: 9px;
+                    left: 3px;
+                    color: nth($red-shades, 3);
+                    opacity: 0.5;
+                    font-size: nth($font-sizes, 8);
+                }
+            }
+        }
+    }
+    @at-root {
+        .checked-image-wil {
+            margin: 0px 3px 0 0;
+            padding: 0;
+            @include position(absolute, $top: 0px, $right: 0px);
+        }
+        .wil-select-right {
+            @include height-width(0, 0);
+            overflow: hidden;
+            padding-left: 37px;
+            padding-top: 37px;
+            @include position(absolute, $top: 0, $right:0px);
+            &::after {
+                border-left: 500px solid transparent;
+                border-top: 500px solid nth($pink-shades, 3);
+                content: "";
+                display: block;
+                margin-left: -500px;
+                margin-top: -500px;
+                @include height-width(0, 0);
+            }
+        }
+    }
+    .sticky-smile-box {
+        background: nth($pink-shades, 3);
+        height: 65px;
+        width: 100%;
+        padding-left: 5px;
+        padding-top: 6px;
+        left: 0;
+        z-index: 9;
+        li {
+            width: 20%;
+            text-align: center;
+        }
+        .padding-smiles {
+            padding: 0 5px;
+        }
+        .smile-list {
+            background: $white;
+            margin: 2px;
+            i,
+            p {
+                color: nth($pink-shades, 3);
+            }
+        }
+        p {
+            color: $white;
+            margin-bottom: 0;
+        }
+        i {
+            font-size: $font-size-lg;
+        }
+    }
+}

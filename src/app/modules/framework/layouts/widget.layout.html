@@ -1,0 +1,35 @@
+<!-- <div class="side-menu">
+    <a href="#" class="widget-side-menu" (click)="$event.preventDefault();menuToggle()">
+        <a class="icon-none-m" data-toggle="collapse" data-target=".nav-collapse.in">
+            <i class="fa-micon-menu fa icon" [class.fa-close]="menuState" [class.fa-bars]="!menuState"></i>
+        </a>
+        <div class="side-menu-text">
+            <span>Personal Learning Plan</span>
+        </div>
+    </a>
+    <div class="scrollbar" (click)="menuClose()">
+        <nav class="main-menu sidemenu-t" [class.expanded]="menuState">
+
+            <div class="side-menu-scroll-bar" slimScroll [options]="opts">
+                <div class="scroll-innter">
+                    <ul>
+                        <li *ngFor="let item of ItemsList.menuItems" class="white-color" [ngClass]="(ItemsList.menuHighlightStatus)? 'menu-filled':'menu-not-filled'"
+                            [class.menu-active]="(viewMode == item.url)  && ItemsList.menuHighlightStatus">
+                            <a [routerLink]="item.url">
+                                <span [ngClass]="(item.fillStatus )? 'menu-span-bg-box':'menu-not-filled'">
+                                    <i class="fa-micon {{item.icon}} fa"></i>
+                                </span>
+                                <span class="nav-text"> {{item.name}} </span>
+                                <i *ngIf="item.fillStatus==true" class="fa-micon fa fa-check"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+</div>
+<div (click)="menuClose()">
+</div> -->

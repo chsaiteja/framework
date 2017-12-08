@@ -1,0 +1,172 @@
+<!-- Fixed navbar -->
+<!-- mobile and desktop common body content -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-result">
+            <!-- Displays header text -->
+            <h2 class="common-headding sub-headding"> {{(resVal)?.commonText?.pageText?.resultsPage.top.header}}</h2>
+            <p> {{(resVal)?.commonText?.pageText?.resultsPage.top.text}}
+            </p>
+            <h2 class="common-headding">{{(resVal)?.commonText?.pageText?.resultsPage.box.header}}</h2>
+            <div class="panel panel-default">
+                <div class="panel-body p-0">
+
+                    <div class="row mt-30">
+                        <div class="col-md-4 text-center">
+                            <div id="svg" class="svg-align wil-pichart"></div>
+                        </div>
+                        <div class="col-md-8 col-12 text-center">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class=" text-center font-weight-bold pt-md-5" (click)='$event.preventDefault();getWilTwoAreas(firstTwoVal[0],firstTwoVal[1])'>
+                                        <i class="fa fa-star " aria-hidden="true"></i> {{(resVal)?.commonText?.pageText?.resultsPage.box.leftTitle}}
+                                        <a href="#" [ngStyle]="{'color':'#036182'}">
+                                            <!-- Displays top two values -->
+                                            <u class="pointer">{{firstTwoVal[0]}} & {{firstTwoVal[1]}}</u>
+                                        </a>
+
+                                    </p>
+                                </div>
+
+                                <div class="result-list d-table w-100 h-100 col-12">
+                                    <div class="d-table-cell align-middle">
+                                        <ul data-pie-id="svg" id="list" class=" m-md-0 columns-ip-result d-table-cell align-middle p-0">
+                                            <li *ngFor="let res of wilResult; let inx=index;" [attr.data-inx]="inx" class="ChartData " [attr.data-value]="res.score"
+                                                [ngStyle]="{'color': wilColors[res.areaAbbr]}">
+                                                <span class="square-box wil-res" (click)="$event.preventDefault();getOccListBasedOnInterest([res.areaAbbr],[res.description],[res.title])"
+                                                    [ngStyle]="{'background-color': wilColors[res.areaAbbr]}"></span>&nbsp;
+                                                <span class="result-text list-wil pointer text-left" [attr.id]="res.interest">
+                                                    <a href="#" [attr.data-value]="res.score" [attr.data-inx]="inx" (click)="$event.preventDefault();getOccListBasedOnInterest([res.areaAbbr],[res.description],[res.title])"
+                                                        class="highlight-text">
+                                                        <!-- Display titles -->
+                                                        <u>{{res.title}}</u>
+                                                    </a>
+                                                </span>&nbsp;
+                                                <span class="result-score pointer  highlight-text font-weight-bold" (click)="$event.preventDefault();getOccListBasedOnInterest([res.areaAbbr],[res.description],[res.title])">
+                                                    <!-- Displays their scores -->
+                                                    {{res.score}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <p class="mt-4 mb-1">{{(resVal)?.commonText?.pageText?.resultsPage.aboveCards}}</p>
+            <!-- WIL RESULT CARD START -->
+            <div class="row gutter-10">
+                <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of wilResult,let inx=index;">
+                    <button class="card-ip-rsult cards-hover-effect w-100 p-0" data-toggle="modal" [attr.data-target]="'#interest'+item.areaAbbr">
+                        <div class="d-table">
+
+
+                            <div class="ip-result-card-score " [ngStyle]="{'background-color': wilColors[item.areaAbbr]}">
+                                <div class="ip-result-icn-text text-center">
+                                    <div>{{(wilreturnedVal|async)?.commonText.yourScore}}</div>
+                                    <div class="text-center ip-result-score">{{item.score}}</div>
+                                </div>
+                            </div>
+
+                            <div class="media-left-ip-result">
+                                <div>
+                                    <div class="ip-result-icn-text text-center">
+                                        <div>
+                                            <img src="{{wilIcon[item.areaAbbr]}}" class="">
+                                        </div>
+                                        <div>
+                                            <h6 class="text-capitalize"> {{item.title}} </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="modal fade" id="interest{{item.areaAbbr}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-width" role="dialog">
+                            <div class="modal-content modal-color">
+                                <div class="modal-header modal-heading" [ngStyle]="{'background-color': wilColors[item.areaAbbr]}">
+                                    <h6 class="modal-title modal-card-title">
+                                        <b>{{item.title}}</b>
+                                    </h6>
+                                    <button class="modal-close white pointer" data-dismiss="modal" aria-label="Close">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="eq-data">{{item.description}} </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- WIL RESULT CARD END -->
+
+
+            <div class="internal-data-plp2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Destop End design -->
+
+<!-- mobile design -->
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#ip-result-print">Open Modal</button>
+
+<div class="modal" id="ip-result-print" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="ip-print-heading">Work Importance Locator Print Preview</h5>
+                <button class="modal-close" data-dismiss="modal">
+                    <i aria-label="Close">&times;</i>
+                </button>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="">
+                <div class="panel panel-default ">
+                    <div class="row panel-body p-0">
+
+                        <div id="print-piechart" class="col-md-4 col-sm-3 m-auto text-center">
+                            <div id="svg-popup" class="main-svg" style="margin-top: -12px;"></div>
+                        </div>
+                        <div id="print-list" class="col-md-8 col-sm-9  list-print-ip">
+                            <div class="result-list-print print-ip">
+                                <ul data-pie-id="svg-popup" id="list-popup" class="columns-ip-result">
+                                    <li *ngFor="let res of result" class="ChartData " [attr.data-value]="res.score" [ngStyle]="{'color': pieColor[res.interest]}">
+                                        <span class="square-box pointer" [ngStyle]="{'background-color': pieColor[res.interest]}"></span>&nbsp;
+                                        <span class="result-text-print pointer text-left" [attr.id]="res.interest">
+                                            <a class="highlight-text cmpr-cap-letr">
+                                                <u>{{res.interest}}</u>
+                                            </a>
+                                        </span>&nbsp;
+                                        <span class="result-score pointer">
+                                            <a class="highlight-text">{{res.score}}</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="print-text" class="internal-data-plp2">
+                    <p>The links for each Interest Area will display a list of occupations with careers that match that interest.
+                        You can think of the occupational with career interests as your liking or preference for certain
+                        work activities. The WIL measures interests in each of six Interest Areas described below.
+                    </p>
+                </div>
+
+                <button class="btn-plp-2 btn-raised print-btn-popup menu-not-filled" (click)="printResultPage()">Done</button>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End mobile design -->

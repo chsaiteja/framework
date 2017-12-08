@@ -1,0 +1,758 @@
+/************************
+* Factors Footer start
+************************/
+
+.factors-page {
+    .alert-mobile {
+        margin-bottom: 20%;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    .slect-factors-text {
+        padding-left: 44px;
+        @include media-breakpoint-down(sm) {
+            padding-left: 5px;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: $white;
+    }
+    @include media-breakpoint-down(sm) {
+        .mobile-factor-hs {
+            display: none;
+        }
+    }
+    .info-text {
+        color: nth($blue-shades, 17)!important;
+    }
+    @at-root {
+        .disabledp2 {
+            pointer-events: none;
+            opacity: 0.4;
+            outline: none!important;
+        }
+    }
+    .factors-box-bg-color {
+        &.blue {
+            background-color: nth($blue-shades, 6);
+        }
+        &.green {
+            background-color: nth($green-shades, 3);
+        }
+    }
+    .factors-list {
+        @include media-breakpoint-down(sm) {
+            margin-bottom: 60px;
+            padding: 0;
+        }
+    }
+    .list-styles {
+        margin: 0 0 7px 5px!important;
+        padding: 9px 5px!important;
+        background-color: nth($grey-shades, 1)!important;
+        vertical-align: middle;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        cursor: pointer;
+        a {
+            color: nth($black-shades, 1)!important;
+            @include custom-device(768px, 992px) {
+                @include position(relative, $left: 30px);
+                margin: 0 -1px;
+            }
+        }
+        @include custom-device(768px, 992px) {
+            vertical-align: middle;
+            @include height-width(180px, 38px);
+            padding-right: 40px!important;
+        }
+        .word-3-dots {
+            max-width: 90%;
+            vertical-align: top;
+            @extend .three-dots;
+            @include custom-device(768px, 992px) {
+                max-width: 87%!important;
+                left: 0;
+            }
+        }
+    }
+    @include large-device(768px) {
+        .itemsp2.slideLeft {
+            margin-left: -550px;
+            @include custom-device(768px, 992px) {
+                margin-left: -394px!important;
+            }
+        }
+        .slider-width {
+            width: 3500px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            padding-bottom: 3%;
+        }
+        #list-slider {
+            overflow: hidden;
+            width: 1120px;
+            position: relative;
+            @include custom-device(768px, 992px) {
+                @include height-width(680px, 680px);
+            }
+        }
+        .spaceOSDiv {
+            -webkit-flex: 0 0 2em;
+            -ms-flex: 0 0 1.7em!important;
+            flex: 0 0 3em!important;
+            position: relative;
+        }
+        .itemsp2 {
+            width: 1120px;
+            float: left;
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            margin-bottom: 30px;
+            display: inline-block;
+            @include custom-device(768px, 992px) {
+                width: 768px;
+            }
+        }
+    }
+    /******* empty div ********/
+    .important-factors {
+        width: 350px;
+        color: $white;
+    }
+    .top-five-factors {
+        @include custom-device(768px, 1920px) {
+            display: inline-block;
+        }
+        @extend .important-factors;
+    }
+    .icon-box {
+        @extend .factors-box-bg-color;
+        padding: 11px 10px 17px 13px;
+        margin-right: 4px;
+        @include media-breakpoint-down(sm) {
+            padding: 11px 10px 15px 13px
+        }
+    }
+    .list-box {
+        @extend .factors-box-bg-color;
+        padding: 10px 5px;
+        width: 83%;
+        display: inline-block;
+    }
+}
+
+
+/************************
+* Factors Footer Start
+************************/
+
+.factors-footer {
+    @include common-border-radius(10px, 0);
+    @include common-border(1px, 1px, 1px, 1px, $white);
+    width: 40%;
+}
+
+.view {
+    background-color: nth($grey-shades, 12);
+    color: $white;
+    @include height-width(100%, 65px);
+    .next-button {
+        @extend .factors-footer;
+        margin: 17px 10px 0 0;
+        float: right;
+    }
+}
+
+
+/************************
+* Factors Footer End
+************************/
+
+
+/****************************
+* EQ Result start
+****************************/
+
+.eq-result-page {
+    .wil-select-right::after {
+        border-top: 500px solid nth($green-shades, 6)!important;
+    }
+    .well-p2 {
+        display: table;
+        vertical-align: middle;
+        @include common-border-radius(4px, 0);
+        border: 1px solid nth($grey-shades, 8); //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+        margin-bottom: 5px;
+        height: 105px;
+        padding: 10px 5px 0 5px;
+        transition: all .2s ease-in-out;
+        width: $width-value;
+        border-radius: 5px;
+    }
+    .green-box {
+        height: auto;
+        padding-bottom: 20px;
+        background: nth($green-shades, 6);
+        /* Old browsers */
+        background: linear-gradient(to bottom, nth($green-shades, 6) 21%, nth($black-shades, 4) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        @include media-breakpoint-down(sm) {
+            height: auto;
+        }
+        .header-text {
+            color: nth($green-shades, 5);
+            margin: 23px 6px 6px 0px;
+        }
+        .result-text {
+            @include common-border(0px, 0px, 0px, 1px, nth($grey-shades, 15));
+            margin-top: 50px;
+            @include media-breakpoint-down(sm) {
+                border-left: none;
+                margin-top: 10px;
+            }
+            .result-para {
+                color: $white;
+                vertical-align: middle !important;
+                padding: 10px 50px;
+                div:first-child {
+                    width: 90px;
+                }
+            }
+        }
+        .result-score-color {
+            color: nth($green-shades, 2)!important;
+        }
+    }
+    .eq-last-child-card {
+        div:last-child .text-cards {
+            margin: 0;
+        }
+    }
+}
+
+
+/****************************
+* End of EQ Result
+****************************/
+
+
+/****************************
+* Start of CCI Result
+****************************/
+
+.cci-result-page {
+    .top-three-careers {
+        padding-bottom: 15px;
+        .inner-card {
+            @include common-border(1px, 1px, 1px, 1px, nth($grey-shades, 8));
+            padding: 10px;
+        }
+
+        .card-block {
+            padding: 0;
+            h1 {
+                @include common-header($white, nth($font-sizes, 18), none, bold);
+                margin: 30px;
+            }
+        }
+    }
+    @include media-breakpoint-up(md) {
+        .height-cci-cards {
+            height: 36em!important;
+        }
+        .spacing-divs {
+            flex: 0 0 4em!important;
+        }
+    }
+    .small-cards {
+        background-color: nth($white-shades, 9);
+        padding: 10px 0;
+        @media (max-width: 767px) {
+            padding: 10px 0;
+        }
+        h6 {
+            font-size: $font-size-base;
+        }
+        i,
+        .card-media-body span {
+            font-size: nth($font-sizes, 13);
+        }
+        a {
+            color: nth($green-shades, 20);
+            text-decoration: underline;
+            @include position (relative, $top: 2px);
+        }
+    }
+    .card-media-body {
+        color: $white;
+        text-align: center;
+        .score {
+            width: 63px;
+            span {
+                font-size: nth($font-sizes, 9);
+            }
+        }
+    }
+    .card-media-body,
+    .card-media-left {
+        border-radius: 0;
+    }
+}
+
+
+/***************************
+* End of CCI Result
+****************************/
+
+
+/****************************
+* Start of LSS Result
+****************************/
+
+.lss-result-page {
+    .card-border {
+        @include common-border(1px, 1px, 1px, 1px, nth($grey-shades, 8));
+        #res-lss-plp4 {
+            background-color: nth($white-shades, 10);
+        }
+        img {
+            margin: 30px 0;
+        }
+        .lss-horizontal-graph {
+            margin: 10px 0;
+            .result-text {
+                margin-top: 4px;
+                @include media-breakpoint-down(sm) {
+                    margin-top: 6px;
+                }
+            }
+            .result-bar {
+                @include height-width(100%, auto);
+            }
+        }
+    }
+    .lss-card-height{
+        height: 380px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        // padding: 10px 10px 0 40px;
+        }
+    .card-top-height ,
+    .card-footer-plp4,
+     .carousel-item {
+        b {
+            color: nth($grey-shades, 11);
+        }
+    }
+    .score-circle {
+        padding: 0px 0 11px 0;
+        background-color: nth($blue-shades, 18);
+        @include common-border-radius(50%, 1px);
+        @include height-width(55px, 55px);
+        @include common-border(1px, 1px, 1px, 1px, #2c5165);
+        @include common-header($white, nth($font-sizes, 16), center, bold);
+        @include common-border-shadow(0px, 0px, 5px, 1px, #2c5165, 1px);
+        @include media-breakpoint-down(sm) {
+            @include height-width(40px, 40px);
+            padding: 5px 0 11px 0;
+            font-size: $font-size-lg;
+        }
+    }
+    .study-tips-block {
+        background-color: nth($grey-shades, 8);
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+        .text-arrow {
+            display: block;
+            padding: 0;
+            & h6,
+            & .right-arrow {
+                display: table-cell;
+                padding: 9px 15px;
+            }
+            .right-arrow {
+                background: nth($green-shades, 32);
+                @include common-header($white, nth($font-sizes, 11), none, none);
+            }
+        }
+    }
+}
+
+
+/****************************
+* End of LSS Result
+****************************/
+
+
+/****************************
+* Start of WES Result
+****************************/
+
+.wes-result-page {
+    .text-icon {
+        list-style: none;
+        min-height: 115px;
+        color: $white;
+        display: inline;
+        vertical-align: middle;
+        li {
+            padding: 5px 0 0 5px;
+        }
+        img {
+            width: 40px;
+        }
+    }
+    .score-card {
+        background-color: nth($blue-shades, 17);
+        padding: 25px 0px;
+        color: $white;
+        width: 125px;
+        vertical-align: middle;
+        border-radius: 5px 0 0 5px;
+        .score {
+            display: block;
+            font-size: nth($font-sizes, 13);
+        }
+        span:first-child {
+            font-size: nth($font-sizes, 7)!important;
+        }
+    }
+    .your-score {
+        font-size: nth($font-sizes, 3);
+        text-transform: capitalize;
+        b {
+            color: nth($grey-shades, 13);
+        }
+    }
+}
+
+
+/****************************
+* End of WES Result
+****************************/
+
+
+/****************************
+* Start of IP and Wil Result
+****************************/
+
+.chart-result {
+
+    .wil-pichart{
+        @include position (relative, $top: 15px);
+    }
+    .fa-star{
+        -webkit-text-stroke-color: orangered;
+        -webkit-text-stroke-width: 1px;
+         color: yellow;
+         font-size: 1.25rem;
+    }
+    @at-root {
+        .panel-body {
+            background-color: $white;
+            height: auto;
+            @include common-border(1px, 1px, 1px, 1px, nth($grey-shades, 8));
+            @include common-border-shadow(0px, 0px, 1px, 1px, nth($grey-shades, 8), 1px);
+            margin: 1px!important;
+            overflow: hidden;
+            @include media-breakpoint-down(sm) {
+                padding: 10px 0 10px 0;
+            }
+        }
+    }
+    .columns-ip-result {
+        list-style-type: none;
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        float: left;
+    }
+    .three-coloumns-ip-result {
+        list-style-type: none;
+        columns: 3;
+        float: left;
+        @include media-breakpoint-down(sm) {
+            list-style-type: none;
+            columns: 2;
+        }
+    }
+    @at-root{
+    .square-box {
+        border-radius: 9px;
+        @include height-width(14px, 14px);
+        display: inline-block;
+        background-color: nth($red-shades, 3);
+        @include common-border(0px, 0px, 0px, 0px, $black);
+
+        @include media-breakpoint-up(md) {
+            @include position (relative, $top: -2px);
+        }
+        @media (max-width: 767px) {
+            @include position (relative, $top: -5px);
+        }
+
+        @media (max-width: 767px) {
+            @include height-width(10px!important, 10px!important);
+        }
+
+
+        &.wil-res{
+            @media (max-width: 767px) {
+                @include position (relative, $top: -2px);
+            }
+        }
+        &.colr-box-wil-list{
+            @media (max-width:991px){
+                  top:0!important;
+            }
+            @media (max-width: 767px) {
+                @include position (relative, $top: -3px!important);
+            }
+      }
+      .pq-img-card & {
+        
+        @media (max-width: 767px) {
+        
+        @include position (relative, $top: 0px!important);
+        
+        }
+        
+        
+        }
+        
+    }
+}
+    .result-text {
+        width: 80px;
+        display: inline-block;
+        cursor: pointer;
+        @include common-header(none, 1em, none, 600px);
+        @media (max-width: 360px) {
+            width: 60px;
+        }
+        @include large-device(992px) {
+            width: 115px;
+        }
+        &.list-wil {
+            width: 140px;
+            @include large-device(992px) {
+                width: 145px;
+            }
+            @media (max-width: 767px) {
+                @media (max-width: 575px) {
+                    width: 115px;
+                }
+                @media (max-width: 396px) {
+                    width: 63px!important;
+                }
+                width: 100px;
+                height: 18px;
+                display:inline-block;
+                white-space: nowrap;
+                overflow:hidden !important;
+                text-overflow: ellipsis;
+                text-decoration: none!important;
+            }
+        }
+        &.list-occ-wil {        
+           
+                line-height: 16px;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden !important;
+                text-overflow: ellipsis;
+                text-decoration: none!important;
+                @include media-breakpoint-down(md) {
+                    width: 90px;
+
+            }
+        }
+    }
+    .result-score {
+        @include common-header(nth($green-shades, 29)!important, 1.25em, none, bold);
+        margin: 5px 0 0 0;
+        cursor: pointer;
+        width: 25px; 
+        display: inline-block;
+    }
+    .result-list {
+        &.height {
+            @media (min-width: 767px) {
+                min-height: 135px;
+            }
+        }
+        ul {
+            list-style: none;
+            padding: 0px;
+            width: 100%;
+            li {
+                padding: 5px 0;
+                @media (max-width: 575px) {
+                    padding: 2px 0;
+                }
+            }
+        }
+    }
+    .highlight-text {
+        @include common-header(nth($green-shades, 29), nth($font-sizes, 3), none, none);
+        text-transform: capitalize;
+        @include media-breakpoint-down(sm) {
+            font-size: nth($font-sizes, 3);
+        }
+        @include media-breakpoint-only(md) {
+            font-size: 0.75em!important;
+        }
+        @media (max-width: 400px) {
+            font-size: 0.75em!important;
+        }
+    }
+
+}
+
+
+/**************************** 
+* End of IP and Wil Result
+****************************/
+
+
+/*****************************
+ Start Ideas
+ *****************************/
+
+.chart-ideas-result {
+    box-shadow: none!important;
+    margin: 0 17px;
+    margin-right: auto;
+    @extend .panel-body;
+    .result-idea-card {
+        @include common-border(1px, 1px, 1px, 1px, nth($red-shades, 2));
+    }
+    .list {
+        list-style: none;
+        li span {
+            text-decoration: underline;
+        }
+    }
+    @at-root{
+    $colors-list: nth($red-shades, 5) nth($green-shades, 31) nth($green-shades, 20);
+    @each $current-color in $colors-list {
+        $i: index($colors-list, $current-color);
+        .graphcolor-#{$i} {
+            color: $current-color; 
+            font-size: $font-size-base;
+        }
+        .graphbgcolor-#{$i} {
+            background: $current-color; 
+            font-size: $font-size-base;
+        }
+    }
+}
+    .card-title {
+        @include common-header(nth($grey-shades, 22), 18px, none, none)
+    }
+    .result-list-box {
+        @include large-device(767px) {
+            padding-top: 50px;
+        }
+    }
+}
+
+@include custom-device(768px, 992px) {
+    .ideas-result-cards .media-left-ip-result h6 {
+        font-size: $font-size-xs;
+    }
+}
+
+
+/***********************
+End Ideas Result
+************************/
+
+
+
+/***********************
+Begin Ability Result
+************************/
+
+
+
+.result-ability {  
+
+.result-ability-card {
+    border: 1px solid nth($orange-shades, 7);
+    min-height: 190px;    
+    @include media-breakpoint-up (lg) {
+ width: 340px!important;
+    }   
+
+.card-block .inner-width {    
+    width: 220px; 
+       @include media-breakpoint-down (sm) {
+           width: 202px; 
+       }
+    padding-top: 35px;
+}
+.input-group {
+     font-size: nth($font-sizes, 5);
+}
+
+.text-bottom {
+     display: table-cell;
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
+    @include media-breakpoint-down(md) {
+      padding-top: 24px;  
+    }
+    
+}
+}
+.ability-button {
+    background: nth($orange-shades, 7);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 7px 39px;
+    }
+
+    .ability-high { 
+        color: nth($orange-shades, 7);
+        }
+        .ability-medium {
+            color: nth($green-shades, 35);
+        }
+        .ability-low {
+            color: nth($blue-shades, 22);
+         }
+
+}
+.circle-number {
+    float: right;
+        position: relative;
+        left: 35px;
+        top: 5px;
+        background: $blue;
+        color: wheat;
+        padding: 6px;
+        border-radius: 50%;
+}
+.ability-model {
+    .graph-block  .ability-text-modal{
+           width: 155px;
+           @media (max-width:692px){
+            width: 70px;
+           li{
+              word-break: break-all;
+           }
+        }
+        }
+}
+
+
+/***********************
+End Ability Result
+************************/
+
+
+
+

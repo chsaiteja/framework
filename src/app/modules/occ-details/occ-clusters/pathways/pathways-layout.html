@@ -1,0 +1,101 @@
+<div id="accordion" class="pathway-p3" role="tablist" aria-multiselectable="true" *ngIf='(settingsTextTab?.sections).indexOf("Pathways") != -1'>
+  <div class="row desktop-design-display">
+    <!-- For displaying the pathways related cluster cards-->
+    <div class="col-12 col-lg-6 col-md-6 ">
+      <div class="row gutter-10">
+        <div *ngFor="let item of (occClusterStore|async).Pathways;let inx=index" class="col-lg-12 col-md-12 col-12 pathway-card-bg-color">
+          <div *ngIf="(inx%2==0)" class="career-card inner-card">
+
+            <div class="career-card-header" role="tab" id="headingTwo" (click)="(filter != inx)?methodfilter (inx,inx,inx):methodfilter(999,inx,inx)">
+              <h5 class="card-title pt-1">
+                <span> <i class="panal-icon-align"></i> </span>
+                <span>{{item.header}} </span>
+                <button class="common-button default  pull-right p-0"> 
+                  <i *ngIf="(filter != inx )" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+                  <i *ngIf="filter == inx" class="icon-up-rounded-arrow  icn-font-size" aria-hidden="true"></i></button>
+              </h5>
+            </div>
+            <div id=1 #filter1 *ngIf="(filter ==inx && showId==inx)" role="tabpanel" aria-labelledby="headingOne">
+              <div class="card-block " [ngClass]="{'': highlightedDiv === inx}">
+                <p>{{item.intro}}</p>
+                <ul class="list">
+                  <li *ngFor="let items of item.links;let in=index;">
+                    <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(items.linkID,items.linkTitle)">{{items.linkTitle}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 col-md-6">
+
+      <div class="row gutter-10">
+        <div *ngFor="let item of (occClusterStore|async).Pathways;let inx=index" class="col-lg-12 col-md-12 col-12 pathway-card-bg-color">
+          <div *ngIf="(inx%2==1)" class="career-card inner-card">
+            <div>
+
+              <div class="career-card-header" role="tab" id="headingTwo" (click)="(filter != inx)?methodfilter (inx,inx,inx):methodfilter(999,inx,inx)">
+                <h5 class="card-title pt-1">
+                  <span> <i class="panal-icon-align"></i> </span>
+                  <span> {{item.header}} </span>
+                  <button class="common-button default pull-right p-0"> 
+                    <i *ngIf="(filter != inx )" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+                    <i *ngIf="filter == inx" class="icon-up-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+                  </button>
+                </h5>
+
+              </div>
+            </div>
+            <div id=1 #filter1 *ngIf="(filter ==inx && showId==inx)" role="tabpanel" aria-labelledby="headingOne">
+              <div class="card-block " [ngClass]="{'': highlightedDiv === inx}">
+                <p>{{item.intro}}</p>
+                <ul class="list">
+                  <li *ngFor="let items of item.links;let in=index;">
+                    <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(items.linkID,items.linkTitle)">{{items.linkTitle}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- This card displays in the mobile view -->
+    <div class="col-12 mobile-design-display">
+      <div class="row gutter-10">
+        <div *ngFor="let item of (occClusterStore|async).Pathways;let inx=index" class="col-lg-12 col-md-12 col-12 pathway-card-bg-color">
+          <div class="career-card inner-card">
+            <div>
+              <div class="career-card-header" role="tab" id="headingTwo" (click)="(filter != inx)?methodfilter (inx,inx,inx):methodfilter(999,inx,inx)">
+                <h5 class="card-title pt-1">
+                  <span> <i class="panal-icon-align"></i> </span>
+                  <span> {{item.header}} </span>
+                  <button class="common-button default pull-right p-0">
+                      <i *ngIf="(filter != inx )" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+                      <i *ngIf="filter == inx" class="icon-up-rounded-arrow   icn-font-size" aria-hidden="true"></i>
+					       </button>
+                </h5>
+
+              </div>
+            </div>
+            <div id=1 #filter1 *ngIf="(filter ==inx && showId==inx)" role="tabpanel" aria-labelledby="headingOne">
+              <div class="card-block" [ngClass]="{'': highlightedDiv === inx}">
+                <p>{{item.intro}}</p>
+                <ul class="list">
+                  <li *ngFor="let items of item.links;let in=index;">
+                    <a href="#" class="pointer" (click)="$event.preventDefault();CallOccDetailCareer(items.linkID,items.linkTitle)">{{items.linkTitle}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

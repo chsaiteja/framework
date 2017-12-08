@@ -1,0 +1,124 @@
+<div role="tablist" aria-multiselectable="true">
+  <div class="career-card  cardcolor-10 " *ngIf='(settingsTextTab?.sections).indexOf("Preparation") != -1'>
+    <!-- methodfilter method for div expandable and collapsible based on the value -->
+    <div class="career-card-header  pointer" role="tab" id="headingOne" activeIds="1" (click)="(filter != 1)?methodfilter(1):methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-preparation panal-icon-align"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.Preparation}}</span>
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+
+        <button class="common-button default  pull-right p-0">
+          <i *ngIf="(filter != 1)" class="icon-down-rounded-arrow icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="filter == 1" class="icon-up-rounded-arrow icn-font-size" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+    <div id="1" #filter1 *ngIf="filter == 1" class="" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block ">
+        <div *ngFor="let item of(eduandtraining|async).Preparation">
+          <p *ngIf="item.type == 'p'">{{item.text}}</p>
+          <ul class="list" *ngIf="item.type == 'ul'">
+            <li *ngFor="let val of item.text">
+              <div> {{val}}</div>
+            </li>
+          </ul>
+
+          <h6 class='px-3' *ngIf="item.type == 'h'">
+            <b>{{item.text}}</b>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="career-card cardcolor-9" *ngIf='(settingsTextTab?.sections).indexOf("HelpfulHSCourses") != -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingTwo" (click)="(filter != 2)?methodfilter(2):methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-helpful-high-school-courses panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100">{{(settingsText).commonText?.allSections?.HelpfulHSCourses}}</span>
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+        <button class="common-button default  pull-right p-0">
+          <i *ngIf="(filter != 2)" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="filter == 2" class="icon-up-rounded-arrow icn-font-size" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div id="2" #filter2 *ngIf="filter == 2" class="" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block ">
+        <div *ngFor="let item of (eduandtraining|async).HelpfulHSCourses">
+          <p *ngIf="item.type == 'p'" [innerHTML]='item.text | customText '></p>
+          <ul class="list" *ngIf="item.type == 'ul'">
+            <li *ngFor="let val of item.text">
+              <div>{{val}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="career-card Occupation-Sort-card" *ngIf='(settingsTextTab?.sections).indexOf("Licensingcer") != -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingThree" (click)="(filter != 3)?methodfilter(3):methodfilter(999)">
+
+      <h5 class="card-title">
+        <span>
+          <i class="icon-licensing-certification panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.LicensingCert}}</span>
+
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+        <button class="common-button default pull-right p-0">
+          <i *ngIf="(filter != 3)" class="icon-down-rounded-arrow icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="filter == 3" class="icon-up-rounded-arrow icn-font-size" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div id="3" #filter3 *ngIf="filter == 3" class="" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block ">
+        <div *ngFor="let item of (eduandtraining|async).LicensingCert">
+          <p *ngIf="item.type == 'p'" [innerHTML]='item.text | customText '></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="career-card cardcolor-8" *ngIf='(settingsTextTab?.sections).indexOf("RelatedPrograms") != -1'>
+    <div class="career-card-header  pointer" role="tab" id="headingThree" (click)="(filter != 4)?methodfilter(4):methodfilter(999)">
+      <h5 class="card-title">
+        <span>
+          <i class="icon-programs-of-study panal-icon-align" aria-hidden="true"></i>
+        </span>
+        <span class="w-100"> {{(settingsText).commonText?.allSections?.RelatedPrograms}}</span>
+
+      </h5>
+      <div class="d-table-cell align-middle pt-1">
+
+        <button class="common-button default  pull-right p-0">
+          <i *ngIf="(filter != 4)" class="icon-down-rounded-arrow  icn-font-size" aria-hidden="true"></i>
+          <i *ngIf="filter == 4" class="icon-up-rounded-arrow   icn-font-size" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div id="4" #filter3 *ngIf="filter == 4" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block ">
+        <p> {{(eduandtraining|async)?.RelatedPrograms?.intro}}</p>
+        <div *ngFor="let item of (eduandtraining|async).RelatedPrograms?.lists">
+          <p>
+            <b>{{item.header}}</b>
+          </p>
+          <ul class="list">
+            <li *ngFor="let text of item.links">
+              <div> {{text.linkTitle}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

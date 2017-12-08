@@ -1,0 +1,107 @@
+<div class="clear-fixed"> </div>
+<div class="assessment-header">
+    <div class="mobile-design-display" id='headerMobAssess'>
+        <div class="headding-mobil-ass" *ngIf="(endurl.indexOf('occCareer')==-1) && (endurl.indexOf('occCluster')==-1) && (endurl.indexOf('occEmergCareer')==-1) 
+        && (endurl.indexOf('occIndex')==-1) && (endurl.indexOf('compare')==-1)">
+            <div class="mobile-title-bg">
+                <div class="pull-left headding">{{headerName}} {{assessmentheadextra}}</div>
+                <div class="icon-block">
+                    <div class="icons-mobile mr-2">
+                        <div *ngFor='let itemMob of constantNames' class="pointer">
+                            <div *ngIf="itemMob =='restore' && HeaderExtra=='true'" (click)="callFunction(itemMob)">
+                                <div placement="left" ngbTooltip="{{itemMob}}">
+                                    <button class="common-button green">
+                                        <i class="icon-asmnt-restore-2 font-weight-bold font-siz"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="itemMob =='Back_Career' && backCareerValue" (click)="callFunction(itemMob)">
+                                <div placement="left" ngbTooltip="{{itemMob}}">
+                                    <button class="common-button green">
+                                        <i class="fa fa-arrow-circle-o-left fa-4x" [ngStyle]="{ 'font-size':'1.35em','margin-top': '3px'}"></i>
+
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="itemMob !='restore' && itemMob !='Back_Career'" (click)="callFunction(itemMob)">
+                                <div placement="left" ngbTooltip="{{itemMob}}">
+                                    <button class="common-button green" *ngIf="itemMob =='startover' || itemMob =='Back_Result' || itemMob =='partialsave'">
+                                        <i *ngIf="itemMob =='startover'" class="icon-asmnt-start-over font-weight-bold"></i>
+                                        <i *ngIf="itemMob =='Back_Result'" class="icon-result fa-4x"></i>
+                                        <i *ngIf="itemMob =='partialsave'" class="icon-asmnt-save"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Desktop Display -->
+    <div [ngClass]="((endurl.indexOf('occCareer')!=-1) || (endurl.indexOf('occCluster')!=-1) || (endurl.indexOf('occEmergCareer')!=-1))? 'mobile-container' : ''">
+        <div class="row desktop-design-display" *ngIf="(endurl.indexOf('occCareer')==-1) && (endurl.indexOf('occCluster')==-1) && (endurl.indexOf('occEmergCareer')==-1) 
+    && (endurl.indexOf('occIndex')==-1) && (endurl.indexOf('compare')==-1)">
+            <div class="col-md-5 col-sm-5 col-xl-5 ">
+                <h2 class="common-headding">
+                    <div [ngClass]="(endurl=='intro')?'text-center':''">{{headerName}} {{assessmentheadextra}} </div>
+                </h2>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xl-7 p-0 pr-2">
+                <ul class="pull-right d-inline-flex list-unstyled">
+                    <li *ngFor='let item of constantNames'>
+                        <div *ngIf="item =='restore' && HeaderExtra=='true'">
+                            <button class="common-button green btn-green-plp3" (click)="callFunction(item)">
+                                {{(returnedVal|async)?.commonText?.restore}}
+                            </button>
+                        </div>
+                        <div *ngIf="item =='Back_Career' && backCareerValue">
+                            <button class="common-button green btn-green-plp3" (click)="callFunction(item)">
+                                Back to Career
+                            </button>
+                        </div>
+                        <div *ngIf="item !='restore' && item !='Back_Career'">
+                            <button class="common-button green btn-green-plp3" (click)="callFunction(item)" *ngIf="item =='print' 
+                            || item =='assessName' || item =='startover' || item =='Back_Result' || item =='partialsave'|| item =='resultsave'">
+                                <a *ngIf="item =='assessName'"> {{headerName}} </a>
+                                <a *ngIf="item =='startover'"> {{(returnedVal|async)?.commonText?.startOver}} </a>
+                                <a *ngIf="item =='partialsave' || item =='resultsave'"> {{(returnedVal|async)?.commonText?.save}} </a>
+                                <a *ngIf="item =='Back_Result'"> {{(returnedVal|async)?.commonText?.results}} </a>
+                                <a *ngIf="item =='print'"> {{(returnedVal|async)?.commonText?.print}} </a>
+                            </button>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="clear-fixed"> </div>
+            <div class="hr-line"> </div>
+        </div>
+        <router-outlet></router-outlet>
+
+        <div class="floatingContainer mobile-design-display">
+            <div class="float-btn-plp3" *ngIf="constantNames.indexOf('assessName') != -1" (click)="callFunction('assessName')">
+                <button class='action-button'>
+                    <i class="icon-asmnt-assessment d-block"></i>
+                </button>
+            </div>
+            <div *ngIf="(constantNames.indexOf('print') != -1)" class='float-btn-plp3'>
+                <button class='action-button' (click)="filter = !filter" [ngClass]="{'active': filter }">
+                    <span class='fa fa-plus'></span>
+                </button>
+                <ul class='actions list-unstyled'>
+                    <li class="pointer" *ngIf="(constantNames.indexOf('resultsave') != -1)" (click)="callFunction('resultsave')">
+                        <a>
+                            <span class='fa fa-floppy-o'></span>
+                        </a>
+                    </li>
+                    <li (click)="callFunction('print')" class="pointer">
+                        <a>
+                            <span class='fa fa-print'></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
